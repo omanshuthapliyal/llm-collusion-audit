@@ -826,3 +826,27 @@ All four bots behave as specified. The price paths are in `results/bot_*/s0/`.
 - Told to punish until a deviation loses money, gpt-4.1-mini punishes briefly or not at all. Its cut never stops paying, even when a long enough punishment was feasible.
 - Across E3 and E3b, the instructed punishment is observation-driven (never hidden) but not deterrent.
 - We still have no LLM positive for "enforced". The audit's "enforced" category remains tested only on scripted bots.
+
+## 22. Number audit of the report (25 Oct, late; no new runs)
+
+Every number in the report's main text was checked against `results/` and the ledger; the appendix tables were checked against their source CSVs. Corrections made:
+
+| Report location | Was | Now | Why |
+|---|---|---|---|
+| §4.2 table, gpt-4.1-mini | "never when hidden" | "never to a hidden cut" | One hidden *raise* branch (seed 4, +15%) exceeds the noise floor, with B moving the other way (−0.33). |
+| §4.1 table, gpt-4.1-mini told to punish | "punish-only" | "responsive (cuts only), not deterred" | The rule code returns type "undetermined" because β_BR < 0.05; "punish-only" was descriptive. |
+| §4.6 sensitivity | "no verdict changes for any of the 13 groups" | "13 original groups"; a 5-round window changes the delayed punisher and R3 | The groups added later (E1 bots, R3) were not in the original statement. |
+| Appendix D, persistence | "persist unchanged" | "within 0.25 of the warm-up price" | R2 seed 1: 4.25 → 4.00. |
+| Appendix D, deviator gain | "under any agreement ... +0.3 to +3.2" | "under an instructed agreement (R2, R2plus)" | R1 cuts gained +20.4 and +17.6. |
+| Appendix D, agreement marker | 8 of 8 | 9 of 9, groups named | The R3 branch adds 1 of 1; the count pools gpt-4.1-mini and Qwen agreements (§15). |
+
+Everything else checked reproduces to the reported precision:
+- warm-up counts above monopoly (6/6, 11/12, 10/12);
+- β and ΔΠ intervals;
+- cue slopes;
+- exact tests;
+- elicited-condition table cells;
+- Mistral counts (37/105, 0/105, 74/210; 216 runs including 6 monopoly runs);
+- costs;
+- welfare shares;
+- E1, E3 and E3b tables.
