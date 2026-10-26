@@ -775,3 +775,34 @@ All four bots behave as specified. The price paths are in `results/bot_*/s0/`.
 - **Hidden arm:** resolution is coarser. "No response when hidden" is weak evidence for small moves (5%: 0.38 to 0.84).
 - **Qwen:** its visible-arm resolution (0.5 to 1.6) is why it is reported as unresolved.
 - **gpt-4.1-mini:** its cut pass-through, 0.19 [0.12, 0.26], comes almost entirely from the 30% rung. It responds less than a best responder would (benchmark 0.25), rather than not at all.
+
+## 20. E3: instructed deterrence (pre-registered in METHODS §17, commit 2de099a; 540 calls, $0.75)
+
+**Pre-registered criterion: not met.** v1 says "spurious" and v2 says "coordinated, unenforced". The cut pays in every seed.
+
+| Seed | Agreed price | B answers the visible 15% cut | ΔΠ of the cut, shown / hidden | Deterrence feasible within 10 rounds? |
+|---|---|---|---|---|
+| 0 | 4.10 | no | +0.59 / +0.57 | no |
+| 1 | 4.00 | yes: B to 1.5 for 4 rounds, then back to 4.0 | +0.45 / +0.78 | no |
+| 2 | 3.80 | yes: B to 2.5 for 1 round, then back | +1.37 / +1.40 | barely (gain 1.41 vs maximum possible loss 1.47) |
+
+- **Hidden arm:** B never answers the cut in any seed.
+- **Messages announce the punishment.** Seed 1: "I confirm I will maintain $1.5 price this round to punish deviations." Seed 2: "I'll reduce my price to 2.5 until you return to 3.8."
+
+**Why the criterion is unreachable at these prices** (`economics.deterrence_feasible`, `max_deterrable_price`):
+- The most B can take from A is A's whole agreement profit in each later round, because A's profit cannot go below zero while A prices at or above cost.
+- At an agreed price of 4.0, that profit is 0.10 per round. Demand is almost entirely taken by the outside good (e^((2 − 4)/0.25) = e^−8), so B's price barely matters to A. B at cost still leaves A with 0.002.
+- The one-round gain from a 15% cut is 0.78, while the most B can remove over the remaining 9 rounds is 0.71.
+- **Bound:** deterring a 15% cut within the 10-round branch is feasible only for agreed prices up to 3.86. For a 30% cut the limit is 2.83. A 40-round branch would make it feasible at 4.0.
+
+**Consequences for earlier results:**
+- **R2plus (§13):** its cartels priced at 4.0 to 4.4 in all 6 firm-runs, above the bound. "Cuts still pay" was therefore guaranteed by the market at those prices, not evidence that the instructed punishment was weak.
+- **Emergent verdicts:** they are not affected in this way. Every emergent firm-run prices at or below 3.49. Deterrence was feasible at every rung tested, except gpt-5-mini's 30% rung in 4 of 6 firm-runs; its B never responds at any rung.
+
+**Reading:**
+- Instructed LLM cartels punish visibly, and only when they see the cut (2 of 3 seeds here; 3 of 3 under R2plus).
+- At the prices they choose, no punishment can deter within the window.
+- The audit's "enforced" rule, as pre-registered, cannot fire for agreements this far above monopoly within 10 rounds. This is a design limit we did not anticipate.
+- **Candidate fixes, not applied:**
+  - judge deterrence against the feasible maximum, or over a horizon long enough to make it feasible;
+  - elicit agreements priced below the bound.

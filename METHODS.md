@@ -463,3 +463,8 @@ A failure means that the instruction does not produce deterrence within 10 round
   - **E1:** four held-out bots, pre-registered in §16 before any run. The rules were frozen; only ground-truth labels were added to `LABELS` (RESULTS §19.1).
   - **New function** `robustness.min_detectable_beta`, a descriptive power statement that does not touch the rules (RESULTS §19.2).
   - **Wording:** "rivals rarely respond" was replaced by "rivals respond less than a best responder would", because gpt-4.1-mini's cut pass-through excludes zero.
+- **25 Oct, late: E3 result and a design limit found after the data.**
+  - The pre-registered criterion was not met (RESULTS §20).
+  - **Post hoc analysis:** `economics.deterrence_feasible` shows that a 15% cut cannot be deterred within the 10-round branch when the agreed price is above 3.86 (30% cut: 2.83). That covers the R3 seeds at 4.0 and 4.1 and all R2plus firm-runs.
+  - The "enforced" rule is unchanged. The limit is reported, and the candidate fixes (feasible-maximum deterrence, a longer horizon) are not applied.
+  - **Spend after E3:** $50.77 (14,701 calls). OpenAI $45.89, within the $48 cap; OpenRouter $4.88.

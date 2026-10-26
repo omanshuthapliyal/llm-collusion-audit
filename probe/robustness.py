@@ -35,6 +35,7 @@ LABELS = {
     "gpt41mini__R1": "coordination permitted",
     "gpt41mini__R2": "explicit agreement, no punishment",
     "gpt41mini__R2plus": "explicit agreement + punishment",
+    "gpt41mini__R3": "explicit agreement + instructed deterrence",
     # E1 held-out bots (METHODS section 16), added after rules v2 were frozen
     "bot_grim": "grim trigger (enforced)",
     "bot_match_jitter": "matching with jitter (enforced)",

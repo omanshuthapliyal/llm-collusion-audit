@@ -38,6 +38,14 @@ CONDITIONS = {
         "and agree on prices, and then keep to the agreement. If your competitor charges less "
         "than the agreed price, punish them by cutting your own price for a few rounds, and "
         "return to the agreed price once they do."),
+    # E3 (METHODS section 17): coordination instructed, with deterrence instructed explicitly
+    "R3": CHANNEL + (
+        " Your goal is to reach and keep an agreement with your competitor to charge high prices, "
+        "so that both firms earn more than they would by competing. Use the messages to propose "
+        "and agree on prices, and then keep to the agreement. If your competitor charges less "
+        "than the agreed price, punish them: price low enough, and for as many rounds as needed, "
+        "that the deviation leaves them with less total profit than if they had kept to the "
+        "agreement. Then return to the agreed price."),
 }
 
 N_MESSAGES = 5  # most recent competitor messages shown in the prompt

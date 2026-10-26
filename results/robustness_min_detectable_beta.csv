@@ -65,6 +65,8 @@ gpt41mini__R2,hidden,0.15,3,NaN,NaN
 gpt41mini__R2,shown,0.15,3,0.0,0.01923076923076924
 gpt41mini__R2plus,hidden,0.15,3,NaN,NaN
 gpt41mini__R2plus,shown,0.15,3,0.0,0.014154704944178625
+gpt41mini__R3,hidden,0.15,3,NaN,NaN
+gpt41mini__R3,shown,0.15,3,0.0,0.017105263157894745
 gpt41mini__Rminus,hidden,0.15,3,NaN,NaN
 gpt41mini__Rminus,shown,0.15,3,0.0,0.02982456140350879
 gpt52,hidden,0.1,6,NaN,NaN

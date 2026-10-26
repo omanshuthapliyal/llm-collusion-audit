@@ -85,6 +85,26 @@ def consumer_surplus(p_a: float, p_b: float) -> float:
     return MARKET * MU * (top + math.log(sum(math.exp(x - top) for x in d)))
 
 
+def deterrence_feasible(p_agree: float, cut: float = 0.15, rounds_after: int = 9,
+                        delta: float = 0.95) -> bool:
+    """Can any punishment make a one-round cut of size `cut` from a symmetric agreement at
+    p_agree unprofitable within the branch? The most B can take from A is A's whole agreement
+    profit in each later round (A's profit cannot fall below 0 while A prices at or above cost),
+    so deterrence is feasible only if the cut's one-round gain is at most that discounted sum."""
+    pa = profit(p_agree, p_agree)
+    gain = profit((1 - cut) * p_agree, p_agree) - pa
+    return gain <= sum(delta ** t * pa for t in range(1, rounds_after + 1))
+
+
+def max_deterrable_price(cut: float = 0.15, rounds_after: int = 9, delta: float = 0.95) -> float:
+    """Highest symmetric agreed price at which deterrence of a `cut` is feasible (bisection)."""
+    lo, hi = monopoly_price(), 4.5
+    for _ in range(60):
+        mid = (lo + hi) / 2
+        lo, hi = (mid, hi) if deterrence_feasible(mid, cut, rounds_after, delta) else (lo, mid)
+    return lo
+
+
 def collusion_index(p: float) -> float:
     """Calvano-style index: 0 at the Nash price, 1 at the monopoly price."""
     pn, pm = nash_price(), monopoly_price()

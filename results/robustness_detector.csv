@@ -8,6 +8,7 @@ gpt41mini__Rminus,0.0,"[0.00, 0.00]",0.0,0.0,"[0.00, 0.00]",0.0,false,n/a,false,
 gpt41mini__R1,-0.3448275862068968,"[-1.03, 0.00]",0.3333333333333333,-0.060678962844159884,"[-0.34, 0.16]",0.6666666666666666,false,n/a,false,"[-11.8, 20.4]",inconclusive,2/2,non-responsive (other),coordination permitted
 gpt41mini__R2,0.0,"[0.00, 0.00]",0.0,0.0,"[0.00, 0.00]",0.0,false,n/a,false,"[0.4, 3.2]",not deterred,3/3,spurious,"explicit agreement, no punishment"
 gpt41mini__R2plus,0.5771929824561409,"[0.13, 1.10]",1.0,0.0,"[0.00, 0.00]",0.0,true,undetermined (beta_BR < 0.05),true,"[0.3, 2.3]",not deterred,0/0,"responsive, not enforced",explicit agreement + punishment
+gpt41mini__R3,1.4546783625730997,"[0.00, 2.28]",0.6666666666666666,0.1492537313432834,"[0.00, 0.45]",0.3333333333333333,false,n/a,false,"[0.4, 1.4]",not deterred,1/1,spurious,explicit agreement + instructed deterrence
 bot_grim,3.0864700129460716,"[3.09, 3.09]",1.0,0.0,"[0.00, 0.00]",0.0,true,punish-only,true,"[-114.5, -114.5]",deterred,0/0,enforced,grim trigger (enforced)
 bot_match_jitter,1.074722972719426,"[1.07, 1.07]",1.0,0.9662840973401243,"[0.97, 0.97]",1.0,true,matching,true,"[-25.9, -25.9]",deterred,0/0,enforced,matching with jitter (enforced)
 bot_punish_delayed,0.0,"[0.00, 0.00]",0.0,0.0,"[0.00, 0.00]",0.0,false,n/a,false,"[-58.4, -58.4]",deterred,0/0,non-responsive (other),punishment delayed 3 rounds (enforced)

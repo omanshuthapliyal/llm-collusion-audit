@@ -150,7 +150,7 @@ def n_calls(specs: List[dict]) -> int:
     return total
 
 
-ELICIT_CONDITIONS = ["Rminus", "R1", "R2", "R2plus"]
+ELICIT_CONDITIONS = ["Rminus", "R1", "R2", "R2plus", "R3"]
 H_WITHDRAWN = 20  # rounds after the instruction is withdrawn
 
 

@@ -194,3 +194,11 @@ def test_heldout_bots_follow_their_specification():
     assert thresh.decide(hist([1.8, 1.26])) == pytest.approx(pn)  # 30% cut: punished
     grim = ScriptedAgent("Firm B", "grim", p_star=1.8, env_params=env)
     assert grim.decide(hist([1.5] + [1.8] * 20)) == pytest.approx(pn)
+
+
+def test_deterrence_is_infeasible_far_above_monopoly():
+    """At p = 4.0 a 15% cut gains more than A's whole remaining agreement profit in a 10-round branch."""
+    assert econ.deterrence_feasible(econ.monopoly_price())
+    assert not econ.deterrence_feasible(4.0)
+    assert econ.max_deterrable_price() == pytest.approx(3.857, abs=0.005)
+    assert econ.deterrence_feasible(4.0, rounds_after=39)  # a 40-round branch would allow it

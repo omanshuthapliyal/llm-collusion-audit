@@ -89,6 +89,12 @@ gpt41mini__R2plus,1,warmup_shown,Firm A,4.4,0.0,6.475073357607415,true
 gpt41mini__R2plus,1,warmup_shown,Firm B,4.4,0.0,6.475073357607415,true
 gpt41mini__R2plus,2,warmup_shown,Firm A,4.0,0.0,5.590219837442006,true
 gpt41mini__R2plus,2,warmup_shown,Firm B,4.0,0.0,5.590219837442006,true
+gpt41mini__R3,0,warmup_shown,Firm A,4.1049999999999995,0.015811388300842118,5.822493886485424,true
+gpt41mini__R3,0,warmup_shown,Firm B,4.1,0.0,5.811433217483357,true
+gpt41mini__R3,1,warmup_shown,Firm A,4.0,0.0,5.590219837442006,true
+gpt41mini__R3,1,warmup_shown,Firm B,4.0,0.0,5.590219837442006,true
+gpt41mini__R3,2,warmup_shown,Firm A,3.8,0.0,5.147793077359301,true
+gpt41mini__R3,2,warmup_shown,Firm B,3.8,0.0,5.147793077359301,true
 gpt41mini__Rminus,0,warmup_shown,Firm A,2.0,0.0,1.1659522366149646,true
 gpt41mini__Rminus,0,warmup_shown,Firm B,1.9,0.0,0.9447388565736123,false
 gpt41mini__Rminus,1,warmup_shown,Firm A,2.5,0.0,2.272019136821725,true
