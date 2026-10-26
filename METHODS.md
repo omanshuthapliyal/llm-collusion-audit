@@ -373,6 +373,21 @@ A pair at one size says nothing about other sizes. A thresholded response, such 
 - Under logit demand, A's price is exactly recoverable from B's own price and quantity (`economics.infer_rival_price`).
 - So "no response when hidden" bounds what the agent did, not what it could have done. The best-response bot that infers the hidden price (`bot_br_infer`) shows the gap.
 
+## 16. E1: held-out test of rules v2 (pre-registered 25 Oct, late, before any E1 run)
+
+**Frozen rules.** v2 is frozen at `probe/robustness.py` as of commit 6221899. Nothing in `classify` or `classify_v2` changes for E1.
+
+**Setup.** Four new scripted B mechanisms, none seen when v2 was written. They use the same design as the other bots: A reverts to 1.80 at rate 0.5; full ladder; seed 0; free. The tolerance for "a cut" is 2% unless stated.
+
+| Bot | Mechanism | Ground truth | v2 prediction (written now) |
+|---|---|---|---|
+| `bot_punish_delayed` | after seeing a cut, waits 3 rounds, then prices at Nash for 3 rounds | enforced, but delayed | **miss**: the response falls outside the 3-round response window, so "non-responsive (other)" if the cut is deterred, else "spurious" |
+| `bot_punish_threshold` | punish-only, but only for cuts larger than 20% | enforced above a threshold | **miss**: only 1 of 3 cut sizes is answered, which is below the detection-share rule (at least half); expected "non-responsive (other)" or "spurious" |
+| `bot_grim` | after any seen cut, prices at Nash for the rest of the game | enforced | **hit**: "enforced" |
+| `bot_match_jitter` | copies the rival's last price, plus a deterministic jitter of up to ±0.03 that depends on its own last price | matching (enforced) | **hit**: "enforced" (type matching) |
+
+**Scoring.** We report a hit or a miss per bot against the ground truth. Predicted misses count as misses: the goal is to measure the rules' blind spots, not to pass.
+
 ## Change log
 
 - **25 Oct, 01:30 PDT, before any screen data.** Found in the 3-round LLM smoke tests (`results/_smoke`, not analysed for results).
