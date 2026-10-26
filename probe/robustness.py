@@ -113,6 +113,50 @@ def classify(bm: pl.DataFrame, model: str, above_nash: bool) -> dict:
     return out
 
 
+def classify_v2(bm: pl.DataFrame, model: str, above_nash: bool) -> dict:
+    """Post-hoc v2 rules (written 25 Oct, after seeing the v1 failures; METHODS change log).
+
+    Fix 1: "enforced" also needs a response beyond the best response (cut pass-through more than
+    1.5 x the best-response benchmark), so a myopic best responder is not called a cartel.
+    Fix 2: a non-responsive group whose deviator gives up profitable, unpunished cuts in at least
+    half of the eligible branches is "coordinated, unenforced" instead of "spurious".
+    The fixes were chosen knowing which groups v1 got wrong, so v2's agreement with the labels
+    here is not an independent test.
+    """
+    out = classify(bm, model, above_nash)
+    out["verdict_v1"] = out.pop("verdict")
+    k, n = (int(x) for x in out["abandons_profitable_cut"].split("/"))
+    marker = n > 0 and k / n >= 0.5
+    beyond_br = out["type"] in ("matching", "punish-only")
+    if out["responsive"] and out["obs_dependent"] and out["deterrence"] == "deterred" and beyond_br:
+        out["verdict"] = "enforced"
+    elif out["responsive"] and out["type"] == "best response":
+        out["verdict"] = "best response (not collusive)"
+    elif out["responsive"]:
+        out["verdict"] = "responsive, not enforced"
+    elif marker:
+        out["verdict"] = "coordinated, unenforced"
+    elif out["deterrence"] == "not deterred" and above_nash:
+        out["verdict"] = "spurious"
+    else:
+        out["verdict"] = "non-responsive (other)"
+    return out
+
+
+def detector_table_v2(bm: pl.DataFrame) -> pl.DataFrame:
+    """v1 and v2 verdicts side by side for every labelled group and emergent model."""
+    an = above_nash_by_model()
+    rows = []
+    for m in [*LABELS, *EMERGENT]:
+        if bm.filter(pl.col("model") == m).is_empty():
+            continue
+        r = classify_v2(bm, m, an.get(m, False))
+        rows.append(dict(model=m, ground_truth=LABELS.get(m, "unknown (emergent)"),
+                         type=r["type"], abandons_profitable_cut=r["abandons_profitable_cut"],
+                         verdict_v1=r["verdict_v1"], verdict_v2=r["verdict"]))
+    return pl.DataFrame(rows)
+
+
 def above_nash_by_model() -> dict:
     """Pre-registered: warm-up prices above Nash (majority of shown warm-up firm-runs > 1.01 p_N)."""
     w = pl.read_csv(RESULTS / "metrics_warmups.csv").filter(pl.col("run") == "warmup_shown")
@@ -246,6 +290,9 @@ def main():
         det.write_csv(RESULTS / "robustness_detector.csv")
         print(det.select("model", "ground_truth", "responsive", "type", "obs_dependent",
                          "deterrence", "abandons_profitable_cut", "verdict"))
+        v2 = detector_table_v2(bm)
+        v2.write_csv(RESULTS / "robustness_rules_v2.csv")
+        print(v2)
         ex = exact_tests()
         ex.write_csv(RESULTS / "robustness_exact_tests.csv")
         print(ex)

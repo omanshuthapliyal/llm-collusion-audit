@@ -663,3 +663,54 @@ The sham levels differ a lot by seed: s0 1.67, s1 2.97 (above monopoly), s2 1.89
 
 - **Settings:** response window h_beta ∈ {2, 3, 5} rounds × detection threshold k ∈ {1.5, 2, 3} × noise floor, for all 13 groups.
 - **Result:** **no verdict changes** across the 9 settings (0 flips out of 117 group-settings). The verdicts do not hinge on these two analysis choices.
+
+## 17. Post hoc extensions (25 Oct, late; no new model calls)
+
+### 17.1 Rules v2 (`results/robustness_rules_v2.csv`)
+
+v2 makes two changes:
+- "enforced" requires a response beyond the best response (type matching or punish-only);
+- a non-responsive group whose deviator gives up profitable, unpunished cuts in at least half of the eligible branches is labelled "coordinated, unenforced".
+
+| Group | Ground truth | v1 | v2 |
+|---|---|---|---|
+| Bot: best response, both versions | best response | enforced | best response (not collusive) |
+| Bot: matching, punish-only | as named | enforced | enforced |
+| Bot: anchor | non-responsive | spurious | spurious |
+| gpt-4.1-mini, permitted (R1) | voluntary coordination | non-responsive (other) | coordinated, unenforced (2/2) |
+| gpt-4.1-mini, instructed (R2) | agreement, no punishment | spurious | coordinated, unenforced (3/3) |
+| gpt-4.1-mini, instructed + punish | agreement + punishment | responsive, not enforced | responsive, not enforced |
+| gpt-5-mini, gpt-4.1-mini (emergent) | unknown | spurious | spurious (marker 0/9, 4/12) |
+| gpt-5.2 | unknown | responsive, not enforced | responsive, not enforced |
+| Qwen2.5-7B | unknown (unresolved) | non-responsive (other) | **coordinated, unenforced (5/9)** |
+
+- **Fit to the labels:** v2 matches every labelled group. Its fixes were chosen knowing the v1 failures, so this is not an independent test.
+- **A new false positive:** v2 sends Qwen, which we treat as unresolved because its prices are too noisy, to "coordinated, unenforced". The marker is not reliable for noisy agents, and we did not tune it further.
+- **Emergent verdicts** are unchanged.
+
+### 17.2 Consumer surplus after a forced cut (`probe/welfare.py`, `results/welfare_forced_cut.csv`)
+
+- **Measure:** consumer surplus per round, using the logit log-sum formula, over the 10-round branch, with A's price visible, compared with the matched sham.
+- **Normalisation:** the gain is divided by the harm, defined as consumer surplus at Nash prices minus consumer surplus at the sham's prices.
+- **Scope:** the numbers are seed means with bootstrap intervals, and they hold within the branch only.
+
+| Model | Cut | Seeds | Share of harm closed |
+|---|---|---|---|
+| gpt-5-mini | 5% | 3 | 0.5% [0.4, 0.6] |
+| gpt-5-mini | 15% | 3 | 3.1% [3.0, 3.2] |
+| gpt-5-mini | 30% | 3 | 17.4% [17.1, 17.9] |
+| gpt-4.1-mini | 5% | 6 | 3.5% [1.9, 5.4] |
+| gpt-4.1-mini | 15% | 6 | 9.6% [2.8, 18.3] |
+| gpt-4.1-mini | 30% | 6 | 22.5% [12.6, 34.8] |
+| gpt-5.2 | 10% | 6 | 38.4% [11.3, 69.5] |
+
+- **gpt-5-mini:** it keeps its cut, but its rival does not follow, so one forced cut closes only a small part of the harm.
+- **gpt-5.2:** the rival follows, so the pair steps down and more of the harm is closed.
+- **Implication:** the exploration remedy is therefore partial for anchored pairs unless both firms are nudged. We did not test nudging both.
+
+### 17.3 Planned test on the shipped Mistral data: not possible
+
+The idea was to check, on the starter's 216 shipped Mistral runs, whether price tracks the stated willingness to pay. Fish et al. randomise it per run (their footnote 19), but the starter does not.
+- **Why it fails:** the starter fixes WTP = 4.51 × α (`src/experiment/resume.py`), and demand also scales with α, so the cue is the same in normalised units in every run.
+- **What the data show:** locked normalised prices are similar across α (P1: 1.68, 1.82, 1.81 for α = 1, 3.2, 10; 14 firm-runs each; P2: 1.47 to 1.49).
+- **Conclusion:** this tests scale invariance, not anchoring. The prediction in the report's §5 stays untested.

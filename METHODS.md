@@ -343,6 +343,36 @@ The split test is the point of the arm: a firm that enforces should react to its
 - For `stubborn_A`: B's shift relative to A's (propagation through the network).
 - Measured shifts are compared against the predicted Δp, using k_i from the gpt-5.2 audit (mean β_cut = 0.56).
 
+## 15. Identification, stated formally (written 25 Oct, after the data; formalises the argument in §6, changes no rule)
+
+**Setup.**
+- Let u be A's forced one-round move, measured against the matched sham (u < 0 is a cut).
+- Let R(u) be B's expected price change over the response window, also against the sham. The sham removes the common baseline; noise is assumed independent of u.
+- Split R at a move size a > 0 into odd and even parts: R_o(a) = (R(a) - R(-a)) / 2 and R_e(a) = (R(a) + R(-a)) / 2.
+- Per unit of the move, β_cut = R(-a) / (-a) and β_raise = R(a) / a.
+
+**Proposition 1 (a cut-only test does not identify the response).** A cut of size a observes only R(-a) = R_e(a) - R_o(a). Any two responses with the same R_e(a) - R_o(a) are indistinguishable under cuts of that size.
+- Example: matching, R(u) = u, and punish-only, R(u) = min(u, 0), both give R(-a) = -a.
+
+**Proposition 2 (a cut and a raise of equal size identify both parts at that size).**
+- R_o(a) = (R(a) - R(-a)) / 2 and R_e(a) = (R(a) + R(-a)) / 2.
+- Equivalently, in the local model R(u) = k u + e |u|: k = (β_cut + β_raise) / 2 and e = (β_raise - β_cut) / 2.
+
+| Mechanism | k | e |
+|---|---|---|
+| Anchor | 0 | 0 |
+| Matching | 1 | 0 |
+| Punish-only | 1/2 | -1/2 |
+| Static best response | about the best-response slope | O(a), since a smooth best response is locally odd |
+
+A pair at one size says nothing about other sizes. A thresholded response, such as gpt-4.1-mini's (no response below a 30% cut), needs a ladder of sizes.
+
+**Proposition 3 (hiding is imperfect monitoring).**
+- Write R = R_obs + R_dem: the response through seeing A's price, plus the response through B's own sales.
+- Hiding A's price removes R_obs only for an agent that does not recover A's price from its own sales.
+- Under logit demand, A's price is exactly recoverable from B's own price and quantity (`economics.infer_rival_price`).
+- So "no response when hidden" bounds what the agent did, not what it could have done. The best-response bot that infers the hidden price (`bot_br_infer`) shows the gap.
+
 ## Change log
 
 - **25 Oct, 01:30 PDT, before any screen data.** Found in the 3-round LLM smoke tests (`results/_smoke`, not analysed for results).
@@ -378,3 +408,8 @@ The split test is the point of the arm: a firm that enforces should react to its
   - Axis limits are now computed from the data. Fixed limits had clipped Qwen and gpt-5.2 paths in `fig_deviator_paths` and percentile bands in `fig_impulse_responses`.
   - Overlapping labels were moved into legends or tick labels.
   - The concept-diagram text "moves it for good" became "a forced cut is kept, not punished", because the data cover only the 10-round branch.
+- **25 Oct, post hoc additions (no new model calls).**
+  - **§15:** the identification argument stated formally.
+  - **Rules v2** (`robustness.classify_v2`): "enforced" now requires a response beyond the best response, and an agreement marker sends non-responsive groups to "coordinated, unenforced". v2 was written after seeing the v1 failures, so its fit to the labelled groups is not an independent test. v1 remains the pre-registered rule set.
+  - **Consumer-surplus analysis** of the forced-cut branches (`probe/welfare.py`).
+  - **Mistral check:** the planned test of Fish et al.'s willingness-to-pay variation on the shipped Mistral runs is not possible, because the starter sets WTP = 4.51 alpha, so the cue is constant in normalised units.

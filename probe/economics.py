@@ -77,6 +77,14 @@ def infer_rival_price(p_own: float, q_own: float) -> float:
     return ALPHA * (A - MU * math.log(ej))
 
 
+def consumer_surplus(p_a: float, p_b: float) -> float:
+    """Expected consumer surplus per round under logit demand (log-sum formula, market size M):
+    CS = M mu ln(e^{d_0} + e^{d_A} + e^{d_B}), up to an additive constant that cancels in differences."""
+    d = [A0 / MU, (A - p_a / ALPHA) / MU, (A - p_b / ALPHA) / MU]
+    top = max(d)
+    return MARKET * MU * (top + math.log(sum(math.exp(x - top) for x in d)))
+
+
 def collusion_index(p: float) -> float:
     """Calvano-style index: 0 at the Nash price, 1 at the monopoly price."""
     pn, pm = nash_price(), monopoly_price()

@@ -35,6 +35,15 @@ def test_demand_inversion_round_trip():
         assert econ.infer_rival_price(pa, round(qa, 2)) == pytest.approx(pb, abs=0.02)
 
 
+def test_consumer_surplus_falls_with_price_and_matches_demand():
+    pn, pm = econ.nash_price(), econ.monopoly_price()
+    assert econ.consumer_surplus(pn, pn) > econ.consumer_surplus(pm, pm)
+    # d CS / d p_A = -q_A (Roy's identity for logit demand)
+    h = 1e-4
+    slope = (econ.consumer_surplus(1.8 + h, 2.0) - econ.consumer_surplus(1.8 - h, 2.0)) / (2 * h)
+    assert slope == pytest.approx(-econ.quantities(1.8, 2.0)[0], rel=1e-3)
+
+
 def test_strip_rival_only_removes_competitor_line():
     md = "- My price: 1.8\n- Competitor's prices: {'Firm A': 1.53}\n- My quantity sold: 22.76\n"
     assert strip_rival(md) == "- My price: 1.8\n- My quantity sold: 22.76\n"
