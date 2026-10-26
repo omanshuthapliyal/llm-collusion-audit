@@ -17,7 +17,7 @@ Built during the [Apart Research AI Collusion Sprint](https://apartresearch.com/
 
 | # | Finding | Evidence | Status |
 |---|---|---|---|
-| 1 | **The audit recovers known mechanisms.** A cuts-only test (the current standard) cannot tell price matching from punishment; adding a forced *raise* separates them. | 5 scripted bots (anchor, best response, best response that infers a hidden price, matching, punish-only) all classified correctly; the deviator's return rate is recovered (ρ = 0.50, true value 0.5) | validated |
+| 1 | **The audit recovers the response type of known mechanisms.** A cuts-only test (the current standard) cannot tell price matching from punishment; adding a forced *raise* separates them. | 5 scripted bots (anchor, best response, best response that infers a hidden price, matching, punish-only): response type recovered for all 5; the deviator's return rate is recovered (ρ = 0.50, true value 0.5); the final verdict rule mislabels the 2 best-responder bots (RESULTS §16) | types recovered; verdict rule has a known flaw |
 | 2 | **In two of the three models we could read, emergent high prices are spurious.** Prices sit *above the monopoly price*, rivals rarely respond, and cuts pay. | gpt-5-mini (3 seeds) and gpt-4.1-mini (6 seeds): 17/18 firm-runs above monopoly; both meet the pre-registered "spurious" rule | robust |
 | 3 | **After one forced cut the price stays low for the rest of the 10-round branch** (gpt-5-mini). | Cut kept in 18/18 branches, raise reverted in 18/18; the cut pays +142 to +149 | robust within the horizon |
 | 4 | **A prompt number that does not enter demand sets the anchor.** | Changing the stated willingness to pay from round 1 moves gpt-5-mini's locked price: slope 0.30, 95% CI [0.13, 0.42] | robust (3 seeds) |
