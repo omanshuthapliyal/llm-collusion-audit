@@ -142,7 +142,7 @@ The next step is to confirm the exploratory dead zone on seeds 3 to 5. Testing a
   - B stays at 3.49 throughout.
   - A's notes: "pricing at 2.99 produced … profit ≈3.71 per round … A single round at price 2.09 produced … profit 44.73".
 - **Interpretation:**
-  - The high price is not a contracting attractor. Along the cut direction it is a neutral state that the agent leaves for good after a single push.
+  - The high price is not a contracting attractor. Along the cut direction it is a neutral state that the agent leaves after a single push and does not return to within the 10-round branch.
   - It persists only because the agent never explores downward itself.
   - This is the "spurious collusion" mechanism of Calvano et al. (2023), observed directly.
 
@@ -407,7 +407,7 @@ The warm-up levels are mixed across seeds.
 
 ### Battery (±15%)
 
-**R2plus: the first LLM enforcement case in this project.**
+**R2plus: the first LLM punishment response in this project.** (It does not meet the pre-registered *enforced* rule: cuts still pay slightly, ΔΠ_A +0.3 to +2.3.)
 - B responds to A's visible 15% cut (β = 1.10, detected; ratio to β_BR undefined because β_BR ≈ 0.001).
 - It does not respond to the raise (β = 0), nor to the cut when A's price is hidden (β = 0).
 - B's message after the cut: "Your undercutting to $3.40 hurts us both… I will lower my price to $3.50 next round to discourage undercutting but hope to return to $4.0".
