@@ -1,0 +1,16 @@
+{
+  "name": "sham_hidden_b",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s2/sham_hidden_b",
+  "seed": 1002,
+  "rounds": 40,
+  "model": "gpt5mini",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s2/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s2/warmup_shown/results.json"
+  },
+  "hide": {
+    "Firm B": 31
+  }
+}

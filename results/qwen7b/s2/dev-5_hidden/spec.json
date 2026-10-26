@@ -1,0 +1,20 @@
+{
+  "name": "dev-5_hidden",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s2/dev-5_hidden",
+  "seed": 2,
+  "rounds": 40,
+  "model": "qwen7b",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s2/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s2/warmup_shown/results.json"
+  },
+  "force": {
+    "agent": "Firm A",
+    "factor": 0.95
+  },
+  "hide": {
+    "Firm B": 31
+  }
+}

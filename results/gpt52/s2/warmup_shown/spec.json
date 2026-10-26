@@ -1,0 +1,8 @@
+{
+  "name": "warmup_shown",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s2/warmup_shown",
+  "seed": 2,
+  "rounds": 30,
+  "model": "gpt52",
+  "agent_kind": "llm"
+}

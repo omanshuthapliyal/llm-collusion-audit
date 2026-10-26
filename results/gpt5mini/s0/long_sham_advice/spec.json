@@ -1,0 +1,13 @@
+{
+  "name": "long_sham_advice",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s0/long_sham_advice",
+  "seed": 0,
+  "rounds": 50,
+  "model": "gpt5mini",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s0/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s0/warmup_shown/results.json"
+  }
+}

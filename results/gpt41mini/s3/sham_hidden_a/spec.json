@@ -1,0 +1,16 @@
+{
+  "name": "sham_hidden_a",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini/s3/sham_hidden_a",
+  "seed": 3,
+  "rounds": 40,
+  "model": "gpt41mini",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini/s3/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini/s3/warmup_shown/results.json"
+  },
+  "hide": {
+    "Firm B": 31
+  }
+}

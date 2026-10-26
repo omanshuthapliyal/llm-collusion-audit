@@ -1,0 +1,81 @@
+model,seed,comparison,dA,dB
+bot_anchor,0,notes_wiped - own sham,0.0,0.0
+bot_anchor,0,warmup_hidden - warmup_shown,0.0,0.0
+bot_anchor,0,wtp3.5 - own sham,0.0,0.0
+bot_anchor,0,wtp6.0 - own sham,0.0,0.0
+bot_br,0,notes_wiped - own sham,0.0,0.0
+bot_br,0,warmup_hidden - warmup_shown,0.0,0.18640000000000012
+bot_br,0,wtp3.5 - own sham,0.0,0.0
+bot_br,0,wtp6.0 - own sham,0.0,0.0
+bot_br_infer,0,notes_wiped - own sham,0.0,0.0
+bot_br_infer,0,warmup_hidden - warmup_shown,0.0,-0.0013499999999997403
+bot_br_infer,0,wtp3.5 - own sham,0.0,0.0
+bot_br_infer,0,wtp6.0 - own sham,0.0,0.0
+bot_match,0,notes_wiped - own sham,0.0,0.0
+bot_match,0,warmup_hidden - warmup_shown,0.0,0.0
+bot_match,0,wtp3.5 - own sham,0.0,0.0
+bot_match,0,wtp6.0 - own sham,0.0,0.0
+bot_punish,0,notes_wiped - own sham,0.0,0.0
+bot_punish,0,warmup_hidden - warmup_shown,0.0,0.0
+bot_punish,0,wtp3.5 - own sham,0.0,0.0
+bot_punish,0,wtp6.0 - own sham,0.0,0.0
+gpt41mini,0,notes_wiped - own sham,-0.0035000000000000807,-0.004999999999999849
+gpt41mini,1,notes_wiped - own sham,0.03299999999999988,0.005999999999999917
+gpt41mini,2,notes_wiped - own sham,-0.023999999999999844,0.0
+gpt41mini,3,notes_wiped - own sham,0.039999999999999994,0.02100000000000002
+gpt41mini,4,notes_wiped - own sham,-0.03099999999999987,-0.19000000000000017
+gpt41mini,5,notes_wiped - own sham,-0.005999999999999872,0.030000000000000027
+gpt41mini,0,rematch - own sham,0.001000000000000023,-0.016000000000000014
+gpt41mini,1,rematch - own sham,0.01500000000000008,0.0
+gpt41mini,2,rematch - own sham,-0.03600000000000003,0.39500000000000013
+gpt41mini,3,rematch - own sham,0.0,0.0
+gpt41mini,4,rematch - own sham,0.0,-0.006000000000000005
+gpt41mini,5,rematch - own sham,-0.141,-0.3999999999999999
+gpt41mini,0,warmup_hidden - warmup_shown,0.38349999999999995,-0.13099999999999978
+gpt41mini,1,warmup_hidden - warmup_shown,-0.585,-0.365
+gpt41mini,2,warmup_hidden - warmup_shown,0.2769999999999997,-0.5650000000000002
+gpt41mini,3,warmup_hidden - warmup_shown,-0.25,0.5930000000000002
+gpt41mini,4,warmup_hidden - warmup_shown,-0.5990000000000002,-0.9100000000000001
+gpt41mini,5,warmup_hidden - warmup_shown,-0.47899999999999965,-0.1259999999999999
+gpt41mini,0,wtp3.5 - own sham,-0.001000000000000023,0.0
+gpt41mini,1,wtp3.5 - own sham,0.01500000000000008,0.0
+gpt41mini,2,wtp3.5 - own sham,-0.027999999999999935,-0.004000000000000092
+gpt41mini,3,wtp3.5 - own sham,0.0,0.0
+gpt41mini,4,wtp3.5 - own sham,0.0,0.0
+gpt41mini,5,wtp3.5 - own sham,-0.0009999999999999788,-0.006000000000000005
+gpt41mini,0,wtp6.0 - own sham,-0.0033999999999999807,0.0
+gpt41mini,1,wtp6.0 - own sham,0.01500000000000008,0.0
+gpt41mini,2,wtp6.0 - own sham,0.0,0.0
+gpt41mini,3,wtp6.0 - own sham,0.0,0.0
+gpt41mini,4,wtp6.0 - own sham,-0.125,0.0
+gpt41mini,5,wtp6.0 - own sham,-0.00799999999999983,-0.010999999999999987
+gpt5mini,0,notes_wiped - own sham,0.048999999999999974,-0.10000000000000009
+gpt5mini,1,notes_wiped - own sham,-0.050000000000000044,0.02999999999999998
+gpt5mini,2,notes_wiped - own sham,0.0,-0.010000000000000009
+gpt5mini,0,rematch - own sham,0.0,0.0
+gpt5mini,1,rematch - own sham,0.0,-0.010000000000000009
+gpt5mini,2,rematch - own sham,0.0,0.0
+gpt5mini,0,warmup_hidden - warmup_shown,-0.23000000000000043,-1.5600000000000005
+gpt5mini,1,warmup_hidden - warmup_shown,-0.3599999999999999,1.2400000000000007
+gpt5mini,2,warmup_hidden - warmup_shown,-0.020000000000000018,0.8400000000000007
+gpt5mini,0,wtp3.5 - own sham,0.0,0.0
+gpt5mini,1,wtp3.5 - own sham,0.010000000000000009,0.0
+gpt5mini,2,wtp3.5 - own sham,0.0,-0.010000000000000009
+gpt5mini,0,wtp6.0 - own sham,0.0,0.0
+gpt5mini,1,wtp6.0 - own sham,0.010000000000000009,0.0
+gpt5mini,2,wtp6.0 - own sham,0.0,-0.010000000000000009
+qwen7b,0,notes_wiped - own sham,0.6330000000000002,0.077
+qwen7b,1,notes_wiped - own sham,-0.42600000000000016,-0.052000000000000025
+qwen7b,2,notes_wiped - own sham,-0.198,0.03899999999999979
+qwen7b,0,rematch - own sham,-0.2619999999999999,0.009000000000000008
+qwen7b,1,rematch - own sham,-0.12000000000000006,0.018999999999999906
+qwen7b,2,rematch - own sham,0.01700000000000008,-0.02200000000000002
+qwen7b,0,warmup_hidden - warmup_shown,-0.05799999999999983,-0.4039999999999999
+qwen7b,1,warmup_hidden - warmup_shown,0.665,1.0115
+qwen7b,2,warmup_hidden - warmup_shown,-0.575,-0.39400000000000013
+qwen7b,0,wtp3.5 - own sham,-0.07199999999999993,0.10000000000000005
+qwen7b,1,wtp3.5 - own sham,-0.45,0.248
+qwen7b,2,wtp3.5 - own sham,-0.014000000000000012,-0.03600000000000003
+qwen7b,0,wtp6.0 - own sham,-0.2619999999999999,0.041999999999999996
+qwen7b,1,wtp6.0 - own sham,-0.492,0.14399999999999996
+qwen7b,2,wtp6.0 - own sham,0.28200000000000003,-0.020999999999999998

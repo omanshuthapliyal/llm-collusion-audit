@@ -1,0 +1,70 @@
+[01:30:14] [INFO] ✅ Metadata saved
+[01:30:14] [INFO] ✅ Metadata saved
+[01:30:14] [INFO] --- Round 31 ---
+[01:30:14] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:14] [INFO] Starting rate-limited execution for 2 agents
+[01:30:14] [INFO] Created 2 tasks, collecting results...
+[01:30:14] [INFO] Successfully collected 2 results
+[01:30:14] [INFO] Agent execution completed in 0.00 seconds
+[01:30:14] [INFO] Forced Firm A price 1.8 -> 1.89
+[01:30:14] [INFO] --- Round 32 ---
+[01:30:14] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:14] [INFO] Starting rate-limited execution for 2 agents
+[01:30:14] [INFO] Created 2 tasks, collecting results...
+[01:30:14] [INFO] Successfully collected 2 results
+[01:30:14] [INFO] Agent execution completed in 0.00 seconds
+[01:30:14] [INFO] --- Round 33 ---
+[01:30:14] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:14] [INFO] Starting rate-limited execution for 2 agents
+[01:30:14] [INFO] Created 2 tasks, collecting results...
+[01:30:14] [INFO] Successfully collected 2 results
+[01:30:14] [INFO] Agent execution completed in 0.00 seconds
+[01:30:14] [INFO] --- Round 34 ---
+[01:30:14] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:14] [INFO] Starting rate-limited execution for 2 agents
+[01:30:14] [INFO] Created 2 tasks, collecting results...
+[01:30:14] [INFO] Successfully collected 2 results
+[01:30:14] [INFO] Agent execution completed in 0.00 seconds
+[01:30:14] [INFO] --- Round 35 ---
+[01:30:14] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:14] [INFO] Starting rate-limited execution for 2 agents
+[01:30:14] [INFO] Created 2 tasks, collecting results...
+[01:30:14] [INFO] Successfully collected 2 results
+[01:30:14] [INFO] Agent execution completed in 0.00 seconds
+[01:30:14] [INFO] --- Round 36 ---
+[01:30:14] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:14] [INFO] Starting rate-limited execution for 2 agents
+[01:30:14] [INFO] Created 2 tasks, collecting results...
+[01:30:14] [INFO] Successfully collected 2 results
+[01:30:14] [INFO] Agent execution completed in 0.00 seconds
+[01:30:14] [INFO] --- Round 37 ---
+[01:30:14] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:14] [INFO] Starting rate-limited execution for 2 agents
+[01:30:14] [INFO] Created 2 tasks, collecting results...
+[01:30:14] [INFO] Successfully collected 2 results
+[01:30:14] [INFO] Agent execution completed in 0.00 seconds
+[01:30:15] [INFO] --- Round 38 ---
+[01:30:15] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:15] [INFO] Starting rate-limited execution for 2 agents
+[01:30:15] [INFO] Created 2 tasks, collecting results...
+[01:30:15] [INFO] Successfully collected 2 results
+[01:30:15] [INFO] Agent execution completed in 0.00 seconds
+[01:30:15] [INFO] --- Round 39 ---
+[01:30:15] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:15] [INFO] Starting rate-limited execution for 2 agents
+[01:30:15] [INFO] Created 2 tasks, collecting results...
+[01:30:15] [INFO] Successfully collected 2 results
+[01:30:15] [INFO] Agent execution completed in 0.00 seconds
+[01:30:15] [INFO] --- Round 40 ---
+[01:30:15] [INFO] Executing 2 agents with 0.0s rate limit
+[01:30:15] [INFO] Starting rate-limited execution for 2 agents
+[01:30:15] [INFO] Created 2 tasks, collecting results...
+[01:30:15] [INFO] Successfully collected 2 results
+[01:30:15] [INFO] Agent execution completed in 0.00 seconds
+[01:30:15] [INFO] ✅ Metadata saved
+[01:30:15] [INFO] 📊 Mean price, rounds 31-40 (0 = Nash, 1 = monopoly):
+[01:30:15] [INFO]    Firm A   1.817  [Nash 1.473 | monopoly 1.925]  index=0.76  above Nash: yes
+[01:30:15] [INFO]    Firm B   1.816  [Nash 1.473 | monopoly 1.925]  index=0.759  above Nash: yes
+[01:30:15] [INFO]    Positive control (all firms above Nash): PASS
+[01:30:15] [INFO] ✅ Experiment completed.
+

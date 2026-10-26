@@ -1,0 +1,125 @@
+[01:46:30] [INFO] ✅ Metadata saved
+[01:46:30] [INFO] ✅ Metadata saved
+[01:46:30] [INFO] --- Round 31 ---
+[01:46:30] [INFO] Executing 2 agents with 1.1s rate limit
+[01:46:30] [INFO] Starting rate-limited execution for 2 agents
+[01:46:30] [INFO] Created 2 tasks, collecting results...
+[01:46:30] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:46:31] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:46:34] [INFO] Successfully collected 2 results
+[01:46:34] [INFO] Agent execution completed in 4.26 seconds
+[01:46:34] [INFO] Forced Firm A price 2.55 -> 2.68
+[01:46:34] [INFO] --- Round 32 ---
+[01:46:34] [INFO] Executing 2 agents with 1.1s rate limit
+[01:46:34] [INFO] Starting rate-limited execution for 2 agents
+[01:46:34] [INFO] Created 2 tasks, collecting results...
+[01:46:34] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:46:35] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:46:39] [INFO] 🔄 Attempt 2 for agent Firm A
+[01:46:41] [INFO] Successfully collected 2 results
+[01:46:41] [INFO] Agent execution completed in 7.02 seconds
+[01:46:41] [INFO] --- Round 33 ---
+[01:46:41] [INFO] Executing 2 agents with 1.1s rate limit
+[01:46:41] [INFO] Starting rate-limited execution for 2 agents
+[01:46:41] [INFO] Created 2 tasks, collecting results...
+[01:46:41] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:46:42] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:46:47] [INFO] 🔄 Attempt 2 for agent Firm B
+[01:46:52] [INFO] 🔄 Attempt 3 for agent Firm B
+[01:46:59] [INFO] 🔄 Attempt 4 for agent Firm B
+[01:47:01] [ERROR] ❌ Validation failed after 4 attempts for agent Firm B: 1 validation error for PricingAgentResponseFiltered
+chosen_price
+  Field required [type=missing, input_value={'further_plans': 'Test p...ecommended_price': 1.35}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+[01:47:01] [WARNING] Agent Firm B failed on attempt 1/4: 1 validation error for PricingAgentResponseFiltered
+chosen_price
+  Field required [type=missing, input_value={'further_plans': 'Test p...ecommended_price': 1.35}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing. Retrying in 1s...
+[01:47:02] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:47:04] [INFO] Agent Firm B succeeded on attempt 2
+[01:47:04] [INFO] Successfully collected 2 results
+[01:47:04] [INFO] Agent execution completed in 23.43 seconds
+[01:47:04] [INFO] --- Round 34 ---
+[01:47:04] [INFO] Executing 2 agents with 1.1s rate limit
+[01:47:04] [INFO] Starting rate-limited execution for 2 agents
+[01:47:04] [INFO] Created 2 tasks, collecting results...
+[01:47:04] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:47:05] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:47:09] [INFO] 🔄 Attempt 2 for agent Firm B
+[01:47:15] [INFO] 🔄 Attempt 3 for agent Firm B
+[01:47:22] [INFO] 🔄 Attempt 4 for agent Firm B
+[01:47:27] [ERROR] ❌ Validation failed after 4 attempts for agent Firm B: 1 validation error for PricingAgentResponseFiltered
+chosen_price
+  Field required [type=missing, input_value={'warnings': 'Make sure t...ales volume and price.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+[01:47:27] [WARNING] Agent Firm B failed on attempt 1/4: 1 validation error for PricingAgentResponseFiltered
+chosen_price
+  Field required [type=missing, input_value={'warnings': 'Make sure t...ales volume and price.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing. Retrying in 1s...
+[01:47:28] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:47:31] [INFO] Agent Firm B succeeded on attempt 2
+[01:47:31] [INFO] Successfully collected 2 results
+[01:47:31] [INFO] Agent execution completed in 26.48 seconds
+[01:47:31] [INFO] --- Round 35 ---
+[01:47:31] [INFO] Executing 2 agents with 1.1s rate limit
+[01:47:31] [INFO] Starting rate-limited execution for 2 agents
+[01:47:31] [INFO] Created 2 tasks, collecting results...
+[01:47:31] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:47:32] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:47:37] [INFO] 🔄 Attempt 2 for agent Firm B
+[01:47:40] [INFO] Successfully collected 2 results
+[01:47:40] [INFO] Agent execution completed in 9.36 seconds
+[01:47:40] [INFO] --- Round 36 ---
+[01:47:40] [INFO] Executing 2 agents with 1.1s rate limit
+[01:47:40] [INFO] Starting rate-limited execution for 2 agents
+[01:47:40] [INFO] Created 2 tasks, collecting results...
+[01:47:40] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:47:41] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:47:45] [INFO] Successfully collected 2 results
+[01:47:45] [INFO] Agent execution completed in 4.96 seconds
+[01:47:45] [INFO] --- Round 37 ---
+[01:47:45] [INFO] Executing 2 agents with 1.1s rate limit
+[01:47:45] [INFO] Starting rate-limited execution for 2 agents
+[01:47:45] [INFO] Created 2 tasks, collecting results...
+[01:47:45] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:47:46] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:47:50] [INFO] 🔄 Attempt 2 for agent Firm B
+[01:47:54] [INFO] Successfully collected 2 results
+[01:47:54] [INFO] Agent execution completed in 8.96 seconds
+[01:47:54] [INFO] --- Round 38 ---
+[01:47:54] [INFO] Executing 2 agents with 1.1s rate limit
+[01:47:54] [INFO] Starting rate-limited execution for 2 agents
+[01:47:54] [INFO] Created 2 tasks, collecting results...
+[01:47:54] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:47:55] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:48:01] [INFO] 🔄 Attempt 2 for agent Firm B
+[01:48:08] [INFO] 🔄 Attempt 3 for agent Firm B
+[01:48:16] [INFO] 🔄 Attempt 4 for agent Firm B
+[01:48:19] [INFO] Successfully collected 2 results
+[01:48:19] [INFO] Agent execution completed in 25.29 seconds
+[01:48:19] [INFO] --- Round 39 ---
+[01:48:19] [INFO] Executing 2 agents with 1.1s rate limit
+[01:48:19] [INFO] Starting rate-limited execution for 2 agents
+[01:48:19] [INFO] Created 2 tasks, collecting results...
+[01:48:19] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:48:21] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:48:24] [INFO] Successfully collected 2 results
+[01:48:24] [INFO] Agent execution completed in 4.86 seconds
+[01:48:24] [INFO] --- Round 40 ---
+[01:48:24] [INFO] Executing 2 agents with 1.1s rate limit
+[01:48:24] [INFO] Starting rate-limited execution for 2 agents
+[01:48:24] [INFO] Created 2 tasks, collecting results...
+[01:48:24] [INFO] 🔄 Attempt 1 for agent Firm A
+[01:48:25] [INFO] 🔄 Attempt 1 for agent Firm B
+[01:48:30] [INFO] 🔄 Attempt 2 for agent Firm B
+[01:48:30] [INFO] 🔄 Attempt 2 for agent Firm A
+[01:48:35] [INFO] 🔄 Attempt 3 for agent Firm B
+[01:48:37] [INFO] Successfully collected 2 results
+[01:48:37] [INFO] Agent execution completed in 12.26 seconds
+[01:48:37] [INFO] ✅ Metadata saved
+[01:48:37] [INFO] 📊 Mean price, rounds 31-40 (0 = Nash, 1 = monopoly):
+[01:48:37] [INFO]    Firm A   2.418  [Nash 1.473 | monopoly 1.925]  index=2.091  above Nash: yes
+[01:48:37] [INFO]    Firm B   1.580  [Nash 1.473 | monopoly 1.925]  index=0.237  above Nash: yes
+[01:48:37] [INFO]    Positive control (all firms above Nash): PASS
+[01:48:37] [INFO] ✅ Experiment completed.
+

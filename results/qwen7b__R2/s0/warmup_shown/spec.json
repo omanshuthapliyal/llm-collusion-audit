@@ -1,0 +1,9 @@
+{
+  "name": "warmup_shown",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b__R2/s0/warmup_shown",
+  "seed": 0,
+  "rounds": 30,
+  "model": "qwen7b",
+  "agent_kind": "llm",
+  "condition": "R2"
+}

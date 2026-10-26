@@ -1,0 +1,52 @@
+2026-10-24T07:00:19Z positive control gpt-4.1-mini: ABORTED, 429 insufficient_quota (no credits), 0 successful calls, cost $0
+2026-10-25T07:55:09Z positive control gpt-4.1-mini 30r T0.7: PASS (A 1.90, B 2.22 by r15), 60 calls, est $0.07
+2026-10-25T07:55:09Z positive control gpt-5-mini 30r T1.0: PASS by repo criterion (mean A 3.00, B 2.76; above monopoly), 60 calls, est $0.25
+2026-10-25T07:58:13Z OpenRouter test call qwen/qwen-2.5-7b-instruct via Phala: OK, 1 call, $0.0000063
+2026-10-25T07:58:33Z key check: OpenAI gpt-4.1-mini, gpt-5-mini (low), gpt-5.2 (low) OK, 3 calls, <$0.001; OpenRouter key limit $10, used $0
+2026-10-25T08:19:03+00:00 sweep bot_match seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:19:46+00:00 sweep bot_anchor seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:19:57+00:00 sweep bot_br seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:20:08+00:00 sweep bot_br_infer seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:20:19+00:00 sweep bot_match seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:20:30+00:00 sweep bot_punish seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:26:23+00:00 sweep gpt41mini seeds=[0] design=full W=3 H=3 SMOKE runs=6 planned_calls=36 actual_cost=$0.0780 failures=2
+2026-10-25T08:26:23+00:00 sweep qwen7b seeds=[0] design=full W=3 H=3 SMOKE runs=6 planned_calls=36 actual_cost=$0.0916 failures=2
+2026-10-25T08:26:23+00:00 sweep gpt52 seeds=[0] design=lite W=3 H=3 SMOKE runs=5 planned_calls=30 actual_cost=$0.2762 failures=2
+2026-10-25T08:26:23+00:00 sweep gpt5mini seeds=[0] design=full W=3 H=3 SMOKE runs=6 planned_calls=36 actual_cost=$0.2852 failures=2
+2026-10-25T08:28:20+00:00 sweep qwen7b seeds=[0] design=full W=3 H=3 SMOKE runs=2 planned_calls=12 actual_cost=$0.0013 failures=0
+2026-10-25T08:28:20+00:00 sweep gpt41mini seeds=[0] design=full W=3 H=3 SMOKE runs=2 planned_calls=12 actual_cost=$0.0138 failures=0
+2026-10-25T08:28:20+00:00 sweep gpt52 seeds=[0] design=lite W=3 H=3 SMOKE runs=2 planned_calls=12 actual_cost=$0.1665 failures=0
+2026-10-25T08:28:20+00:00 sweep gpt5mini seeds=[0] design=full W=3 H=3 SMOKE runs=2 planned_calls=12 actual_cost=$0.0276 failures=0
+2026-10-25T08:29:43+00:00 sweep bot_anchor seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:29:53+00:00 sweep bot_br seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:30:01+00:00 sweep bot_br_infer seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:30:10+00:00 sweep bot_match seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:30:19+00:00 sweep bot_punish seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:33:34+00:00 sweep bot_anchor seeds=[0] design=entry W=30 H=10 runs=3 planned_calls=0 actual_cost=$0.0000 failures=2
+2026-10-25T08:33:43+00:00 sweep bot_anchor seeds=[0] design=advice W=30 H=10 runs=4 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:33:46+00:00 sweep bot_br seeds=[0] design=entry W=30 H=10 runs=3 planned_calls=0 actual_cost=$0.0000 failures=2
+2026-10-25T08:33:50+00:00 sweep bot_br seeds=[0] design=advice W=30 H=10 runs=4 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:34:13+00:00 sweep bot_anchor seeds=[0] design=entry W=30 H=10 runs=2 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:34:16+00:00 sweep bot_br seeds=[0] design=entry W=30 H=10 runs=2 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T08:30:56+00:00 sweep gpt41mini seeds=[0, 1, 2] design=full W=30 H=10 runs=66 planned_calls=1560 actual_cost=$2.3245 failures=0
+2026-10-25T08:30:56+00:00 sweep qwen7b seeds=[0, 1, 2] design=full W=30 H=10 runs=66 planned_calls=1560 actual_cost=$0.5191 failures=0
+2026-10-25T08:30:56+00:00 sweep gpt5mini seeds=[0, 1, 2] design=full W=30 H=10 runs=66 planned_calls=1560 actual_cost=$3.6226 failures=0
+2026-10-25T09:21:57+00:00 sweep gpt41mini seeds=[0, 1, 2] design=cue W=30 H=10 runs=6 planned_calls=360 actual_cost=$0.4479 failures=0
+2026-10-25T09:21:58+00:00 sweep gpt5mini seeds=[0, 1, 2] design=advice W=30 H=10 runs=9 planned_calls=360 actual_cost=$0.8959 failures=0
+2026-10-25T09:21:57+00:00 sweep gpt5mini seeds=[0, 1, 2] design=cue W=30 H=10 runs=6 planned_calls=360 actual_cost=$0.8129 failures=0
+2026-10-25T09:21:57+00:00 sweep gpt52 seeds=[0] design=lite W=30 H=10 runs=5 planned_calls=140 actual_cost=$2.0275 failures=0
+2026-10-25T09:57:21+00:00 sweep gpt52 seeds=[0, 1, 2] design=lite W=30 H=10 runs=19 planned_calls=460 actual_cost=$6.3829 failures=0
+2026-10-25T17:58:15+00:00 sweep gpt41mini seeds=[3, 4, 5] design=full W=30 H=10 runs=66 planned_calls=1560 actual_cost=$2.3785 failures=0
+2026-10-25T18:12:28+00:00 sweep gpt52 seeds=[3, 4, 5] design=lite W=30 H=10 runs=24 planned_calls=600 actual_cost=$8.2019 failures=0
+2026-10-25T19:45:39+00:00 sweep gpt41mini seeds=[0] design=elicit W=3 H=3 SMOKE runs=4 planned_calls=58 actual_cost=$0.0574 failures=0
+2026-10-25T19:48:56+00:00 sweep bot_match seeds=[0] design=designed W=30 H=10 runs=5 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T19:49:00+00:00 sweep bot_br seeds=[0] design=designed W=30 H=10 runs=5 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-25T19:47:50+00:00 sweep gpt41mini seeds=[0] design=elicit W=30 H=10 runs=30 planned_calls=800 actual_cost=$1.0824 failures=0
+2026-10-25T19:49:19+00:00 sweep gpt52 seeds=[0] design=designed W=30 H=10 runs=5 planned_calls=200 actual_cost=$3.2440 failures=0
+2026-10-25T19:47:50+00:00 sweep qwen7b seeds=[0] design=elicit W=30 H=10 runs=30 planned_calls=800 actual_cost=$0.3130 failures=0
+2026-10-25T19:56:29Z note: qwen7b elicit pilot actual $0.3130 exceeded approved $0.30 (estimate $0.24); gate checks estimates only
+2026-10-25T21:47:24+00:00 sweep qwen7b seeds=[0] design=elicit W=30 H=10 runs=2 planned_calls=80 actual_cost=$0.0391 failures=0
+2026-10-25T23:39:44+00:00 sweep gpt41mini seeds=[1, 2] design=elicit W=30 H=10 runs=64 planned_calls=1760 actual_cost=$2.4712 failures=0
+2026-10-25T23:41:35+00:00 sweep gpt52 seeds=[0] design=designed W=30 H=10 runs=3 planned_calls=240 actual_cost=$3.9697 failures=0
+2026-10-25T23:39:44+00:00 sweep gpt52 seeds=[1, 2] design=designed W=30 H=10 runs=10 planned_calls=400 actual_cost=$6.3823 failures=0
+2026-10-25T23:50:05Z note: gpt52 designed --long actual $3.9697 exceeded approved $3.90 (estimate $3.55)

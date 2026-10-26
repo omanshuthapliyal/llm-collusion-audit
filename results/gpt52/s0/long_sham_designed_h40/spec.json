@@ -1,0 +1,13 @@
+{
+  "name": "long_sham_designed_h40",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s0/long_sham_designed_h40",
+  "seed": 0,
+  "rounds": 70,
+  "model": "gpt52",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s0/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s0/warmup_shown/results.json"
+  }
+}

@@ -1,0 +1,25 @@
+# secrets and machine-specific files (never commit)
+compute.env
+*.env
+.certs/
+.DS_Store
+
+# large local artefacts
+models/
+results/_smoke/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# working notes not intended for publication (OT to decide)
+drafts/
+CP0_STATUS.md
+CP2_STATUS.md
+PHASE1_IdeaA.md
+PLAN_IdeaA.md
+
+# run-by-run console logs (the usage ledger and sweep log are kept)
+logs/*.log

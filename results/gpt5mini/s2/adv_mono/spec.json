@@ -1,0 +1,20 @@
+{
+  "name": "adv_mono",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s2/adv_mono",
+  "seed": 2,
+  "rounds": 50,
+  "model": "gpt5mini",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s2/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s2/warmup_shown/results.json"
+  },
+  "advice": {
+    "mode": "fixed",
+    "prices": {
+      "Firm A": 1.92,
+      "Firm B": 1.92
+    }
+  }
+}

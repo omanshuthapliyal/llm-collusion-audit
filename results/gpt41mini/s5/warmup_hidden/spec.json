@@ -1,0 +1,12 @@
+{
+  "name": "warmup_hidden",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini/s5/warmup_hidden",
+  "seed": 5,
+  "rounds": 30,
+  "model": "gpt41mini",
+  "agent_kind": "llm",
+  "hide": {
+    "Firm A": 1,
+    "Firm B": 1
+  }
+}

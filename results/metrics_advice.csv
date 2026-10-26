@@ -1,0 +1,25 @@
+model,seed,arm,agent,rec,p_sham,p_arm,gain
+bot_anchor,0,adv_mono,Firm A,1.92,1.8,1.8,0.0
+bot_anchor,0,adv_mono,Firm B,1.92,1.8,1.8,0.0
+bot_anchor,0,adv_nash,Firm A,1.47,1.8,1.8,-0.0
+bot_anchor,0,adv_nash,Firm B,1.47,1.8,1.8,-0.0
+bot_anchor,0,adv_split,Firm A,1.47,1.8,1.8,-0.0
+bot_anchor,0,adv_split,Firm B,1.92,1.8,1.8,0.0
+bot_br,0,adv_mono,Firm A,1.92,1.8,1.8,0.0
+bot_br,0,adv_mono,Firm B,1.92,1.6136,1.6136,0.0
+bot_br,0,adv_nash,Firm A,1.47,1.8,1.8,-0.0
+bot_br,0,adv_nash,Firm B,1.47,1.6136,1.6136,-0.0
+bot_br,0,adv_split,Firm A,1.47,1.8,1.8,-0.0
+bot_br,0,adv_split,Firm B,1.92,1.6136,1.6136,0.0
+gpt5mini,0,adv_mono,Firm A,1.92,3.0100000000000002,2.99,0.01834862385321102
+gpt5mini,0,adv_mono,Firm B,1.92,3.4900000000000007,3.4900000000000007,-0.0
+gpt5mini,1,adv_mono,Firm A,1.92,3.0,3.0,-0.0
+gpt5mini,1,adv_mono,Firm B,1.92,2.75,2.75,-0.0
+gpt5mini,2,adv_mono,Firm A,1.92,3.0,3.0,-0.0
+gpt5mini,2,adv_mono,Firm B,1.92,2.75,2.75,-0.0
+gpt5mini,0,adv_split,Firm A,1.47,3.0100000000000002,2.99,0.012987012987012997
+gpt5mini,0,adv_split,Firm B,1.92,3.4900000000000007,3.4900000000000007,-0.0
+gpt5mini,1,adv_split,Firm A,1.47,3.0,3.0,-0.0
+gpt5mini,1,adv_split,Firm B,1.92,2.75,2.8,-0.060240963855421464
+gpt5mini,2,adv_split,Firm A,1.47,3.0,3.0,-0.0
+gpt5mini,2,adv_split,Firm B,1.92,2.75,2.75,-0.0

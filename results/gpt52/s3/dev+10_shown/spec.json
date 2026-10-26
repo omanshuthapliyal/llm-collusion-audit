@@ -1,0 +1,17 @@
+{
+  "name": "dev+10_shown",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s3/dev+10_shown",
+  "seed": 3,
+  "rounds": 40,
+  "model": "gpt52",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s3/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s3/warmup_shown/results.json"
+  },
+  "force": {
+    "agent": "Firm A",
+    "factor": 1.1
+  }
+}

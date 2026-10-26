@@ -1,0 +1,93 @@
+{
+  "note": "within-run time split; optimistic",
+  "layers": {
+    "8": {
+      "time_split_auroc": 0.5625,
+      "mean_score_by_run": {
+        "qwen7b__R1__s0__warmup_shown": 0.9668030255480171,
+        "qwen7b__R1__s0__withdrawn": 0.8435705132343619,
+        "qwen7b__R2__s0__warmup_shown": 0.9864983934861049,
+        "qwen7b__R2__s0__withdrawn": 0.7882282332074801,
+        "qwen7b__R2plus__s0__warmup_shown": 0.9729126383256882,
+        "qwen7b__R2plus__s0__withdrawn": 0.8459893476548604,
+        "qwen7b__Rminus__s0__warmup_shown": 0.782398489782829,
+        "qwen7b__Rminus__s0__withdrawn": 0.2993066861631773,
+        "qwen7b__s0__sham_hidden_a": 0.465594507973243,
+        "qwen7b__s0__sham_shown_a": 0.34390347963620316,
+        "qwen7b__s0__warmup_shown": 0.6473897923315654,
+        "qwen7b__s1__sham_hidden_a": 0.538488578984369,
+        "qwen7b__s1__sham_shown_a": 0.2833719004114164,
+        "qwen7b__s1__warmup_shown": 0.58747611882294,
+        "qwen7b__s2__sham_hidden_a": 0.4761959143828274,
+        "qwen7b__s2__sham_shown_a": 0.3572265416941609,
+        "qwen7b__s2__warmup_shown": 0.5668175614577605
+      }
+    },
+    "14": {
+      "time_split_auroc": 0.8574999999999999,
+      "mean_score_by_run": {
+        "qwen7b__R1__s0__warmup_shown": 0.9167007654836855,
+        "qwen7b__R1__s0__withdrawn": 0.7567224344793957,
+        "qwen7b__R2__s0__warmup_shown": 0.9978065857958822,
+        "qwen7b__R2__s0__withdrawn": 0.965555292174472,
+        "qwen7b__R2plus__s0__warmup_shown": 0.9926431619684727,
+        "qwen7b__R2plus__s0__withdrawn": 0.9697061709269917,
+        "qwen7b__Rminus__s0__warmup_shown": 0.7802613311000393,
+        "qwen7b__Rminus__s0__withdrawn": 0.25797229448541104,
+        "qwen7b__s0__sham_hidden_a": 0.5083794568958393,
+        "qwen7b__s0__sham_shown_a": 0.2137190813021308,
+        "qwen7b__s0__warmup_shown": 0.7029098851503229,
+        "qwen7b__s1__sham_hidden_a": 0.3617000207109312,
+        "qwen7b__s1__sham_shown_a": 0.2474412710831615,
+        "qwen7b__s1__warmup_shown": 0.7307027391121128,
+        "qwen7b__s2__sham_hidden_a": 0.36616167504906577,
+        "qwen7b__s2__sham_shown_a": 0.24352791023772108,
+        "qwen7b__s2__warmup_shown": 0.618302361286238
+      }
+    },
+    "20": {
+      "time_split_auroc": 0.9825,
+      "mean_score_by_run": {
+        "qwen7b__R1__s0__warmup_shown": 0.180130547676062,
+        "qwen7b__R1__s0__withdrawn": 0.4971066995343502,
+        "qwen7b__R2__s0__warmup_shown": 0.4411721574185175,
+        "qwen7b__R2__s0__withdrawn": 0.9883505588458774,
+        "qwen7b__R2plus__s0__warmup_shown": 0.3418968010434965,
+        "qwen7b__R2plus__s0__withdrawn": 0.9363104399791187,
+        "qwen7b__Rminus__s0__warmup_shown": 0.12267956183485043,
+        "qwen7b__Rminus__s0__withdrawn": 0.10925839403760058,
+        "qwen7b__s0__sham_hidden_a": 0.30355016774452226,
+        "qwen7b__s0__sham_shown_a": 0.44564901956360836,
+        "qwen7b__s0__warmup_shown": 0.3870127327828377,
+        "qwen7b__s1__sham_hidden_a": 0.5113249599775409,
+        "qwen7b__s1__sham_shown_a": 0.5090442587062217,
+        "qwen7b__s1__warmup_shown": 0.29295257130598,
+        "qwen7b__s2__sham_hidden_a": 0.17493345617022532,
+        "qwen7b__s2__sham_shown_a": 0.3274460593604546,
+        "qwen7b__s2__warmup_shown": 0.21989909598709081
+      }
+    },
+    "26": {
+      "time_split_auroc": 0.9600000000000001,
+      "mean_score_by_run": {
+        "qwen7b__R1__s0__warmup_shown": 0.12085699066334454,
+        "qwen7b__R1__s0__withdrawn": 0.5166923950902552,
+        "qwen7b__R2__s0__warmup_shown": 0.3674729606067334,
+        "qwen7b__R2__s0__withdrawn": 0.9535305879954941,
+        "qwen7b__R2plus__s0__warmup_shown": 0.2944523853246203,
+        "qwen7b__R2plus__s0__withdrawn": 0.8821449752509773,
+        "qwen7b__Rminus__s0__warmup_shown": 0.11059598323015507,
+        "qwen7b__Rminus__s0__withdrawn": 0.21543172244195025,
+        "qwen7b__s0__sham_hidden_a": 0.39436930238003626,
+        "qwen7b__s0__sham_shown_a": 0.5562216826141675,
+        "qwen7b__s0__warmup_shown": 0.35665103325484876,
+        "qwen7b__s1__sham_hidden_a": 0.5967149757202879,
+        "qwen7b__s1__sham_shown_a": 0.6102257493280944,
+        "qwen7b__s1__warmup_shown": 0.34852681036651406,
+        "qwen7b__s2__sham_hidden_a": 0.31076820069460787,
+        "qwen7b__s2__sham_shown_a": 0.5129149500996937,
+        "qwen7b__s2__warmup_shown": 0.28217000827890415
+      }
+    }
+  }
+}

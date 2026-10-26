@@ -1,0 +1,20 @@
+{
+  "name": "dev-30_hidden",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini/s1/dev-30_hidden",
+  "seed": 1,
+  "rounds": 40,
+  "model": "gpt41mini",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini/s1/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini/s1/warmup_shown/results.json"
+  },
+  "force": {
+    "agent": "Firm A",
+    "factor": 0.7
+  },
+  "hide": {
+    "Firm B": 31
+  }
+}

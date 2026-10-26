@@ -1,0 +1,13 @@
+{
+  "name": "rematch",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s0/rematch",
+  "seed": 0,
+  "rounds": 40,
+  "model": "qwen7b",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s0/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s1/warmup_shown/results.json"
+  }
+}

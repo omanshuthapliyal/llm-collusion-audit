@@ -1,0 +1,17 @@
+{
+  "name": "notes_wiped",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s0/notes_wiped",
+  "seed": 0,
+  "rounds": 40,
+  "model": "qwen7b",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s0/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s0/warmup_shown/results.json"
+  },
+  "wipe_notes": [
+    "Firm A",
+    "Firm B"
+  ]
+}

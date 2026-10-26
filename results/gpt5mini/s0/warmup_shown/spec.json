@@ -1,0 +1,8 @@
+{
+  "name": "warmup_shown",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt5mini/s0/warmup_shown",
+  "seed": 0,
+  "rounds": 30,
+  "model": "gpt5mini",
+  "agent_kind": "llm"
+}

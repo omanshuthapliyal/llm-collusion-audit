@@ -1,0 +1,9 @@
+{
+  "name": "warmup_wtp6.0",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini/s1/warmup_wtp6.0",
+  "seed": 1,
+  "rounds": 30,
+  "model": "gpt41mini",
+  "agent_kind": "llm",
+  "wtp": 6.0
+}

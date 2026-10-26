@@ -1,0 +1,23 @@
+{
+  "name": "warmup_hidden",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/bot_anchor/s0/warmup_hidden",
+  "seed": 0,
+  "rounds": 30,
+  "model": "bot_anchor",
+  "agent_kind": "bot",
+  "bots": {
+    "Firm A": {
+      "policy": "revert",
+      "p_star": 1.8,
+      "rho": 0.5
+    },
+    "Firm B": {
+      "policy": "anchor",
+      "p_star": 1.8
+    }
+  },
+  "hide": {
+    "Firm A": 1,
+    "Firm B": 1
+  }
+}

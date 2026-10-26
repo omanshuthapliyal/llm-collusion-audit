@@ -1,0 +1,25 @@
+{
+  "name": "stubborn_none",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s0/stubborn_none",
+  "seed": 0,
+  "rounds": 50,
+  "model": "gpt52",
+  "agent_kind": "llm",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s0/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt52/s0/warmup_shown/results.json"
+  },
+  "entrant": {
+    "policy": "stubborn",
+    "p_s": 1.37
+  },
+  "hide_edges": {
+    "Firm A": [
+      "Firm C"
+    ],
+    "Firm B": [
+      "Firm C"
+    ]
+  }
+}

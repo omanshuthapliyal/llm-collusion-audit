@@ -1,0 +1,12 @@
+{
+  "name": "warmup_hidden",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/qwen7b/s1/warmup_hidden",
+  "seed": 1,
+  "rounds": 30,
+  "model": "qwen7b",
+  "agent_kind": "llm",
+  "hide": {
+    "Firm A": 1,
+    "Firm B": 1
+  }
+}

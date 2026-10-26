@@ -1,0 +1,28 @@
+{
+  "name": "dev+15_shown",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/bot_match/s0/dev+15_shown",
+  "seed": 0,
+  "rounds": 40,
+  "model": "bot_match",
+  "agent_kind": "bot",
+  "bots": {
+    "Firm A": {
+      "policy": "revert",
+      "p_star": 1.8,
+      "rho": 0.5
+    },
+    "Firm B": {
+      "policy": "match",
+      "p_star": 1.8
+    }
+  },
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/bot_match/s0/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/bot_match/s0/warmup_shown/results.json"
+  },
+  "force": {
+    "agent": "Firm A",
+    "factor": 1.15
+  }
+}
