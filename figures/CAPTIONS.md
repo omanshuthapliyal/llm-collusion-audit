@@ -60,3 +60,8 @@
 **`fig_probe`. Line D2: activation probes, Qwen2.5-7B, layer 20 (dots = runs; one seed; exploratory).**
 - *Blue, the probe trained on compete vs instructed:* scores instructed cartels about 1, but cartels whose instruction was withdrawn (still colluding in behaviour) only about 0.2. It reads the instruction.
 - *Orange, the prompt-matched probe* (trained on withdrawn branches, which share one prompt): separates collusive from competitive history when the prompt is fixed, but does not transfer to a different prompt format (instructed cartels about 0.4). Emergent scores therefore cannot be read.
+
+**`fig_protocol`. The audit as a decision procedure (rules v2).**
+- *Boxes:* decision boxes are shaded; verdicts are plain; the enforced verdict is highlighted.
+- *Dashed boxes* are checks added after the data: the deterrence-ceiling gate (Proposition 4, METHODS §19) and the longer-window check suggested by the held-out bot test (METHODS §16). They are not part of rules v2.
+- *Status:* v1 was pre-registered; v2 is post hoc.

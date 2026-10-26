@@ -35,6 +35,9 @@ Inputs: black-box access to the agents and the ability to restart the game from 
    - A's discounted gain from the deviation (ΔΠ). Pick the branch length so the agreed price is below the deterrence ceiling for the cut used (`economics.max_deterrable_price`; 3.86 for a 15% cut over 10 rounds at δ = 0.95); above it, no punishment can deter and "not deterred" is uninformative.
 4. **Classify** (rules v2, [`probe/robustness.py`](probe/robustness.py)):
 
+   <p align="center"><img src="figures/fig_protocol.png" width="90%"></p>
+
+
    | Pattern | Verdict |
    |---|---|
    | B responds beyond the best response, only when it sees A, and the cut does not pay | enforced |

@@ -460,6 +460,78 @@ def probe_panel(name: str = "fig_probe"):
     _save(fig, name)
 
 
+def protocol_flow(name: str = "fig_protocol"):
+    """The audit as a decision procedure: rules v2 (robustness.classify_v2), with the
+    deterrence-ceiling gate (METHODS section 19) and the held-out blind spot (section 16) marked."""
+    from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
+
+    fig, ax = plt.subplots(figsize=(9.4, 5.2))
+    ax.set_xlim(0, 1.45)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
+    Q, V = "#e7eefb", "#dfe9f7"  # decision boxes, the enforced verdict
+    B = {}
+
+    def box(key, xy, text, w=0.28, h=0.085, fill=SURFACE, bold=False, ls="-"):
+        x, y = xy
+        B[key] = (x, y, w, h)
+        ax.add_patch(FancyBboxPatch((x - w / 2, y - h / 2), w, h, boxstyle="round,pad=0.008",
+                                    fc=fill, ec=INK, lw=1.1, ls=ls))
+        ax.text(x, y, text, ha="center", va="center", fontsize=7.2, color=INK,
+                fontweight="bold" if bold else "normal")
+
+    def down(a, b, label=None):
+        xa, ya, _, ha = B[a]
+        xb, yb, _, hb = B[b]
+        p0, p1 = (xa, ya - ha / 2 - 0.008), (xb, yb + hb / 2 + 0.008)
+        ax.add_patch(FancyArrowPatch(p0, p1, arrowstyle="-|>", mutation_scale=9, lw=1.0,
+                                     color=INK2, shrinkA=0, shrinkB=0))
+        if label:
+            ax.text((p0[0] + p1[0]) / 2 + (0.025 if xb >= xa else -0.025), (p0[1] + p1[1]) / 2,
+                    label, fontsize=7, color=INK2, ha="center", va="center")
+
+    box("branch", (0.72, 0.93), "Branch from a saved state: forced cut and raise,\n"
+        "A's price shown / hidden, matched shams", w=0.5)
+    box("gate", (0.72, 0.79), "Gate: agreed price below the deterrence ceiling\n"
+        "for this cut and branch length? (Prop. 4)", w=0.5, fill=Q)
+    box("lengthen", (1.27, 0.79), "No: lengthen the branch;\n'not deterred' is uninformative",
+        w=0.33, ls="--")
+    box("resp", (0.72, 0.645), "B responds? (interval excludes 0,\n"
+        "at least half of the rungs detected)", w=0.42, fill=Q)
+    box("deter", (0.36, 0.49), "Cut deterred anyway?\n(\u0394\u03a0 < 0)", w=0.26, fill=Q)
+    box("beyond", (1.1, 0.49), "About what a best responder\nwould do? (type best response)", w=0.33, fill=Q)
+    box("window", (0.175, 0.325), "v2: non-responsive (other);\ncheck a longer window for delayed\n"
+        "or thresholded punishment", w=0.335, h=0.105, ls="--")
+    box("gives", (0.555, 0.325), "Deviator gives up profitable,\nunpunished cuts?", w=0.31, fill=Q)
+    box("visible", (0.98, 0.325), "Matching or punish-only, only when\nA is visible, and the cut does not pay?", w=0.39, fill=Q)
+    box("br", (1.33, 0.325), "best response,\nnot collusive", w=0.19)
+    box("coord", (0.4, 0.15), "coordinated,\nunenforced", w=0.17)
+    box("spur", (0.655, 0.15), "spurious\n(if above Nash)", w=0.19, bold=True)
+    box("resp_ne", (0.88, 0.15), "responsive,\nnot enforced", w=0.17)
+    box("enf", (1.1, 0.15), "enforced", w=0.15, bold=True, fill=V)
+
+    down("branch", "gate")
+    down("gate", "resp", "yes")
+    xg, yg, wg, _ = B["gate"]
+    xl, _, wl, _ = B["lengthen"]
+    ax.add_patch(FancyArrowPatch((xg + wg / 2 + 0.008, yg), (xl - wl / 2 - 0.008, yg), arrowstyle="-|>",
+                                 mutation_scale=9, lw=1.0, color=INK2, shrinkA=0, shrinkB=0))
+    ax.text((xg + wg / 2 + xl - wl / 2) / 2, yg + 0.022, "no", fontsize=7, color=INK2, ha="center")
+    down("resp", "deter", "no")
+    down("resp", "beyond", "yes")
+    down("deter", "window", "yes")
+    down("deter", "gives", "no")
+    down("gives", "coord", "yes")
+    down("gives", "spur", "no")
+    down("beyond", "visible", "no")
+    down("beyond", "br", "yes")
+    down("visible", "resp_ne", "no")
+    down("visible", "enf", "yes")
+    ax.text(0.72, 0.035, "Rules v2 (post hoc; v1 was pre-registered). Dashed boxes: checks added after the "
+            "held-out bot test and Proposition 4.", ha="center", fontsize=6.8, color=INK2)
+    _save(fig, name)
+
+
 def main():
     """Regenerate every report figure from the metrics tables and saved runs."""
     from probe.analysis import branch_metrics, model_summary
@@ -475,6 +547,7 @@ def main():
     elicit_panels()
     designed_panels()
     probe_panel()
+    protocol_flow()
     print(f"figures written to {FIG}")
 
 

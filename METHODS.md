@@ -529,3 +529,8 @@ For the best response with H = ∞, the ceiling is 2.87, 3.07, 3.34, 3.53 and 3.
   - Holding A's branch prices fixed, it gives the share of A's feasible loss that B's response imposes, with a best-response benchmark.
   - It is checked on the best-responder bot, which equals its own benchmark.
   - It is not a classification rule.
+- **25 Oct, late: exposition.**
+  - **Protocol figure** (`figures.protocol_flow`, report Figure 4): rules v2 as a flowchart, with the post hoc gate and check marked.
+  - **Terminology:** "anchored" is defined once as the agent-level name for the spurious state.
+  - **Limitations table:** five rows added.
+  - **Discussion:** a remedies sentence added.
