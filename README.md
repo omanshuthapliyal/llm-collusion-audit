@@ -182,4 +182,4 @@ Every reference used is checked in [`CITATIONS.md`](CITATIONS.md).
 
 ## License
 
-TBD by the author. The starter repository is MIT-licensed.
+[MIT](LICENSE) for the new code (`probe/`, `bin/`, `notebooks/`). The `starter/` submodule keeps its own license (MIT).
