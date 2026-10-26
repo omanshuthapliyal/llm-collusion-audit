@@ -413,6 +413,28 @@ A pair at one size says nothing about other sizes. A thresholded response, such 
 
 A failure means that the instruction does not produce deterrence within 10 rounds in this model. It does not mean that LLM cartels cannot enforce.
 
+## 18. E3b: instructed deterrence over a horizon where it is feasible (pre-registered 25 Oct, late, before any E3b run)
+
+**Why.** In E3, deterrence within 10 rounds was infeasible at the cartels' prices (RESULTS §20). With 40 rounds after the cut, a 15% cut can be deterred at any agreed price up to at least 4.5 (`economics.deterrence_feasible(p, rounds_after=39)`).
+
+**Design.**
+- The saved R3 warm-ups for gpt-4.1-mini, seeds 0 to 2 (round 30).
+- Branches of 40 rounds, named with suffix `_h40`: forced −15% and +15% with A's price shown, forced −15% hidden, shams shown a and b, sham hidden.
+- Same condition (R3), same channel, and the same metric definitions, with ΔΠ summed over the 40 rounds (δ = 0.95).
+
+**Success criterion (an LLM positive for "enforced"), all three required:**
+- (i) the seed interval of ΔΠ for the visible cut lies below 0;
+- (ii) B answers the visible cut (detected over the first 3 rounds, as before) in at least 2 of 3 seeds;
+- (iii) B does not answer the hidden cut in any seed.
+
+**Also reported:**
+- per-seed ΔΠ for the shown and hidden cut;
+- punishment length and depth;
+- whether prices return to the agreement;
+- the v1 and v2 verdicts computed on the 40-round branches.
+
+**Failure reading.** If (i) fails, instructed punishment in this model does not deter even when deterrence is feasible. If (ii) or (iii) fails, the punishment is not observation-driven.
+
 ## Change log
 
 - **25 Oct, 01:30 PDT, before any screen data.** Found in the 3-round LLM smoke tests (`results/_smoke`, not analysed for results).
