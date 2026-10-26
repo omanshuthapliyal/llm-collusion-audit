@@ -90,10 +90,10 @@ Spending is guarded by an approval gate on the estimated cost, hard per-provider
 - **What we claim:** we classify behaviour, not intent.
 - **Dual use:** the levers we find (exploration suppression, prompt anchors) could be inverted. This is discussed in the report appendix.
 
-## Citation, authors, license
+## Citation and license
 
 Please cite the sprint report (link to follow), Fish, Gonczarowski & Shorrer (2024, arXiv 2404.00806) and Calvano et al. (2020, *AER* 110(10)).
 
-**Omanshu Thapliyal.** Developed with Claude (Anthropic) as a coding assistant under the author's direction; all results come from logged runs, and the author is responsible for all content.
+Developed with Claude (Anthropic) as a coding assistant under the authors' direction; all results come from logged runs, and the authors are responsible for all content.
 
 [MIT](LICENSE) for the new code; `starter/` keeps its own license (MIT).
