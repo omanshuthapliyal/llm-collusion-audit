@@ -829,7 +829,7 @@ All four bots behave as specified. The price paths are in `results/bot_*/s0/`.
 
 ## 22. Number audit of the report (25 Oct, late; no new runs)
 
-Every number in the report's main text was checked against `results/` and the ledger; the appendix tables were checked against their source CSVs. Corrections made:
+Every number in the report (main text and appendices, read in full) was checked against `results/` and the ledger; the appendix tables were checked against their source CSVs. Corrections made:
 
 | Report location | Was | Now | Why |
 |---|---|---|---|
@@ -839,6 +839,7 @@ Every number in the report's main text was checked against `results/` and the le
 | Appendix D, persistence | "persist unchanged" | "within 0.25 of the warm-up price" | R2 seed 1: 4.25 → 4.00. |
 | Appendix D, deviator gain | "under any agreement ... +0.3 to +3.2" | "under an instructed agreement (R2, R2plus)" | R1 cuts gained +20.4 and +17.6. |
 | Appendix D, agreement marker | 8 of 8 | 9 of 9, groups named | The R3 branch adds 1 of 1; the count pools gpt-4.1-mini and Qwen agreements (§15). |
+| Table C1, open problem 3 | "no response below a 30% cut" | "answers a 30% cut in 5 of 6 seeds and a 15% cut in 1 of 6" | Emergent gpt-4.1-mini answered a 15% cut in seed 1. |
 
 Everything else checked reproduces to the reported precision:
 - warm-up counts above monopoly (6/6, 11/12, 10/12);

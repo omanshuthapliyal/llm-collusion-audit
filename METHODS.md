@@ -496,4 +496,4 @@ A failure means that the instruction does not produce deterrence within 10 round
   - **Code:** a non-default horizon gives run names the suffix `_h40`, so the pre-registered 10-round metrics ignore them, and `robustness.e3b_metrics` scores them.
   - **Result:** criterion not met (RESULTS §21).
   - **Spend:** now $53.36 (16,141 calls). OpenAI $45.89; OpenRouter $7.47 of the $9.90 cap.
-- **25 Oct, late: number audit of the report.** Six wording or count corrections are listed in RESULTS §22. No metric or rule changed.
+- **25 Oct, late: number audit of the report.** Seven wording or count corrections are listed in RESULTS §22. No metric or rule changed.
