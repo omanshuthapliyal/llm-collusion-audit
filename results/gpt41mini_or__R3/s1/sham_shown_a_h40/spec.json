@@ -1,0 +1,14 @@
+{
+  "name": "sham_shown_a_h40",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini_or__R3/s1/sham_shown_a_h40",
+  "seed": 1,
+  "rounds": 70,
+  "model": "gpt41mini_or",
+  "agent_kind": "llm",
+  "condition": "R3",
+  "branch_round": 30,
+  "start_from": {
+    "Firm A": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini__R3/s1/warmup_shown/results.json",
+    "Firm B": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/gpt41mini__R3/s1/warmup_shown/results.json"
+  }
+}

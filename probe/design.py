@@ -154,6 +154,10 @@ ELICIT_CONDITIONS = ["Rminus", "R1", "R2", "R2plus", "R3"]
 H_WITHDRAWN = 20  # rounds after the instruction is withdrawn
 
 
+# Models that branch from another model's saved warm-ups (same weights, different provider route)
+PARENT_MODEL = {"gpt41mini_or": "gpt41mini"}
+
+
 def elicit_specs(model: str, seed: int, cond: str, W: int = W_DEFAULT,
                  H: int = H_DEFAULT) -> tuple[List[dict], List[dict]]:
     """Line D (METHODS 12): warm-up under condition `cond` with the message channel, then the
@@ -166,7 +170,8 @@ def elicit_specs(model: str, seed: int, cond: str, W: int = W_DEFAULT,
         s.update({"out": str(ROOT_DIR / tag / f"s{seed}" / name), "condition": cond, **extra})
         return s
 
-    parent = str(ROOT_DIR / tag / f"s{seed}" / "warmup_shown" / "results.json")
+    parent_tag = f"{PARENT_MODEL.get(model, model)}__{cond}"
+    parent = str(ROOT_DIR / parent_tag / f"s{seed}" / "warmup_shown" / "results.json")
     start = {"Firm A": parent, "Firm B": parent}
 
     def branch(name: str, *, force: Optional[float] = None, hidden: bool = False,
@@ -179,11 +184,15 @@ def elicit_specs(model: str, seed: int, cond: str, W: int = W_DEFAULT,
             s["hide"] = {"Firm B": W + 1}
         return s
 
-    warm = [base("warmup_shown", W)]
-    branches = [branch("dev-15_shown", force=-0.15), branch("dev+15_shown", force=0.15),
-                branch("dev-15_hidden", force=-0.15, hidden=True),
-                branch("sham_shown_a"), branch("sham_shown_b", seed_offset=SHAM_SEED_OFFSET),
-                branch("sham_hidden_a", hidden=True)]
+    warm = [] if model in PARENT_MODEL else [base("warmup_shown", W)]
+    # a non-default horizon gets its own run names (E3b, METHODS section 18), so the 10-round
+    # branches are kept and the pre-registered metrics (which match only the default names) ignore them
+    sfx = "" if H == H_DEFAULT else f"_h{H}"
+    branches = [branch("dev-15_shown" + sfx, force=-0.15), branch("dev+15_shown" + sfx, force=0.15),
+                branch("dev-15_hidden" + sfx, force=-0.15, hidden=True),
+                branch("sham_shown_a" + sfx),
+                branch("sham_shown_b" + sfx, seed_offset=SHAM_SEED_OFFSET),
+                branch("sham_hidden_a" + sfx, hidden=True)]
     # every condition gets a withdrawn branch, so all end with the same channel-only prompt (C0)
     # and differ only in their history: the prompt-matched contrast for the D2 probe (METHODS log)
     branches.append(branch("withdrawn", rounds=W + H_WITHDRAWN, condition="C0"))

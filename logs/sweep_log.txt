@@ -57,3 +57,5 @@
 2026-10-26T04:24:09+00:00 sweep bot_grim seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
 2026-10-26T04:24:19+00:00 sweep bot_match_jitter seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
 2026-10-26T04:32:56+00:00 sweep gpt41mini seeds=[0, 1, 2] design=elicit W=30 H=10 runs=21 planned_calls=540 actual_cost=$0.7513 failures=0
+2026-10-26T05:16:20+00:00 sweep gpt41mini_or seeds=[0] design=elicit W=30 H=40 runs=1 planned_calls=80 actual_cost=$0.1544 failures=0
+2026-10-26T05:19:57+00:00 sweep gpt41mini_or seeds=[0, 1, 2] design=elicit W=30 H=40 runs=17 planned_calls=1360 actual_cost=$2.4368 failures=0

@@ -49,6 +49,13 @@ MODELS: Dict[str, ModelSpec] = {
             reasoning=True,
         ),
         ModelSpec(
+            # gpt-4.1-mini through OpenRouter, host pinned to OpenAI (OT, 25 Oct: E3b on the
+            # OpenRouter credit). Branches from the OpenAI gpt41mini warm-ups (design.PARENT_MODEL).
+            "gpt41mini_or", "openrouter", "openai/gpt-4.1-mini", 0.40, 0.10, 1.60,
+            extra={"extra_body": {"provider": {"order": ["OpenAI"], "allow_fallbacks": False},
+                                  "usage": {"include": True}}},
+        ),
+        ModelSpec(
             "qwen7b", "openrouter", "qwen/qwen-2.5-7b-instruct", 0.10, 0.10, 0.20,
             # Phala is the only host; pin it so the backend never changes mid-run.
             extra={"extra_body": {"provider": {"order": ["Phala"], "allow_fallbacks": False},

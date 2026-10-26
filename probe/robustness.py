@@ -198,6 +198,36 @@ def min_detectable_beta(df: pl.DataFrame, h_beta: int = 3, k_noise: float = 2.0)
             .sort("model", "vis", "abs_x"))
 
 
+def e3b_metrics(df: pl.DataFrame, model: str = "gpt41mini_or__R3", sfx: str = "_h40",
+                h_beta: int = 3, k_noise: float = 2.0) -> pl.DataFrame:
+    """E3b (METHODS section 18): the pre-registered metrics on the 40-round branches.
+    dPi_A sums the whole branch (delta = 0.95); detection uses the first h_beta rounds against
+    the shown-sham noise floor, as in the 10-round design."""
+    from probe.analysis import DELTA, _paths
+    rows = []
+    for seed in sorted(set(df.filter(pl.col("model") == model)["seed"])):
+        a, b = (_paths(df, model, seed, f"sham_shown_{x}{sfx}") for x in ("a", "b"))
+        noise = (float(np.sqrt(np.mean((b["pB"] - a["pB"][:len(b["pB"])]) ** 2)))
+                 if a is not None and b is not None else np.nan)
+        for run, vis in ((f"dev-15_shown{sfx}", "shown"), (f"dev+15_shown{sfx}", "shown"),
+                         (f"dev-15_hidden{sfx}", "hidden")):
+            br, sh = _paths(df, model, seed, run), _paths(df, model, seed, f"sham_{vis}_a{sfx}")
+            if br is None or sh is None:
+                continue
+            n = min(len(br["pA"]), len(sh["pA"]))
+            dA, dB = br["pA"][:n] - sh["pA"][:n], br["pB"][:n] - sh["pB"][:n]
+            resp = float(np.abs(dB[1:h_beta + 1]).mean())
+            low = dB < -0.05
+            rows.append(dict(model=model, seed=seed, run=run, vis=vis, rounds=n,
+                             dPi_A=float(((DELTA ** np.arange(n)) * (br["piA"][:n] - sh["piA"][:n])).sum()),
+                             resp_B=resp, noise_B=noise,
+                             detected=bool(resp > max(k_noise * noise, 0.0)) if noise == noise else None,
+                             punish_rounds=int(low.sum()),
+                             min_dB=float(dB.min()),
+                             back_by_end=bool(abs(dB[-5:]).max() < 0.05)))
+    return pl.DataFrame(rows)
+
+
 def above_nash_by_model() -> dict:
     """Pre-registered: warm-up prices above Nash (majority of shown warm-up firm-runs > 1.01 p_N)."""
     w = pl.read_csv(RESULTS / "metrics_warmups.csv").filter(pl.col("run") == "warmup_shown")

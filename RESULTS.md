@@ -806,3 +806,23 @@ All four bots behave as specified. The price paths are in `results/bot_*/s0/`.
 - **Candidate fixes, not applied:**
   - judge deterrence against the feasible maximum, or over a horizon long enough to make it feasible;
   - elicit agreements priced below the bound.
+
+## 21. E3b: instructed deterrence over 40 rounds (pre-registered in METHODS §18, commit 0930322; OpenRouter route to OpenAI, 1,440 calls, $2.59)
+
+**Pre-registered criterion: not met.** (i) fails, (ii) fails, (iii) holds.
+
+| Seed | Agreed price | ΔΠ of the visible 15% cut over 40 rounds | Maximum loss B could impose (39 rounds) | B answers the visible cut | B answers the hidden cut |
+|---|---|---|---|---|---|
+| 0 | 4.10 | +1.28 | 1.14 (gain 0.58) | not detected in the first 3 rounds; then alternates 4.1 and 3.8 with A | no |
+| 1 | 4.00 | +0.78 | 1.65 (gain 0.78) | no response at all | no |
+| 2 | 3.80 | +1.37 | 3.43 (gain 1.41) | yes: 2.5 for one round, then back to 3.8 | no |
+
+- **(i) Not deterred:** the seed interval of ΔΠ is [0.78, 1.37], above 0. Deterrence was feasible in every seed: the maximum loss B could impose exceeds the one-round gain.
+- **(ii) Not answered:** the visible cut is detected in 1 of 3 seeds.
+- **(iii) Holds:** B never answers the hidden cut.
+- **Run-to-run variation:** these branches restart from the same saved states as E3. Seed 1 punished deeply in E3 (B at 1.5 for 4 rounds, OpenAI direct) and not at all here (OpenRouter, host OpenAI). Sampling at T = 1 and the provider route are not separated.
+
+**Reading:**
+- Told to punish until a deviation loses money, gpt-4.1-mini punishes briefly or not at all. Its cut never stops paying, even when a long enough punishment was feasible.
+- Across E3 and E3b, the instructed punishment is observation-driven (never hidden) but not deterrent.
+- We still have no LLM positive for "enforced". The audit's "enforced" category remains tested only on scripted bots.

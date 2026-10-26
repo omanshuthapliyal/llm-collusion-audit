@@ -490,3 +490,9 @@ A failure means that the instruction does not produce deterrence within 10 round
   - **Post hoc analysis:** `economics.deterrence_feasible` shows that a 15% cut cannot be deterred within the 10-round branch when the agreed price is above 3.86 (30% cut: 2.83). That covers the R3 seeds at 4.0 and 4.1 and all R2plus firm-runs.
   - The "enforced" rule is unchanged. The limit is reported, and the candidate fixes (feasible-maximum deterrence, a longer horizon) are not applied.
   - **Spend after E3:** $50.77 (14,701 calls). OpenAI $45.89, within the $48 cap; OpenRouter $4.88.
+- **25 Oct, late: E3b.**
+  - **Run route:** through OpenRouter (`gpt41mini_or`, host OpenAI), branching from the OpenAI R3 warm-ups, as chosen by OT when the OpenAI cap did not fit.
+  - **Cost:** the measured rate ($0.0019 per call) was above the quoted estimate. OT approved the revised ~$2.60 before the main run. Total E3b cost $2.59, including an 80-call provider check.
+  - **Code:** a non-default horizon gives run names the suffix `_h40`, so the pre-registered 10-round metrics ignore them, and `robustness.e3b_metrics` scores them.
+  - **Result:** criterion not met (RESULTS §21).
+  - **Spend:** now $53.36 (16,141 calls). OpenAI $45.89; OpenRouter $7.47 of the $9.90 cap.
