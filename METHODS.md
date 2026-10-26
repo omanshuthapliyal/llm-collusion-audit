@@ -523,7 +523,7 @@ For the best response with H = ∞, the ceiling is 2.87, 3.07, 3.34, 3.53 and 3.
   - **Code:** a non-default horizon gives run names the suffix `_h40`, so the pre-registered 10-round metrics ignore them, and `robustness.e3b_metrics` scores them.
   - **Result:** criterion not met (RESULTS §21).
   - **Spend:** now $53.36 (16,141 calls). OpenAI $45.89; OpenRouter $7.47 of the $9.90 cap.
-- **25 Oct, late: number audit of the report.** Seven wording or count corrections are listed in RESULTS §22. No metric or rule changed.
+- **25 Oct, late: number audit of the report.** Eight wording or count corrections are listed in RESULTS §22 (the eighth is a citation precision fix). No metric or rule changed.
 - **25 Oct, late: §19 deterrence ceiling** (post hoc theory, motivated by E3). `economics.deviation_ratio`, a generalised `deterrence_feasible` (best-response deviation, infinite horizon) and `max_deterrable_price`, with a test. No rule changed.
 - **25 Oct, late: punishment intensity** (`robustness.punishment_intensity`, post hoc and descriptive; RESULTS §24).
   - Holding A's branch prices fixed, it gives the share of A's feasible loss that B's response imposes, with a best-response benchmark.

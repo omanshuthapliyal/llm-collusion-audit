@@ -839,6 +839,7 @@ Every number in the report (main text and appendices, read in full) was checked 
 | Appendix D, persistence | "persist unchanged" | "within 0.25 of the warm-up price" | R2 seed 1: 4.25 → 4.00. |
 | Appendix D, deviator gain | "under any agreement ... +0.3 to +3.2" | "under an instructed agreement (R2, R2plus)" | R1 cuts gained +20.4 and +17.6. |
 | Appendix D, agreement marker | 8 of 8 | 9 of 9, groups named | The R3 branch adds 1 of 1; the count pools gpt-4.1-mini and Qwen agreements (§15). |
+| Appendix C, Arslan et al. | "a static best responder explaining a third to a half of apparent punishment" | "accounting for 48% of the raw response in one cell (p. 7)" | The verified figure is 48% in one cell; the range was from the original brief. |
 | Table C1, open problem 3 | "no response below a 30% cut" | "answers a 30% cut in 5 of 6 seeds and a 15% cut in 1 of 6" | Emergent gpt-4.1-mini answered a 15% cut in seed 1. |
 
 Everything else checked reproduces to the reported precision:
