@@ -871,3 +871,41 @@ At δ = 0.95, the best-response deviation from an agreement above 3.07 cannot be
 - **Instructed cartels:** every instructed LLM cartel (18 of 18 firm-runs) agrees on a price that no punishment could make an equilibrium at δ = 0.95. R2plus (4.0 to 4.4) stays above the ceiling even at δ = 0.995 (3.72).
 - **Emergent firms:** most are below the ceiling (3 of 32 above), so for them the deterrence tests are informative.
 - **Link to E3:** this explains why instructed punishment never deters. The instructed prices themselves are outside the enforceable range.
+
+## 24. Punishment intensity (post hoc, 25 Oct, late; `robustness.punishment_intensity`, `results/punishment_intensity.csv`)
+
+**Definition.**
+- After a forced cut, hold A's own price path at its branch values.
+- Compare A's discounted profit against B's sham path with A's profit against B's actual path.
+- Divide the loss by A's whole profit on that path, which is the most B could take, because A's profit cannot fall below 0.
+- **Benchmark:** the same share for a myopic best responder facing A's branch path.
+- **Scale:** 0 means B did nothing; 1 means B removed all of A's profit. The measure counts every round of the branch, not just a 3-round window.
+
+**Results** (A's price visible, seed means with 95% intervals; hidden in the last column):
+
+| Group | Intensity | Best-response benchmark | Excess over benchmark | Hidden |
+|---|---|---|---|---|
+| Bot: best response | 0.068 | 0.068 | 0.000 (check) | 0 |
+| Bot: matching / matching with jitter | 0.111 / 0.127 | 0.045 | +0.066 / +0.082 | 0 |
+| Bot: punish-only | 0.306 | 0.045 | +0.261 | 0 |
+| Bot: punishment delayed 3 rounds | 0.267 | 0.045 | +0.222 | 0 |
+| Bot: punishes only cuts > 20% (all rungs) | 0.060 | 0.045 | +0.014 | 0 |
+| Bot: grim trigger | 0.506 | 0.045 | +0.461 | 0 |
+| gpt-5-mini | −0.000 [−0.001, 0.000] | 0.003 | −0.004 | 0.001 |
+| gpt-4.1-mini | 0.051 [0.028, 0.073] | 0.036 | +0.015 [−0.014, 0.045] | −0.006 |
+| gpt-5.2 (low) | 0.096 [0.038, 0.169] | 0.049 | **+0.048 [0.008, 0.094]** | 0.005 |
+| gpt-5.2 (medium, 1 seed) | 0.000 | 0.035 | −0.035 | −0.064 |
+| Qwen2.5-7B | 0.014 [0.003, 0.035] | 0.027 | −0.013 | 0.049 |
+| gpt-4.1-mini, instructed + punish (R2plus) | 0.000 [0.000, 0.001] | 0.000 | 0.000 | 0 |
+| gpt-4.1-mini, instructed deterrence (R3, 10 rounds) | 0.104 [0.000, 0.295] | 0.000 | +0.104 | 0 |
+| gpt-4.1-mini, instructed deterrence (R3, 40 rounds) | 0.002 [0.000, 0.007] | 0.000 | +0.002 | 0 |
+
+**Reading:**
+- **Validation on bots:**
+  - The measure ranks the known mechanisms: best response < matching < punish-only < grim.
+  - Unlike the 3-round β test, it catches the delayed punisher (+0.22).
+  - The threshold punisher is diluted by averaging over cut sizes (+0.014).
+- **gpt-5.2** is the only emergent model with punishment beyond best response. It is small (about 5% of the feasible loss, similar in size to the matching bot) and appears only when A's price is visible.
+- **gpt-4.1-mini** is consistent with best response, and **gpt-5-mini** imposes nothing.
+- **Elicited punishment has almost no bite.** Under instructed + punish, B answers every visible cut, yet removes 0.0% of A's feasible loss. At agreed prices near 4.0 the outside good dominates demand, so B's price matters to A only if B prices near cost. Only R3 seed 1 (B at 1.5 for 4 rounds) bites, at 0.30.
+- **Not pre-registered:** this measure is post hoc and is reported as a description, not as a rule.

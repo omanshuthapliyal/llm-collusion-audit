@@ -13,7 +13,9 @@ everything here is reported as post-hoc.
 
 from __future__ import annotations
 
+import re
 from math import factorial
+from typing import Optional
 
 import numpy as np
 import polars as pl
@@ -226,6 +228,48 @@ def e3b_metrics(df: pl.DataFrame, model: str = "gpt41mini_or__R3", sfx: str = "_
                              min_dB=float(dB.min()),
                              back_by_end=bool(abs(dB[-5:]).max() < 0.05)))
     return pl.DataFrame(rows)
+
+
+def punishment_intensity(df: pl.DataFrame, sfx: str = "", models: Optional[list] = None) -> pl.DataFrame:
+    """Share of the feasible loss that B's response imposes on A after a forced cut (added 25 Oct,
+    late; METHODS change log). A's own price path is held at its branch values, so A's reactions
+    do not enter: loss = sum_t delta^t [pi(pA_t, pB_sham_t) - pi(pA_t, pB_branch_t)] over the
+    rounds after the cut, and the most B could take is sum_t delta^t pi(pA_t, pB_sham_t), A's
+    whole profit on that path (it cannot fall below 0). intensity = loss / most; 0 = B did nothing,
+    1 = B removed all of A's profit, negative = B's move helped A. intensity_br is the same share for
+    a myopic best responder facing A's branch path (B's sham path plus the change in its best
+    response to A's previous price): the non-collusive benchmark."""
+    from probe.analysis import DELTA, _DEV, _paths
+    pat = re.compile(rf"^dev(-\d+)_(shown|hidden){re.escape(sfx)}$")
+    rows = []
+    for (model, seed), _ in df.group_by(["model", "seed"]):
+        if models and model not in models:
+            continue
+        runs = set(df.filter((pl.col("model") == model) & (pl.col("seed") == seed))["run"])
+        for run in sorted(runs):
+            m = pat.match(run)
+            if not m:
+                continue
+            vis = m.group(2)
+            br, sh = _paths(df, model, seed, run), _paths(df, model, seed, f"sham_{vis}_a{sfx}")
+            if br is None or sh is None:
+                continue
+            n = min(len(br["pA"]), len(sh["pA"]))
+            w = DELTA ** np.arange(1, n)
+            pa, pb, pbs = br["pA"][1:n], br["pB"][1:n], sh["pB"][1:n]
+            base = np.array([econ.profit(a, b) for a, b in zip(pa, pbs)])
+            got = np.array([econ.profit(a, b) for a, b in zip(pa, pb)])
+            most = float((w * base).sum())
+            loss = float((w * (base - got)).sum())
+            # benchmark: a myopic best responder's move on the same A path, added to the sham B
+            pb_br = pbs + np.array([econ.best_response(round(x, 4)) - econ.best_response(round(y, 4))
+                                    for x, y in zip(br["pA"][:n - 1], sh["pA"][:n - 1])])
+            got_br = np.array([econ.profit(a, b) for a, b in zip(pa, pb_br)])
+            loss_br = float((w * (base - got_br)).sum())
+            rows.append(dict(model=model, seed=seed, run=run, vis=vis, x=int(m.group(1)) / 100,
+                             loss=loss, most=most, intensity=loss / most if most > 0 else np.nan,
+                             intensity_br=loss_br / most if most > 0 else np.nan))
+    return pl.DataFrame(rows).sort("model", "seed", "vis", "x")
 
 
 def above_nash_by_model() -> dict:
