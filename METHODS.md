@@ -435,6 +435,33 @@ A failure means that the instruction does not produce deterrence within 10 round
 
 **Failure reading.** If (i) fails, instructed punishment in this model does not deter even when deterrence is feasible. If (ii) or (iii) fails, the punishment is not observation-driven.
 
+## 19. A deterrence ceiling, stated formally (written 25 Oct, late, after E3; changes no rule)
+
+**Setup.**
+- Symmetric agreement at price p in the logit duopoly; π(p) = π(p, p) is each firm's per-round profit.
+- A deviates once, to d (a fixed cut d = (1 − s) p, or its best response d = BR(p)), gaining G(p) = π(d, p) − π(p).
+- From the next round, B punishes for H rounds with discount δ, and A returns to p.
+
+**Lemma (largest possible loss).** While A prices at or above cost, its profit in a round is at least 0. So no punishment by B can cost A more than π(p) per round, and more than π(p) · S_H over the punishment, where S_H = δ (1 − δ^H) / (1 − δ) (S_∞ = δ / (1 − δ)).
+
+This is conservative. If A best-responds during the punishment instead of returning to p, its loss is smaller, because its minmax payoff is above 0.
+
+**Proposition 4 (deterrence ceiling).** The deviation can be deterred within H rounds only if the deviation ratio ρ_d(p) = G(p) / π(p) is at most S_H. Under logit demand, ρ_d(p) increases with p above the monopoly price (checked on a grid from 1.93 to 8 for s ∈ {5, 10, 15, 30%} and for the best response). For a fixed cut it grows like ((1 − s) p − c) / (p − c) · e^(s p / μ). So for every s, H and δ < 1 there is a finite ceiling p̄(s, H, δ) above which no punishment, however long or harsh, deters the deviation.
+
+**Values in this market** (`economics.max_deterrable_price`):
+
+| δ = 0.95 | 5% cut | 10% cut | 15% cut | 30% cut | best response |
+|---|---|---|---|---|---|
+| H = 9 (the 10-round branch) | 10.7 | 5.53 | 3.86 | 2.83 | 2.80 |
+| H = 39 (40-round branch) | 14.6 | 7.45 | 5.11 | 3.15 | 3.03 |
+| H = ∞ | 15.3 | 7.79 | 5.33 | 3.22 | 3.07 |
+
+For the best response with H = ∞, the ceiling is 2.87, 3.07, 3.34, 3.53 and 3.72 at δ = 0.90, 0.95, 0.98, 0.99 and 0.995.
+
+**Corollaries:**
+1. **Audit design.** A deterrence test with a branch of H rounds and cut size s is informative only for agreed prices below p̄(s, H, δ). The window must be chosen for the price level.
+2. **Level as evidence.** At a given δ, an agreed price above the best-response ceiling p̄(BR, ∞, δ) cannot be an enforced equilibrium of the repeated game: the best deviation pays whatever the punishment. A price that high is evidence against enforcement on its own, conditional on δ, which is the analyst's assumption, not a property of the agents.
+
 ## Change log
 
 - **25 Oct, 01:30 PDT, before any screen data.** Found in the 3-round LLM smoke tests (`results/_smoke`, not analysed for results).
@@ -497,3 +524,4 @@ A failure means that the instruction does not produce deterrence within 10 round
   - **Result:** criterion not met (RESULTS §21).
   - **Spend:** now $53.36 (16,141 calls). OpenAI $45.89; OpenRouter $7.47 of the $9.90 cap.
 - **25 Oct, late: number audit of the report.** Seven wording or count corrections are listed in RESULTS §22. No metric or rule changed.
+- **25 Oct, late: §19 deterrence ceiling** (post hoc theory, motivated by E3). `economics.deviation_ratio`, a generalised `deterrence_feasible` (best-response deviation, infinite horizon) and `max_deterrable_price`, with a test. No rule changed.

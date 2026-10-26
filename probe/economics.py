@@ -9,6 +9,7 @@ multiplier (market size) 100, sigma=0.
 from __future__ import annotations
 
 import math
+from typing import Optional
 from functools import lru_cache
 
 from scipy.optimize import minimize_scalar
@@ -85,21 +86,33 @@ def consumer_surplus(p_a: float, p_b: float) -> float:
     return MARKET * MU * (top + math.log(sum(math.exp(x - top) for x in d)))
 
 
-def deterrence_feasible(p_agree: float, cut: float = 0.15, rounds_after: int = 9,
-                        delta: float = 0.95) -> bool:
-    """Can any punishment make a one-round cut of size `cut` from a symmetric agreement at
-    p_agree unprofitable within the branch? The most B can take from A is A's whole agreement
-    profit in each later round (A's profit cannot fall below 0 while A prices at or above cost),
-    so deterrence is feasible only if the cut's one-round gain is at most that discounted sum."""
+def deviation_ratio(p_agree: float, cut: Optional[float] = 0.15) -> float:
+    """One-round gain of a deviation from a symmetric agreement at p_agree, relative to the
+    agreement's per-round profit: (pi(dev, p) - pi(p, p)) / pi(p, p). cut=None uses the best
+    response to p_agree (the most profitable deviation)."""
     pa = profit(p_agree, p_agree)
-    gain = profit((1 - cut) * p_agree, p_agree) - pa
-    return gain <= sum(delta ** t * pa for t in range(1, rounds_after + 1))
+    dev = best_response(round(p_agree, 6)) if cut is None else (1 - cut) * p_agree
+    return (profit(dev, p_agree) - pa) / pa
 
 
-def max_deterrable_price(cut: float = 0.15, rounds_after: int = 9, delta: float = 0.95) -> float:
-    """Highest symmetric agreed price at which deterrence of a `cut` is feasible (bisection)."""
-    lo, hi = monopoly_price(), 4.5
-    for _ in range(60):
+def deterrence_feasible(p_agree: float, cut: Optional[float] = 0.15,
+                        rounds_after: Optional[int] = 9, delta: float = 0.95) -> bool:
+    """Can any punishment make a one-round deviation from a symmetric agreement at p_agree
+    unprofitable? The most B can take from A is A's whole agreement profit in each later round
+    (A's profit cannot fall below 0 while A prices at or above cost), so deterrence needs
+    deviation_ratio <= sum_{t=1}^{H} delta^t (METHODS section 19). rounds_after=None is the
+    infinite horizon; cut=None is the best-response deviation."""
+    weight = (delta / (1 - delta) if rounds_after is None
+              else delta * (1 - delta ** rounds_after) / (1 - delta))
+    return deviation_ratio(p_agree, cut) <= weight
+
+
+def max_deterrable_price(cut: Optional[float] = 0.15, rounds_after: Optional[int] = 9,
+                         delta: float = 0.95, hi: float = 25.0) -> float:
+    """Deterrence ceiling: the highest symmetric agreed price at which the deviation can be
+    deterred (bisection; deviation_ratio increases with p above the monopoly price)."""
+    lo = monopoly_price()
+    for _ in range(80):
         mid = (lo + hi) / 2
         lo, hi = (mid, hi) if deterrence_feasible(mid, cut, rounds_after, delta) else (lo, mid)
     return lo

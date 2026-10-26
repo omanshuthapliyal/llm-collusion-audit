@@ -202,3 +202,12 @@ def test_deterrence_is_infeasible_far_above_monopoly():
     assert not econ.deterrence_feasible(4.0)
     assert econ.max_deterrable_price() == pytest.approx(3.857, abs=0.005)
     assert econ.deterrence_feasible(4.0, rounds_after=39)  # a 40-round branch would allow it
+
+
+def test_deterrence_ceiling_against_the_best_deviation():
+    """METHODS section 19: with delta = 0.95 and an infinite horizon, no agreement above about 3.07
+    can deter a best-response deviation, however harsh the punishment."""
+    assert econ.max_deterrable_price(cut=None, rounds_after=None) == pytest.approx(3.07, abs=0.01)
+    assert econ.max_deterrable_price(cut=0.15, rounds_after=None) == pytest.approx(5.33, abs=0.02)
+    assert econ.deterrence_feasible(econ.monopoly_price(), cut=None, rounds_after=None)
+    assert not econ.deterrence_feasible(4.0, cut=None, rounds_after=None)

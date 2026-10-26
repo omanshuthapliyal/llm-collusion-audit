@@ -851,3 +851,23 @@ Everything else checked reproduces to the reported precision:
 - costs;
 - welfare shares;
 - E1, E3 and E3b tables.
+
+## 23. Deterrence ceiling applied to the observed prices (METHODS §19; no new runs)
+
+At δ = 0.95, the best-response deviation from an agreement above 3.07 cannot be deterred by any punishment, even over an infinite horizon.
+
+| Group | Warm-up firm-runs | Above the ceiling (3.07) |
+|---|---|---|
+| gpt-5-mini | 6 | 1 |
+| gpt-4.1-mini | 12 | 0 |
+| gpt-5.2 (low) | 12 | 2 |
+| gpt-5.2 (medium, pilot) | 2 | 0 |
+| gpt-4.1-mini, permitted (R1) | 6 | 0 |
+| gpt-4.1-mini, instructed (R2) | 6 | 6 |
+| gpt-4.1-mini, instructed + punish (R2plus) | 6 | 6 |
+| gpt-4.1-mini, instructed deterrence (R3) | 6 | 6 |
+
+**Reading:**
+- **Instructed cartels:** every instructed LLM cartel (18 of 18 firm-runs) agrees on a price that no punishment could make an equilibrium at δ = 0.95. R2plus (4.0 to 4.4) stays above the ceiling even at δ = 0.995 (3.72).
+- **Emergent firms:** most are below the ceiling (3 of 32 above), so for them the deterrence tests are informative.
+- **Link to E3:** this explains why instructed punishment never deters. The instructed prices themselves are outside the enforceable range.

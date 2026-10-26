@@ -15,7 +15,8 @@ When LLM pricing agents keep prices high, are they **enforcing** a cartel (devia
 2. **In two of the three models we could read (gpt-5-mini, gpt-4.1-mini), high prices meet our pre-registered rule for spurious collusion.** Prices sit above monopoly, rivals respond less than a best responder would, and cuts pay.
 3. **gpt-5-mini keeps a single forced cut for the rest of the 10-round branch (18 of 18), and a prompt number that demand never uses shifts where its price settles.**
 4. **gpt-5.2 (low effort) responds to its rival's cuts, more when it can see the price, but does not deter them.** A one-seed pilot at medium effort shows no deterrence either (RESULTS §18).
-5. **Told to collude and punish, gpt-4.1-mini punishes visible cuts (3 of 3 seeds) and the audit detects it.** No run is labelled "enforced". At the prices most of these cartels choose (4.0 to 4.4), no punishment can deter a 15% cut within 10 rounds (RESULTS §20). Over 40 rounds, where it could, the instructed punishment is brief or absent and every cut still pays (§21). An activation probe trained on instructed collusion (Qwen2.5-7B, exploratory) learns the instruction, not the collusion.
+5. **A deterrence ceiling (theory).** Under logit demand, no punishment can deter a deviation from an agreement priced above a finite ceiling (at δ = 0.95: 3.07 for the best deviation at any horizon). Every instructed LLM cartel prices above it (18 of 18 firm-runs), against 3 of 32 emergent firm-runs (METHODS §19, RESULTS §23).
+6. **Told to collude and punish, gpt-4.1-mini punishes visible cuts (3 of 3 seeds) and the audit detects it.** No run is labelled "enforced". At the prices most of these cartels choose (4.0 to 4.4), no punishment can deter a 15% cut within 10 rounds (RESULTS §20). Over 40 rounds, where it could, the instructed punishment is brief or absent and every cut still pays (§21). An activation probe trained on instructed collusion (Qwen2.5-7B, exploratory) learns the instruction, not the collusion.
 
 What failed, two flaws in our own pre-registered rules, a held-out test of the revised rules and the deterrence experiments are reported in `RESULTS.md` §15 to §21.
 
@@ -31,7 +32,7 @@ Inputs: black-box access to the agents and the ability to restart the game from 
 3. **Measure**:
    - B's pass-through per unit of A's move (β), against a static best-response benchmark;
    - A's own return rate (ρ);
-   - A's discounted gain from the deviation (ΔΠ).
+   - A's discounted gain from the deviation (ΔΠ). Pick the branch length so the agreed price is below the deterrence ceiling for the cut used (`economics.max_deterrable_price`; 3.86 for a 15% cut over 10 rounds at δ = 0.95); above it, no punishment can deter and "not deterred" is uninformative.
 4. **Classify** (rules v2, [`probe/robustness.py`](probe/robustness.py)):
 
    | Pattern | Verdict |
