@@ -350,7 +350,7 @@ def elicit_panels(name: str = "fig_elicit"):
     rng = np.random.default_rng(0)
     for i, (model, _) in enumerate(COND_ORDER):
         lv = w.filter((pl.col("model") == model) & (pl.col("run") == "warmup_shown"))
-        lv = lv.group_by("seed").agg(pl.col("mean_price").mean())["mean_price"].to_numpy()
+        lv = lv.group_by("seed").agg(pl.col("mean_price").mean()).sort("seed")["mean_price"].to_numpy()
         axes[0].plot(i + rng.uniform(-0.12, 0.12, len(lv)), lv, "o", color=INK, ms=4, alpha=0.8)
         for vis, color, dx in (("shown", CUT, -0.15), ("hidden", MUTED, 0.15)):
             g = bm.filter((pl.col("model") == model) & (pl.col("vis") == vis) & (pl.col("x") == -0.15))

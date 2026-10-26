@@ -714,3 +714,26 @@ The idea was to check, on the starter's 216 shipped Mistral runs, whether price 
 - **Why it fails:** the starter fixes WTP = 4.51 × α (`src/experiment/resume.py`), and demand also scales with α, so the cue is the same in normalised units in every run.
 - **What the data show:** locked normalised prices are similar across α (P1: 1.68, 1.82, 1.81 for α = 1, 3.2, 10; 14 firm-runs each; P2: 1.47 to 1.49).
 - **Conclusion:** this tests scale invariance, not anchoring. The prediction in the report's §5 stays untested.
+
+## 18. Pilot: gpt-5.2 at medium reasoning effort, one seed (25 Oct, late; 210 calls, $4.00 including a $0.19 calibration)
+
+- **Setup:** OpenRouter, model `openai/gpt-5.2` with the host pinned to OpenAI and reasoning effort set to medium. The lite design (±10%) on seed 0, approved by OT under option (a).
+- **Confounds:** the provider route differs from the low-effort runs (OpenAI direct). The warm-up is a new path, so effort is not separated from the path.
+- **Use:** this is a pilot, not a result.
+
+| Measure (seed 0) | Low effort (OpenAI) | Medium effort (OpenRouter) |
+|---|---|---|
+| Warm-up price, rounds 21 to 30 (A / B) | 1.88 / 1.67 | 2.55 / 2.26 (both above monopoly, 1.92) |
+| β cut, shown / hidden | 0.22 / 0.06 | 0.00 / −0.11 |
+| β raise, shown / hidden | 0.21 / −0.03 | 1.26 / 0.15 |
+| A keeps its cut (ρ) | 1.00 | 1.01 |
+| Discounted gain of A's cut, shown | +10.7 | +95.8 |
+
+**Price paths (medium effort, A's price visible):**
+- After A's forced cut, B's price is unchanged from the sham in every round, and A keeps the lower price for the rest of the branch.
+- After A's forced raise to 2.81, B moves from 2.20 to 2.47 for exactly one round and then returns. A also returns.
+- With A's price hidden, B does not answer the raise.
+
+**Rules:** v1 and v2 both give "responsive, not enforced" (the response is to the raise). A single-seed interval is a point, so the observation-dependence flag is not informative.
+
+**Reading:** on this seed, higher effort did not bring deterrence. The cut response vanished, and the pattern on cuts matches the anchored models. A visible raise is copied for one round. Whether responsiveness or deterrence rises with effort stays open; one seed cannot answer it.

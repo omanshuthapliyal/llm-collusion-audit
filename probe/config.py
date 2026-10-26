@@ -40,6 +40,15 @@ MODELS: Dict[str, ModelSpec] = {
             extra={"reasoning_effort": "low"}, reasoning=True,
         ),
         ModelSpec(
+            # gpt-5.2 at medium effort through OpenRouter (OT, 25 Oct: spend the OpenRouter
+            # credit on one pilot seed). Pinned to OpenAI as the host; same model as gpt52.
+            "gpt52med", "openrouter", "openai/gpt-5.2", 1.75, 0.175, 14.00,
+            extra={"extra_body": {"reasoning": {"effort": "medium"},
+                                  "provider": {"order": ["OpenAI"], "allow_fallbacks": False},
+                                  "usage": {"include": True}}},
+            reasoning=True,
+        ),
+        ModelSpec(
             "qwen7b", "openrouter", "qwen/qwen-2.5-7b-instruct", 0.10, 0.10, 0.20,
             # Phala is the only host; pin it so the backend never changes mid-run.
             extra={"extra_body": {"provider": {"order": ["Phala"], "allow_fallbacks": False},

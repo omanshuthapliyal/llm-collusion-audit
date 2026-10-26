@@ -91,6 +91,8 @@ gpt52,4,warmup_shown,Firm A,3.344,0.033399933466334124,4.139060064370736,true
 gpt52,4,warmup_shown,Firm B,3.34,0.03126943839882277,4.130211529169082,true
 gpt52,5,warmup_shown,Firm A,2.55,0.0,2.3826258268424003,true
 gpt52,5,warmup_shown,Firm B,2.65,0.0,2.6038392068837526,true
+gpt52med,0,warmup_shown,Firm A,2.55,0.0,2.3826258268424003,true
+gpt52med,0,warmup_shown,Firm B,2.255,0.030276503540975292,1.730046355720412,true
 gpt5mini,0,warmup_hidden,Firm A,2.76,0.0,2.8471739249292396,true
 gpt5mini,0,warmup_hidden,Firm B,1.9300000000000002,0.0,1.0111028705860186,true
 gpt5mini,1,warmup_hidden,Firm A,2.64,0.0,2.581717868879618,true

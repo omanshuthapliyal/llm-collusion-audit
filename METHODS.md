@@ -416,3 +416,6 @@ A pair at one size says nothing about other sizes. A thresholded response, such 
 - **25 Oct, bootstrap determinism.** `model_summary` and the robustness rules bootstrapped per-seed values in `group_by` order, which polars does not fix, so re-runs moved interval ends in the second decimal. Values are now sorted by seed.
   - One reported interval changed in substance: gpt-5.2's raise pass-through, which went from [0.02, 0.72] to [−0.01, 0.72] and now includes zero. "Follows in both directions" was narrowed to "follows cuts".
   - Every other quoted interval reproduces to the reported precision.
+- **25 Oct, late: medium-effort pilot.** Added `gpt52med` (OpenRouter `openai/gpt-5.2`, host pinned to OpenAI, `reasoning.effort = medium`). OT approved option (a), one seed on the remaining OpenRouter credit. It was run with the lite design, seed 0, at $3.81 plus a $0.19 calibration smoke.
+  - The metrics and rules are unchanged; the result is reported as a pilot (RESULTS §18).
+  - Total spend is now $50.02 (14,161 calls), $0.02 above the original $50 budget, within the OpenRouter credit OT authorised.
