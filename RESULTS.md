@@ -362,7 +362,7 @@ The warm-up levels are mixed across seeds.
 
 | Arm | β cut | β raise | Detected |
 |---|---|---|---|
-| shown | 0.22, 1.00, 0.73, 1.03, −0.01, 0.37 → **0.56 [0.25, 0.87]** | 0.20, 1.00, 0.17, 0.97, −0.21, 0.00 → **0.36 [0.02, 0.72]** | cut 5/6, raise 2/6 |
+| shown | 0.22, 1.00, 0.73, 1.03, −0.01, 0.37 → **0.56 [0.24, 0.86]** | 0.20, 1.00, 0.17, 0.97, −0.21, 0.00 → **0.36 [−0.01, 0.72]** | cut 5/6, raise 2/6 |
 | hidden | 0.06, 0.02, 0.03, 0.64, 0.00, 0.04 | (ill-conditioned in s3) | n/a (no hidden-arm noise floor in the lite design) |
 
 - **Observation dependence** (β_cut shown − hidden): +0.16, +0.98, +0.71, +0.39, −0.01, +0.32 → **CI [0.17, 0.69]**, excluding 0.
@@ -699,10 +699,10 @@ v2 makes two changes:
 | gpt-5-mini | 5% | 3 | 0.5% [0.4, 0.6] |
 | gpt-5-mini | 15% | 3 | 3.1% [3.0, 3.2] |
 | gpt-5-mini | 30% | 3 | 17.4% [17.1, 17.9] |
-| gpt-4.1-mini | 5% | 6 | 3.5% [1.9, 5.4] |
-| gpt-4.1-mini | 15% | 6 | 9.6% [2.8, 18.3] |
-| gpt-4.1-mini | 30% | 6 | 22.5% [12.6, 34.8] |
-| gpt-5.2 | 10% | 6 | 38.4% [11.3, 69.5] |
+| gpt-4.1-mini | 5% | 6 | 3.5% [2.0, 5.5] |
+| gpt-4.1-mini | 15% | 6 | 9.6% [2.6, 18.2] |
+| gpt-4.1-mini | 30% | 6 | 22.5% [12.5, 34.4] |
+| gpt-5.2 | 10% | 6 | 38.4% [11.3, 69.8] |
 
 - **gpt-5-mini:** it keeps its cut, but its rival does not follow, so one forced cut closes only a small part of the harm.
 - **gpt-5.2:** the rival follows, so the pair steps down and more of the harm is closed.

@@ -237,7 +237,7 @@ def model_summary(bm: pl.DataFrame) -> pl.DataFrame:
     with a seed-level bootstrap CI on beta (rungs averaged within seed first)."""
     rows = []
     for (model, vis, sign), g in bm.group_by(["model", "vis", "sign"]):
-        per_seed = g.group_by("seed").agg(pl.col("beta").mean())["beta"].to_numpy()
+        per_seed = g.group_by("seed").agg(pl.col("beta").mean()).sort("seed")["beta"].to_numpy()
         lo, hi = bootstrap_ci(per_seed)
         rows.append(dict(model=model, vis=vis, sign=sign, n_seeds=len(per_seed),
                          beta=float(np.nanmean(g["beta"].to_numpy())), beta_lo=lo, beta_hi=hi,

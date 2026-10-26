@@ -9,6 +9,6 @@ gpt41mini__R1,-0.3448275862068968,"[-1.03, 0.00]",0.3333333333333333,-0.06067896
 gpt41mini__R2,0.0,"[0.00, 0.00]",0.0,0.0,"[0.00, 0.00]",0.0,false,n/a,false,"[0.4, 3.2]",not deterred,3/3,spurious,"explicit agreement, no punishment"
 gpt41mini__R2plus,0.5771929824561409,"[0.13, 1.10]",1.0,0.0,"[0.00, 0.00]",0.0,true,undetermined (beta_BR < 0.05),true,"[0.3, 2.3]",not deterred,0/0,"responsive, not enforced",explicit agreement + punishment
 gpt5mini,0.0,"[0.00, 0.00]",0.0,0.12345679012345674,"[0.00, 0.37]",0.1111111111111111,false,n/a,false,"[141.8, 148.9]",not deterred,0/9,spurious,unknown (emergent)
-gpt41mini,0.19129499964918642,"[0.12, 0.26]",0.3333333333333333,0.052950523936984295,"[-0.06, 0.21]",0.2222222222222222,false,n/a,true,"[17.2, 100.6]",not deterred,4/12,spurious,unknown (emergent)
-gpt52,0.5558094749059309,"[0.23, 0.85]",0.8333333333333334,0.35498322998323023,"[-0.00, 0.72]",0.3333333333333333,true,mixed,true,"[-3.6, 79.7]",inconclusive,0/1,"responsive, not enforced",unknown (emergent)
+gpt41mini,0.1912949996491864,"[0.12, 0.27]",0.3333333333333333,0.052950523936984295,"[-0.06, 0.21]",0.2222222222222222,false,n/a,true,"[17.8, 100.9]",not deterred,4/12,spurious,unknown (emergent)
+gpt52,0.555809474905931,"[0.24, 0.86]",0.8333333333333334,0.3549832299832303,"[-0.00, 0.72]",0.3333333333333333,true,mixed,true,"[-5.1, 79.0]",inconclusive,0/1,"responsive, not enforced",unknown (emergent)
 qwen7b,-0.025192396581284766,"[-0.52, 0.54]",0.08333333333333333,-1.2514332981696805,"[-3.45, -0.11]",0.0,false,n/a,false,"[-8.9, 36.2]",inconclusive,5/9,non-responsive (other),unknown (emergent)

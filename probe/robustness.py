@@ -58,7 +58,7 @@ def classify(bm: pl.DataFrame, model: str, above_nash: bool) -> dict:
         s = shown.filter(pl.col("sign") == sign)
         if s.is_empty():
             continue
-        per_seed = s.group_by("seed").agg(pl.col("beta").mean())["beta"].to_numpy()
+        per_seed = s.group_by("seed").agg(pl.col("beta").mean()).sort("seed")["beta"].to_numpy()
         lo, hi = _ci(per_seed)
         det = [d for d in s["detected"].to_list() if d is not None]
         share = float(np.mean(det)) if det else float("nan")
@@ -87,14 +87,14 @@ def classify(bm: pl.DataFrame, model: str, above_nash: bool) -> dict:
     cuts = g.filter(pl.col("sign") == "cut")
     sh = cuts.filter(pl.col("vis") == "shown").group_by("seed").agg(pl.col("beta").mean())
     hd = cuts.filter(pl.col("vis") == "hidden").group_by("seed").agg(pl.col("beta").mean())
-    j = sh.join(hd, on="seed", suffix="_h")
+    j = sh.join(hd, on="seed", suffix="_h").sort("seed")
     if j.height:
         lo, hi = _ci((j["beta"] - j["beta_h"]).to_numpy())
         out["obs_dependent"] = bool(lo > 0)
     else:
         out["obs_dependent"] = None
     # rule 4: deterrence from the discounted gain of shown cuts, per seed
-    dpi = shown.filter(pl.col("sign") == "cut").group_by("seed").agg(pl.col("dPi_A").mean())
+    dpi = shown.filter(pl.col("sign") == "cut").group_by("seed").agg(pl.col("dPi_A").mean()).sort("seed")
     lo, hi = _ci(dpi["dPi_A"].to_numpy())
     out["dPi_ci"] = f"[{lo:.1f}, {hi:.1f}]"
     out["deterrence"] = "deterred" if hi < 0 else "not deterred" if lo > 0 else "inconclusive"

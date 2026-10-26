@@ -54,7 +54,7 @@ def summary(w: pl.DataFrame) -> pl.DataFrame:
     out = []
     for (model, x), g in w.group_by(["model", "x"]):
         s = g.group_by("seed").agg(pl.col("share_closed").mean(), pl.col("cs_gain").mean(),
-                                   pl.col("harm").mean())
+                                   pl.col("harm").mean()).sort("seed")
         lo, hi = bootstrap_ci(s["share_closed"].to_numpy())
         out.append(dict(model=model, cut=-x, seeds=s.height, harm=float(s["harm"].mean()),
                         cs_gain=float(s["cs_gain"].mean()),

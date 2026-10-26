@@ -413,3 +413,6 @@ A pair at one size says nothing about other sizes. A thresholded response, such 
   - **Rules v2** (`robustness.classify_v2`): "enforced" now requires a response beyond the best response, and an agreement marker sends non-responsive groups to "coordinated, unenforced". v2 was written after seeing the v1 failures, so its fit to the labelled groups is not an independent test. v1 remains the pre-registered rule set.
   - **Consumer-surplus analysis** of the forced-cut branches (`probe/welfare.py`).
   - **Mistral check:** the planned test of Fish et al.'s willingness-to-pay variation on the shipped Mistral runs is not possible, because the starter sets WTP = 4.51 alpha, so the cue is constant in normalised units.
+- **25 Oct, bootstrap determinism.** `model_summary` and the robustness rules bootstrapped per-seed values in `group_by` order, which polars does not fix, so re-runs moved interval ends in the second decimal. Values are now sorted by seed.
+  - One reported interval changed in substance: gpt-5.2's raise pass-through, which went from [0.02, 0.72] to [−0.01, 0.72] and now includes zero. "Follows in both directions" was narrowed to "follows cuts".
+  - Every other quoted interval reproduces to the reported precision.
