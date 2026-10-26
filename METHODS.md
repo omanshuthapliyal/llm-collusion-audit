@@ -367,4 +367,10 @@ The split test is the point of the arm: a firm that enforces should react to its
   - **Finding:** the pre-registered probe (R− vs R2 + R2plus warm-ups) reaches held-out AUROC 1.0, but scores the instruction-withdrawn R2 / R2plus branches low (0.16 to 0.36 at layers 14 to 26), although those firms keep colluding in behaviour. It reads the instruction text in the prompt, not the collusive state.
   - **Added:** `withdrawn` branches for R− and R1 as well, so that every condition ends with the identical channel-only prompt (C0). A prompt-matched probe is trained on withdrawn-R2/R2plus vs withdrawn-R− (20 rounds each, prompts identical apart from history) and tested on R0.
   - **Labelled exploratory.** The pre-registered probe result is reported as is.
+- **25 Oct, evening. Post-hoc robustness** (`probe/robustness.py`; RESULTS section 16). The rules are unchanged; two flaws found and reported.
+  - **Rule 6 has no response-type condition.** It labels a myopic best-responder bot "enforced". A corrected rule would require type matching or punish-only.
+  - **The battery cannot see an agreement that nobody enforces.** It labels R2 (explicit agreement, no punishment) "spurious".
+  - **Robustness of the verdicts:** they do not change under 9 combinations of response window and detection threshold.
+  - **Exact tests:** with 3 seeds, seed-level patterns cannot go below p = 0.125.
+  - **Weakened claim:** gpt-5.2's pass-through above the best response is not significant (Wilcoxon p = 0.078).
 

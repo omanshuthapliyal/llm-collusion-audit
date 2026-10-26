@@ -1,0 +1,13 @@
+claim,unit,n,positive,effect,test,p,p_wilcoxon
+gpt-5-mini: forced cuts pay,seed,3,3,144.24358733337058,sign (one-sided) / Wilcoxon,0.125,0.125
+gpt-4.1-mini: forced cuts pay (shown),seed,6,5,58.241491558154905,sign (one-sided) / Wilcoxon,0.109375,0.03125
+gpt-5.2: cut response larger when A's price is shown,seed,6,5,0.42504697213114656,sign (one-sided) / Wilcoxon,0.109375,0.03125
+gpt-5.2: cut pass-through above best response,seed,6,4,0.3251629530869041,sign (one-sided) / Wilcoxon,0.34375,0.078125
+gpt-5.2: forced cuts pay (shown),seed,6,4,33.36506984852454,sign (one-sided) / Wilcoxon,0.34375,0.15625
+"gpt-5-mini: keeps cuts, not raises",seed,3,3,3.0,sign (one-sided) / Wilcoxon,0.125,0.125
+gpt5mini: locked price rises with stated WTP,seed,3,3,0.2953362415965943,sign (one-sided) / Wilcoxon,0.125,0.125
+gpt41mini: locked price rises with stated WTP,seed,3,2,0.047633874944679744,sign (one-sided) / Wilcoxon,0.5,0.375
+elicited: price order compete < permitted < instructed < punish in every seed,seed,3,3,NaN,exact permutation (conditions exchangeable within seed),0.00007233796296296295,NaN
+elicited: punish condition answers a visible 15% cut more than agreement-only,seed,6,3,NaN,Fisher exact (one-sided),0.05000000000000001,NaN
+"shipped Mistral runs: a firm above monopoly, P1 vs P2",run,210,37,NaN,Fisher exact (one-sided),1.5215884350825977e-13,NaN
+Line E: B lower with A-only pinning than with nobody observing,seed,3,3,0.3960000000000001,sign (one-sided) / Wilcoxon,0.125,0.125

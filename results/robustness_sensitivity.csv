@@ -1,0 +1,118 @@
+model,h_beta,k_noise,verdict,type,deterrence,verdict_preregistered,flipped
+bot_anchor,2,1.5,spurious,n/a,not deterred,spurious,false
+bot_br,2,1.5,enforced,best response,deterred,enforced,false
+bot_br_infer,2,1.5,enforced,best response,deterred,enforced,false
+bot_match,2,1.5,enforced,matching,deterred,enforced,false
+bot_punish,2,1.5,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,2,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,2,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,2,1.5,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,2,1.5,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,2,1.5,spurious,n/a,not deterred,spurious,false
+gpt41mini,2,1.5,spurious,n/a,not deterred,spurious,false
+gpt52,2,1.5,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,2,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+bot_anchor,2,2.0,spurious,n/a,not deterred,spurious,false
+bot_br,2,2.0,enforced,best response,deterred,enforced,false
+bot_br_infer,2,2.0,enforced,best response,deterred,enforced,false
+bot_match,2,2.0,enforced,matching,deterred,enforced,false
+bot_punish,2,2.0,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,2,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,2,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,2,2.0,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,2,2.0,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,2,2.0,spurious,n/a,not deterred,spurious,false
+gpt41mini,2,2.0,spurious,n/a,not deterred,spurious,false
+gpt52,2,2.0,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,2,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+bot_anchor,2,3.0,spurious,n/a,not deterred,spurious,false
+bot_br,2,3.0,enforced,best response,deterred,enforced,false
+bot_br_infer,2,3.0,enforced,best response,deterred,enforced,false
+bot_match,2,3.0,enforced,matching,deterred,enforced,false
+bot_punish,2,3.0,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,2,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,2,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,2,3.0,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,2,3.0,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,2,3.0,spurious,n/a,not deterred,spurious,false
+gpt41mini,2,3.0,spurious,n/a,not deterred,spurious,false
+gpt52,2,3.0,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,2,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+bot_anchor,3,1.5,spurious,n/a,not deterred,spurious,false
+bot_br,3,1.5,enforced,best response,deterred,enforced,false
+bot_br_infer,3,1.5,enforced,best response,deterred,enforced,false
+bot_match,3,1.5,enforced,matching,deterred,enforced,false
+bot_punish,3,1.5,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,3,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,3,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,3,1.5,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,3,1.5,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,3,1.5,spurious,n/a,not deterred,spurious,false
+gpt41mini,3,1.5,spurious,n/a,not deterred,spurious,false
+gpt52,3,1.5,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,3,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+bot_anchor,3,2.0,spurious,n/a,not deterred,spurious,false
+bot_br,3,2.0,enforced,best response,deterred,enforced,false
+bot_br_infer,3,2.0,enforced,best response,deterred,enforced,false
+bot_match,3,2.0,enforced,matching,deterred,enforced,false
+bot_punish,3,2.0,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,3,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,3,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,3,2.0,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,3,2.0,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,3,2.0,spurious,n/a,not deterred,spurious,false
+gpt41mini,3,2.0,spurious,n/a,not deterred,spurious,false
+gpt52,3,2.0,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,3,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+bot_anchor,3,3.0,spurious,n/a,not deterred,spurious,false
+bot_br,3,3.0,enforced,best response,deterred,enforced,false
+bot_br_infer,3,3.0,enforced,best response,deterred,enforced,false
+bot_match,3,3.0,enforced,matching,deterred,enforced,false
+bot_punish,3,3.0,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,3,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,3,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,3,3.0,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,3,3.0,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,3,3.0,spurious,n/a,not deterred,spurious,false
+gpt41mini,3,3.0,spurious,n/a,not deterred,spurious,false
+gpt52,3,3.0,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,3,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+bot_anchor,5,1.5,spurious,n/a,not deterred,spurious,false
+bot_br,5,1.5,enforced,best response,deterred,enforced,false
+bot_br_infer,5,1.5,enforced,best response,deterred,enforced,false
+bot_match,5,1.5,enforced,matching,deterred,enforced,false
+bot_punish,5,1.5,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,5,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,5,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,5,1.5,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,5,1.5,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,5,1.5,spurious,n/a,not deterred,spurious,false
+gpt41mini,5,1.5,spurious,n/a,not deterred,spurious,false
+gpt52,5,1.5,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,5,1.5,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+bot_anchor,5,2.0,spurious,n/a,not deterred,spurious,false
+bot_br,5,2.0,enforced,best response,deterred,enforced,false
+bot_br_infer,5,2.0,enforced,best response,deterred,enforced,false
+bot_match,5,2.0,enforced,matching,deterred,enforced,false
+bot_punish,5,2.0,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,5,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,5,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,5,2.0,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,5,2.0,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,5,2.0,spurious,n/a,not deterred,spurious,false
+gpt41mini,5,2.0,spurious,n/a,not deterred,spurious,false
+gpt52,5,2.0,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,5,2.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+bot_anchor,5,3.0,spurious,n/a,not deterred,spurious,false
+bot_br,5,3.0,enforced,best response,deterred,enforced,false
+bot_br_infer,5,3.0,enforced,best response,deterred,enforced,false
+bot_match,5,3.0,enforced,matching,deterred,enforced,false
+bot_punish,5,3.0,enforced,punish-only,deterred,enforced,false
+gpt41mini__Rminus,5,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R1,5,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false
+gpt41mini__R2,5,3.0,spurious,n/a,not deterred,spurious,false
+gpt41mini__R2plus,5,3.0,"responsive, not enforced",undetermined (beta_BR < 0.05),not deterred,"responsive, not enforced",false
+gpt5mini,5,3.0,spurious,n/a,not deterred,spurious,false
+gpt41mini,5,3.0,spurious,n/a,not deterred,spurious,false
+gpt52,5,3.0,"responsive, not enforced",mixed,inconclusive,"responsive, not enforced",false
+qwen7b,5,3.0,non-responsive (other),n/a,inconclusive,non-responsive (other),false

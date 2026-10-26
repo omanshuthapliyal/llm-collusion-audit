@@ -608,3 +608,58 @@ The sham levels differ a lot by seed: s0 1.67, s1 2.97 (above monopoly), s2 1.89
 **Correction.** Section 13's statement that "emergent R0 runs keep profitable cuts" holds for gpt-5-mini (0 of 9) but **not** for gpt-4.1-mini (4 of 12).
 
 **What the marker now is:** an *observation*. It fires on every agreement branch, but its false-positive rate on emergent gpt-4.1-mini is about 0.33, on small numbers. It is not a validated detector.
+
+## 16. Robustness (post hoc, 25 Oct; `probe/robustness.py`; no new model calls)
+
+### 16.1 The pre-registered rules applied to labelled runs (`results/robustness_detector.csv`)
+
+| Group | Ground truth | Verdict under the pre-registered rules | Correct? |
+|---|---|---|---|
+| bot anchor | non-responsive | spurious | yes |
+| bot matching | matching | enforced (type: matching) | yes |
+| bot punish-only | punish-only | enforced (type: punish-only) | yes |
+| bot best response | best response | **enforced** (type: best response) | **no** |
+| bot best response, infers hidden price | best response | **enforced** | **no** |
+| gpt-4.1-mini R− | told to compete | non-responsive (deterrence inconclusive) | consistent |
+| gpt-4.1-mini R1 | coordination permitted | non-responsive | misses the coordination |
+| gpt-4.1-mini R2 | explicit agreement, no punishment | **spurious** | **no** |
+| gpt-4.1-mini R2plus | agreement + punishment | responsive, not enforced (cuts still pay) | partial |
+
+**Two flaws in the rules, found post hoc.** We report them; the rules are not changed.
+
+1. Rule 6 has no condition on response type. A myopic best responder is responsive and observation-dependent, and makes a forced cut slightly unprofitable (ΔΠ_A = −1.4), so it is labelled "enforced". The enforced label should require a response beyond the best response (type matching or punish-only).
+2. The battery reads only the rival's response, so an agreement that nobody enforces (R2) looks spurious. The deviator-return observation separates R2 from emergent anchoring in part:
+   - R2 abandons profitable, unpunished cuts in 3 of 3 eligible branches and R1 in 2 of 2;
+   - emergent gpt-5-mini does so in 0 of 9 and the compete condition in 0 of 2;
+   - but emergent gpt-4.1-mini does so in 4 of 12.
+
+**Emergent verdicts are unchanged by this check:**
+- gpt-5-mini and gpt-4.1-mini: spurious;
+- gpt-5.2: responsive, not enforced;
+- Qwen: non-responsive, deterrence inconclusive (treated as unresolved).
+
+### 16.2 Exact tests (seed level; `results/robustness_exact_tests.csv`)
+
+| Claim | n | Positive | p (sign, one-sided) | p (Wilcoxon or other) |
+|---|---|---|---|---|
+| gpt-5-mini: forced cuts pay | 3 seeds | 3 | 0.125 | 0.125 |
+| gpt-5-mini: keeps cuts, not raises | 3 seeds | 3 | 0.125 | 0.125 |
+| gpt-5-mini: locked price rises with stated WTP | 3 seeds | 3 | 0.125 | 0.125 |
+| gpt-4.1-mini: locked price rises with stated WTP | 3 seeds | 2 | 0.50 | 0.375 |
+| gpt-4.1-mini: forced cuts pay (shown) | 6 seeds | 5 | 0.109 | **0.031** |
+| gpt-5.2: cut response larger when shown than hidden | 6 seeds | 5 | 0.109 | **0.031** |
+| gpt-5.2: cut pass-through above best response | 6 seeds | 4 | 0.344 | 0.078 |
+| gpt-5.2: forced cuts pay (shown) | 6 seeds | 4 | 0.344 | 0.156 |
+| Elicited price order (compete < permitted < instructed < punish) in every seed | 3 seeds | 3 | | **7.2 × 10⁻⁵** (exact permutation) |
+| Punish condition answers a visible 15% cut more than agreement-only | 3 + 3 | 3 vs 0 | | **0.050** (Fisher) |
+| Shipped Mistral runs: a firm above monopoly, P1 vs P2 | 210 runs | 37 vs 0 | | **1.5 × 10⁻¹³** (Fisher) |
+| Line E: B lower with A-only pinning than with nobody observing | 3 seeds | 3 | 0.125 | 0.125 |
+
+**Reading.**
+- With 3 seeds no seed-level pattern can reach p < 0.125. We therefore call such patterns consistent across seeds, not significant.
+- gpt-5.2's pass-through exceeds the best-response benchmark on average (0.56 vs 0.23), but not significantly (Wilcoxon p = 0.078). This weakens the earlier "matching-like" wording to "responds, on average more than a best responder".
+
+### 16.3 Sensitivity (`results/robustness_sensitivity.csv`)
+
+- **Settings:** response window h_beta ∈ {2, 3, 5} rounds × detection threshold k ∈ {1.5, 2, 3} × noise floor, for all 13 groups.
+- **Result:** **no verdict changes** across the 9 settings (0 flips out of 117 group-settings). The verdicts do not hinge on these two analysis choices.

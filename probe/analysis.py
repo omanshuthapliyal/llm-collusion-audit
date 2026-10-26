@@ -69,8 +69,10 @@ def _paths(df: pl.DataFrame, model: str, seed: int, run: str):
             "piA": a["profit"].to_numpy(), "W": W}
 
 
-def branch_metrics(df: pl.DataFrame) -> pl.DataFrame:
-    """Pre-registered per-branch metrics (beta, beta_BR, rho, dPi_A, detection) for every forced-move branch."""
+def branch_metrics(df: pl.DataFrame, h_beta: int = H_BETA, k_noise: float = 2.0) -> pl.DataFrame:
+    """Pre-registered per-branch metrics (beta, beta_BR, rho, dPi_A, detection) for every forced-move
+    branch. h_beta (response window) and k_noise (detection threshold in noise-floor units) default
+    to the pre-registered values; other values are used only for the sensitivity analysis."""
     rows = []
     for (model, seed), _ in df.group_by(["model", "seed"]):
         runs = set(df.filter((pl.col("model") == model) & (pl.col("seed") == seed))["run"])
@@ -87,9 +89,9 @@ def branch_metrics(df: pl.DataFrame) -> pl.DataFrame:
             dBR = np.array([0.0] + [econ.best_response(round(br["pA"][h - 1], 4))
                                     - econ.best_response(round(sh["pA"][h - 1], 4))
                                     for h in range(1, n)])
-            denom = dA[:H_BETA].sum()
-            beta = dB[1:H_BETA + 1].sum() / denom if denom else np.nan
-            beta_br = dBR[1:H_BETA + 1].sum() / denom if denom else np.nan
+            denom = dA[:h_beta].sum()
+            beta = dB[1:h_beta + 1].sum() / denom if denom else np.nan
+            beta_br = dBR[1:h_beta + 1].sum() / denom if denom else np.nan
             lag, cur = dA[:-1], dA[1:]
             rho = float((lag * cur).sum() / (lag ** 2).sum()) if (lag ** 2).sum() > 0 else np.nan
             disc = DELTA ** np.arange(n)
@@ -102,8 +104,9 @@ def branch_metrics(df: pl.DataFrame) -> pl.DataFrame:
                 ratio=float(beta / beta_br) if beta_br else np.nan, rho=rho,
                 half_life=float(np.log(0.5) / np.log(rho)) if 0 < rho < 1 else np.nan,
                 dPi_A=float((disc * (br["piA"][:n] - sh["piA"][:n])).sum()),
-                resp_B=float(np.abs(dB[1:H_BETA + 1]).mean()), noise_B=noise,
-                detected=bool(np.abs(dB[1:H_BETA + 1]).mean() > 2 * noise) if noise == noise else None,
+                resp_B=float(np.abs(dB[1:h_beta + 1]).mean()), noise_B=noise,
+                detected=(bool(np.abs(dB[1:h_beta + 1]).mean() > k_noise * noise)
+                          if noise == noise else None),
             ))
     return pl.DataFrame(rows).sort("model", "seed", "vis", "x") if rows else pl.DataFrame()
 
