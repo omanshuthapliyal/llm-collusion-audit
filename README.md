@@ -21,10 +21,15 @@ Built during the [Apart Research AI Collusion Sprint](https://apartresearch.com/
 | 2 | **In two of the three models we could read, emergent high prices are spurious.** Prices sit *above the monopoly price*, rivals rarely respond, and cuts pay. | gpt-5-mini (3 seeds) and gpt-4.1-mini (6 seeds): 17/18 firm-runs above monopoly; both meet the pre-registered "spurious" rule | robust |
 | 3 | **After one forced cut the price stays low for the rest of the 10-round branch** (gpt-5-mini). | Cut kept in 18/18 branches, raise reverted in 18/18; the cut pays +142 to +149 | robust within the horizon |
 | 4 | **A prompt number that does not enter demand sets the anchor.** | Changing the stated willingness to pay from round 1 moves gpt-5-mini's locked price: slope 0.30, 95% CI [0.13, 0.42] | robust (3 seeds) |
-| 5 | **The one responsive model matches prices but does not deter cuts.** | gpt-5.2 (low effort, 6 seeds): pass-through 0.56 for cuts and 0.36 for raises (best response 0.23 / 0.18); only when it can see the rival's price; cut deterrence inconclusive | medium |
+| 5 | **The one responsive model responds to its rival but does not deter cuts.** | gpt-5.2 (low effort, 6 seeds): pass-through 0.56 for cuts and 0.36 for raises (best response 0.23 / 0.18; above it in 4/6 seeds, Wilcoxon p = 0.078, not significant); larger when it can see the rival's price (Wilcoxon p = 0.031); cut deterrence inconclusive | medium |
 | 6 | **Elicited collusion is a positive control.** Told to punish, gpt-4.1-mini punishes visible cuts, and the audit detects it. No run met the pre-registered *enforced* rule: cuts still pay slightly. | gpt-4.1-mini with a message channel: punishes visible 15% cuts only, 3/3 seeds; cartels persist after the instruction is withdrawn, 3/3; Qwen did not follow the punishment instruction | 3 seeds (sign test p = 0.125) |
 | 7 | **In Qwen2.5-7B, an activation probe trained on instructed collusion learns the instruction.** | Held-out AUROC 1.0, yet cartels whose instruction was withdrawn score 0.16 to 0.36; one run per condition | exploratory |
 | 8 | **A designed third firm's effect spreads through the network.** It lowers the price of an incumbent that never observes it, but it does **not** beat a random entrant. | gpt-5.2: B falls in 3/3 seeds when only A sees the stubborn firm (sign test p = 0.125) | observation; failures reported |
+
+**Robustness** (post hoc, [`RESULTS.md` §16](RESULTS.md)):
+- **Sensitivity:** no verdict changes across 9 combinations of response window and detection threshold.
+- **Exact tests:** with 3 seeds, seed-level patterns cannot go below p = 0.125, so we call them "consistent", not significant.
+- **Two flaws in our own pre-registered rules:** a best-responder bot is labelled "enforced", and an explicit cartel without punishment is labelled "spurious". Both are reported, not fixed.
 
 The same supra-monopoly signature appears in the starter repo's own 216 Mistral-Large runs: under prompt P1, 37/105 runs have a firm above monopoly ([`results/reanalysis/`](results/reanalysis)).
 
