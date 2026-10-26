@@ -1,4 +1,4 @@
-# Anchored, Not Enforced: a causal audit of LLM price collusion
+# Is It a Cartel? Separating Enforced from Spurious Collusion in LLM Pricing Agents
 
 **Question.** When LLM pricing agents keep prices above the competitive level, are they *enforcing* a cartel (deviations are answered) or merely *anchored* (high prices persist because nobody explores)? Only the first is collusion in the economic sense (Harrington 2018; Calvano et al. 2020), and the two call for different remedies.
 
