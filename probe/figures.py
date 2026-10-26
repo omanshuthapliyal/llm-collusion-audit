@@ -41,6 +41,15 @@ plt.rcParams.update({
 })
 
 
+def _limits(values, must=(0.0,), pad=0.08):
+    """Axis limits that contain every value (and the reference levels in `must`), padded."""
+    v = np.concatenate([np.ravel(np.asarray(x, float)) for x in values] + [np.asarray(must, float)])
+    v = v[np.isfinite(v)]
+    lo, hi = float(v.min()), float(v.max())
+    span = max(hi - lo, 1e-6)
+    return lo - pad * span, hi + pad * span
+
+
 def _save(fig, name: str):
     FIG.mkdir(exist_ok=True)
     for ext in ("png", "pdf"):
@@ -71,6 +80,7 @@ def impulse_grid(df: pl.DataFrame, models: list[str], name: str = "fig_impulse_r
                              squeeze=False)
     for i, model in enumerate(models):
         sub = df.filter(pl.col("model") == model)
+        row_values = []
         for j, vis in enumerate(("shown", "hidden")):
             ax = axes[i, j]
             curves = {"cut": [], "raise": []}
@@ -93,19 +103,24 @@ def impulse_grid(df: pl.DataFrame, models: list[str], name: str = "fig_impulse_r
                 h = np.arange(arr.shape[1])
                 ax.plot(h, arr.mean(0), color=color, ls="-" if vis == "shown" else "--",
                         label=f"forced {key}")
+                row_values.append(arr.mean(0))
                 if arr.shape[0] > 1:
                     lo, hi = np.percentile(arr, [10, 90], axis=0)
                     ax.fill_between(h, lo, hi, color=color, alpha=0.12, lw=0)
+                    row_values += [lo, hi]
             if preds:
                 p = np.vstack([q[:min(map(len, preds))] for q in preds]).mean(0)
                 ax.plot(np.arange(len(p)), p, color=MUTED, lw=1, label="best-response prediction")
+                row_values.append(p)
             ax.axhline(0, color=MUTED, lw=0.8)
-            ax.set_ylim(-0.6, 3.4 if model == "bot_punish" else 2.2)
             if i == 0:
                 ax.set_title(f"A's price {'visible' if vis == 'shown' else 'hidden'} to B",
                              color=INK)
             if j == 0:
                 ax.set_ylabel(MODEL_LABEL[model], rotation=0, ha="right", va="center", color=INK)
+        lim = _limits(row_values, must=(0.0, 0.5))
+        for ax in axes[i]:
+            ax.set_ylim(*lim)
     for ax in axes[-1]:
         ax.set_xlabel("rounds after the forced move (h)")
     handles, labels = axes[0, 0].get_legend_handles_labels()
@@ -184,12 +199,14 @@ def warmup_paths(df: pl.DataFrame, models: list[str], name: str = "fig_warmups")
                         label=firm if seed == 0 else None)
         ax.axhline(pn, color=MUTED, lw=1, ls=":")
         ax.axhline(pm, color=MUTED, lw=1, ls="--")
-        ax.text(1, pn, "Nash", va="bottom", fontsize=7, color=INK2)
-        ax.text(1, pm, "monopoly", va="bottom", fontsize=7, color=INK2)
         ax.set_title(MODEL_LABEL[model], color=INK)
         ax.set_xlabel("round")
     axes[0, 0].set_ylabel("price")
-    axes[0, 0].legend(loc="upper right")
+    fig.legend(handles=[plt.Line2D([], [], color=CUT, label="Firm A"),
+                        plt.Line2D([], [], color=RAISE, label="Firm B"),
+                        plt.Line2D([], [], color=MUTED, ls="--", label="monopoly price (1.92)"),
+                        plt.Line2D([], [], color=MUTED, ls=":", label="Nash price (1.47)")],
+               loc="upper center", ncol=4, bbox_to_anchor=(0.5, 1.08))
     fig.tight_layout()
     _save(fig, name)
 
@@ -200,10 +217,10 @@ def deviator_paths(df: pl.DataFrame, models: list[str], name: str = "fig_deviato
     models = [m for m in ORDER if m in models and not m.startswith("bot_")]
     if not models:
         return
-    fig, axes = plt.subplots(1, len(models), figsize=(2.4 * len(models), 2.5), sharey=True,
-                             squeeze=False)
+    fig, axes = plt.subplots(1, len(models), figsize=(2.5 * len(models), 2.6), squeeze=False)
     for ax, model in zip(axes[0], models):
         sub = df.filter(pl.col("model") == model)
+        panel_values = []
         for seed in sorted(set(sub["seed"])):
             for run in sorted(set(sub.filter(pl.col("seed") == seed)["run"])):
                 if not (run.startswith("dev") and run.endswith("_shown")):
@@ -214,11 +231,12 @@ def deviator_paths(df: pl.DataFrame, models: list[str], name: str = "fig_deviato
                 _, _, dA, sgn = r
                 ax.plot(np.arange(len(dA)), dA, color=CUT if sgn < 0 else RAISE, lw=1.2,
                         alpha=0.7)
+                panel_values.append(dA)
         ax.axhline(0, color=MUTED, lw=0.8)
         ax.axhline(1, color=MUTED, lw=0.8, ls=":")
         ax.set_title(MODEL_LABEL[model], color=INK)
         ax.set_xlabel("rounds after the forced move (h)")
-        ax.set_ylim(-0.6, 1.6)
+        ax.set_ylim(*_limits(panel_values, must=(0.0, 1.0)))
     axes[0, 0].set_ylabel("A's price change / forced move")
     handles = [plt.Line2D([], [], color=CUT, label="forced cut"),
                plt.Line2D([], [], color=RAISE, label="forced raise")]
@@ -246,16 +264,16 @@ def cue_plot(name: str = "fig_anchor_cue"):
             ax.plot(wtp, locked, "-o", color=CUT if row["agent"] == "Firm A" else RAISE,
                     lw=1.2, ms=4, alpha=0.8)
         ax.plot(wtp, (wtp + 1) / 2, color=INK, lw=1, ls="--")
-        ax.text(5.95, 3.55, "(WTP + 1) / 2", ha="right", fontsize=7, color=INK2)
         ax.axhline(pm, color=MUTED, lw=1, ls=":")
-        ax.text(3.55, pm, "monopoly", va="bottom", fontsize=7, color=INK2)
         ax.set_title(MODEL_LABEL[model], color=INK)
         ax.set_xlabel("stated WTP (in prompt only)")
         ax.set_xticks(wtp)
     axes[0, 0].set_ylabel("locked price, rounds 21 to 30")
     handles = [plt.Line2D([], [], color=CUT, marker="o", label="Firm A"),
-               plt.Line2D([], [], color=RAISE, marker="o", label="Firm B")]
-    fig.legend(handles=handles, loc="upper center", ncol=2, bbox_to_anchor=(0.5, 1.07))
+               plt.Line2D([], [], color=RAISE, marker="o", label="Firm B"),
+               plt.Line2D([], [], color=INK, lw=1, ls="--", label="(WTP + 1) / 2"),
+               plt.Line2D([], [], color=MUTED, lw=1, ls=":", label="monopoly price")]
+    fig.legend(handles=handles, loc="upper center", ncol=4, bbox_to_anchor=(0.5, 1.07))
     fig.tight_layout()
     _save(fig, name)
 
@@ -294,13 +312,13 @@ def concept_diagram(name: str = "fig_concept"):
         arrow(ax, (0.24, 0.63), (0.42, 0.5), "$p_A$", lpos=(-0.05, 0.0))
         arrow(ax, (0.76, 0.63), (0.58, 0.5), "$p_B$", lpos=(0.05, 0.0))
         arrow(ax, (0.6, 0.36), (0.84, 0.62), "own sales", color=MUTED, ls="--", rad=0.35,
-              lpos=(0.2, -0.14))
+              lpos=(0.13, -0.08))
         # forced price u enters at A
         arrow(ax, (0.03, 0.92), (0.12, 0.79), None, color=CUT)
         ax.text(0.02, 0.95, "forced move $u$", fontsize=7, color=CUT, va="bottom")
     # closed loop: B observes p_A and responds
     a0 = axes[0]
-    arrow(a0, (0.3, 0.76), (0.66, 0.76), "observes $p_A$ (mask here)", color=INK, lpos=(0, 0.05))
+    arrow(a0, (0.3, 0.76), (0.66, 0.76), "observes $p_A$\n(mask here)", color=INK, lpos=(0, 0.08))
     a0.text(0.5, 0.1, "Deviation is seen and answered;\nraises and hiding $p_A$ identify $f$.",
             ha="center", fontsize=7.5, color=INK2)
     # open loop: set point from the prompt; observation has ~zero gain
@@ -308,9 +326,9 @@ def concept_diagram(name: str = "fig_concept"):
     box(a1, (0.82, 1.03), "prompt cue (WTP)", w=0.32, h=0.08, fill=GRID)
     arrow(a1, (0.82, 0.99), (0.82, 0.82), None, color=INK)
     a1.text(0.85, 0.9, "$p^*$", fontsize=8, color=INK)
-    arrow(a1, (0.3, 0.76), (0.66, 0.76), "observes $p_A$, gain $\\approx 0$", color=MUTED,
-          ls=":", lpos=(0, 0.05))
-    a1.text(0.5, 0.1, "High price is a held set point;\none forced cut moves it for good.",
+    arrow(a1, (0.3, 0.76), (0.66, 0.76), "observes $p_A$\ngain $\\approx 0$", color=MUTED,
+          ls=":", lpos=(0, 0.08))
+    a1.text(0.5, 0.1, "High price is a held set point;\na forced cut is kept, not punished.",
             ha="center", fontsize=7.5, color=INK2)
     fig.tight_layout()
     _save(fig, name)
@@ -352,8 +370,8 @@ def elicit_panels(name: str = "fig_elicit"):
     axes[1].legend(loc="upper left", fontsize=6.5)
     axes[2].set_title("deviator keeps the cut? (ρ)", color=INK)
     axes[2].set_ylim(-0.15, 1.15)
-    axes[2].text(4.45, 1.03, "keeps", fontsize=6.5, color=INK2, ha="right")
-    axes[2].text(4.45, 0.04, "returns", fontsize=6.5, color=INK2, ha="right")
+    axes[2].set_yticks([0, 0.25, 0.5, 0.75, 1])
+    axes[2].set_yticklabels(["0 returns", "0.25", "0.5", "0.75", "1 keeps"])
     for ax in axes:
         ax.set_xticks(xs)
         ax.set_xticklabels([c[1] for c in COND_ORDER], fontsize=6.5, rotation=35, ha="right")
@@ -389,7 +407,7 @@ def designed_panels(name: str = "fig_designed"):
     axes[0].set_xlabel("who observes the designed firm")
     axes[0].set_ylabel("price change vs no entrant\n(rounds 41-50)")
     axes[0].set_title("3 seeds; B never sees it in 'A only'", color=INK)
-    axes[0].legend(loc="lower left", fontsize=7)
+    axes[0].legend(loc="center right", bbox_to_anchor=(1.0, 0.4), fontsize=7)
     styles = {"long_sham_designed_h40": ("no entrant", ":"), "stubborn_A_h40": ("A only", "--"),
               "stubborn_both_h40": ("both", "-")}
     for run, (label, ls) in styles.items():

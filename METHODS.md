@@ -374,3 +374,7 @@ The split test is the point of the arm: a firm that enforces should react to its
   - **Exact tests:** with 3 seeds, seed-level patterns cannot go below p = 0.125.
   - **Weakened claim:** gpt-5.2's pass-through above the best response is not significant (Wilcoxon p = 0.078).
 
+- **Figures (25 Oct, presentation only, no numbers changed).**
+  - Axis limits are now computed from the data. Fixed limits had clipped Qwen and gpt-5.2 paths in `fig_deviator_paths` and percentile bands in `fig_impulse_responses`.
+  - Overlapping labels were moved into legends or tick labels.
+  - The concept-diagram text "moves it for good" became "a forced cut is kept, not punished", because the data cover only the 10-round branch.

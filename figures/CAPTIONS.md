@@ -28,6 +28,7 @@
 - *gpt-5-mini:* keeps every forced cut (18 of 18 branches) and reverts every forced raise (18 of 18). The high price is not an attractor in the downward direction.
 - *gpt-4.1-mini:* keeps some cuts.
 - *Qwen2.5-7B:* too noisy to read.
+- *Scales:* y-limits differ by panel so that every path is shown (Qwen spans about ±3.5).
 
 **`fig_anchor_cue`. The willingness-to-pay figure in the prompt moves where prices lock.**
 - *Setup:* the prompt states "No customer would pay more than {3.5, 4.51, 6.0}" from round 1. Demand does not depend on this number.
@@ -53,7 +54,7 @@
   - In "A only", B never observes it, yet falls in 3 of 3 seeds. That is propagation through B's observation of A.
   - The demand channel alone ("nobody") also moves prices when the incumbents start far above. A random entrant moves prices as much.
 - *Right:* 40-round paths, seed 0.
-  - Visible to both: the incumbents converge to the stubborn price (full consensus).
+  - Visible to both: the incumbents settle at 1.38 (A) and 1.36 (B), close to the stubborn price of 1.37.
   - Visible to A only: the pair settles together at 1.46 (partial consensus).
 
 **`fig_probe`. Line D2: activation probes, Qwen2.5-7B, layer 20 (dots = runs; one seed; exploratory).**
