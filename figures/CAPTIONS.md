@@ -65,3 +65,12 @@
 - *Boxes:* decision boxes are shaded; verdicts are plain; the enforced verdict is highlighted.
 - *Dashed boxes* are checks added after the data: the deterrence-ceiling gate (Proposition 4, METHODS §19) and the longer-window check suggested by the held-out bot test (METHODS §16). They are not part of rules v2.
 - *Status:* v1 was pre-registered; v2 is post hoc.
+
+**`fig_ceiling`. Agreed prices against the deterrence ceiling (Proposition 4, delta = 0.95).**
+- *Dots:* one per firm-run, the mean warm-up price, grouped by condition.
+- *Lines:* Nash (1.47), monopoly (1.93), the best-deviation ceiling (3.07, any horizon) and the 15% cut, 10-round ceiling (3.86). Above 3.07 no punishment can deter the best deviation.
+- *Counts:* 18 of 18 instructed-cartel firm-runs lie above 3.07; 3 of 32 emergent ones do.
+
+**`fig_intensity`. Punishment intensity after a forced cut.**
+- *Bars:* the share of the deviator's feasible loss that the rival imposes, with A's path held fixed (95% seed-bootstrap intervals). Grey bars are scripted bots with known rules.
+- *Reading:* gpt-5.2 exceeds its best-response benchmark by 0.048, on visible cuts only; the instructed-punish condition (R3) imposes 0.0% in the pooled estimate, with one seed reaching 30%.

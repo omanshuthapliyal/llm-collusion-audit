@@ -532,6 +532,75 @@ def protocol_flow(name: str = "fig_protocol"):
     _save(fig, name)
 
 
+def ceiling_strip(name: str = "fig_ceiling"):
+    """Warm-up price of every firm-run against the deterrence ceilings of Proposition 4
+    (delta = 0.95; METHODS section 19): emergent models versus instructed cartels."""
+    path = FIG.parent / "results" / "metrics_warmups.csv"
+    w = pl.read_csv(path).filter(pl.col("run") == "warmup_shown")
+    groups = [("gpt5mini", "gpt-5-mini", CUT), ("gpt41mini", "gpt-4.1-mini", CUT),
+              ("gpt52", "gpt-5.2 (low)", CUT), ("gpt52med", "gpt-5.2 (medium)", CUT),
+              ("gpt41mini__R2", "instructed", RAISE), ("gpt41mini__R2plus", "instructed + punish", RAISE),
+              ("gpt41mini__R3", "instructed deterrence", RAISE)]
+    best = econ.max_deterrable_price(cut=None, rounds_after=None)
+    cut15 = econ.max_deterrable_price(cut=0.15, rounds_after=9)
+    fig, ax = plt.subplots(figsize=(7.2, 3.3))
+    ax.axvspan(best, 4.6, color="#F2E5E1", zorder=0)
+    ax.text(best + 0.05, 3.0, "no punishment can\ndeter the best deviation", fontsize=7,
+            color=INK2, va="center", ha="left")
+    rng = np.random.default_rng(2)
+    for i, (m, label, color) in enumerate(groups):
+        y = len(groups) - 1 - i
+        x = w.filter(pl.col("model") == m)["mean_price"].to_numpy()
+        ax.plot(x, y + rng.uniform(-0.15, 0.15, len(x)), "o", ms=5, color=color, alpha=0.85, zorder=3)
+    ax.set_yticks(range(len(groups)))
+    ax.set_yticklabels([g[1] for g in groups][::-1])
+    for v, lab, ls in ((econ.nash_price(), "Nash", ":"), (econ.monopoly_price(), "monopoly", "--"),
+                       (best, f"ceiling {best:.2f}", "-"), (cut15, f"15% cut, 10 rounds {cut15:.2f}", "-.")):
+        ax.axvline(v, color=MUTED if lab in ("Nash", "monopoly") else INK, lw=1, ls=ls, zorder=1)
+        left = lab.startswith("ceiling")
+        ax.text(v + (0.02 if left else -0.02), len(groups) - 0.45, lab, rotation=90, fontsize=7, color=INK2,
+                ha="left" if left else "right", va="top")
+    ax.axhline(2.5, color=GRID, lw=1)
+    ax.set_xlim(1.3, 4.6)
+    ax.set_ylim(-0.6, len(groups) - 0.4)
+    ax.set_xlabel("agreed price (warm-up mean, rounds 21 to 30)")
+    ax.grid(axis="y", visible=False)
+    _save(fig, name)
+
+
+def intensity_bars(name: str = "fig_intensity"):
+    """Punishment intensity (share of A's feasible loss B imposes after a forced cut, A's price
+    visible) for scripted bots and LLM groups, with 95% seed intervals (RESULTS section 24)."""
+    path = FIG.parent / "results" / "punishment_intensity.csv"
+    pi = pl.read_csv(path).filter(pl.col("vis") == "shown")
+    from probe.analysis import bootstrap_ci
+    rows = [("bot_grim", "bot: grim trigger", MUTED), ("bot_punish", "bot: punish-only", MUTED),
+            ("bot_match", "bot: price matching", MUTED), ("bot_br", "bot: best response", MUTED),
+            ("gpt52", "gpt-5.2 (low)", CUT), ("gpt41mini", "gpt-4.1-mini", CUT), ("gpt5mini", "gpt-5-mini", CUT),
+            ("gpt41mini__R2plus", "instructed + punish", RAISE), ("gpt41mini__R3", "instructed deterrence", RAISE)]
+    fig, ax = plt.subplots(figsize=(6.4, 3.4))
+    for i, (m, label, color) in enumerate(rows):
+        s = pi.filter(pl.col("model") == m).group_by("seed").agg(pl.col("intensity").mean()).sort("seed")
+        v = s["intensity"].to_numpy()
+        mean = float(v.mean())
+        y = len(rows) - 1 - i
+        ax.barh(y, mean, color=color, height=0.62, zorder=2)
+        if len(v) > 1:
+            lo, hi = bootstrap_ci(v)
+            ax.errorbar(mean, y, xerr=[[mean - lo], [hi - mean]], fmt="none", ecolor=INK, elinewidth=1, capsize=2, zorder=3)
+        right = mean
+        if len(v) > 1:
+            right = max(right, hi)
+        ax.text(max(right, 0) + 0.012, y, f"{abs(mean):.2f}", va="center", fontsize=7.5, color=INK2)
+    ax.set_yticks(range(len(rows)))
+    ax.set_yticklabels([r[1] for r in rows][::-1])
+    ax.axhline(4.5, color=GRID, lw=1)
+    ax.set_xlim(0, 0.6)
+    ax.set_xlabel("share of the deviator's profit the rival takes after a forced cut")
+    ax.grid(axis="y", visible=False)
+    _save(fig, name)
+
+
 def main():
     """Regenerate every report figure from the metrics tables and saved runs."""
     from probe.analysis import branch_metrics, model_summary
@@ -548,6 +617,8 @@ def main():
     designed_panels()
     probe_panel()
     protocol_flow()
+    ceiling_strip()
+    intensity_bars()
     print(f"figures written to {FIG}")
 
 
