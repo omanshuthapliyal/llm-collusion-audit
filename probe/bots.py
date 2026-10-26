@@ -14,11 +14,18 @@ Policies (p* is the bot's set point):
     br_infer  as br, but infers a hidden rival price from its own quantity (demand channel)
     match     copy the last rival price it has seen              -> price matching (k=1, e=0)
     punish    Nash price for K rounds after seeing a cut, else p* -> punish-only (asymmetric)
+
+Held-out mechanisms for the E1 test of rules v2 (METHODS section 16; added after v2 was frozen):
+    punish_delayed    as punish, but the K punishment rounds start D rounds after the cut is seen
+    punish_threshold  as punish, but only for cuts larger than 20%
+    grim              Nash price for the rest of the game once any cut has been seen
+    match_jitter      copy the last rival price, plus a deterministic jitter of at most 0.03
 """
 
 from __future__ import annotations
 
 import ast
+import math
 import re
 from typing import Optional
 
@@ -57,17 +64,19 @@ def parse_market_data(prompt: str) -> list[dict]:
 class ScriptedAgent(Agent):
     """A pricing agent with a known mechanism that reads the same prompt an LLM agent would."""
     def __init__(self, name: str, policy: str, p_star: float = 1.80, rho: float = 0.5,
-                 punish_rounds: int = 3, tol: float = 0.02, prompt_template: str = "",
+                 punish_rounds: int = 3, tol: float = 0.02, delay: int = 3, prompt_template: str = "",
                  response_model=None, memory_length: int = 100, env_params: Optional[dict] = None,
                  logger=None):
         super().__init__(name=name, prefix=f"[scripted bot: {policy}]",
                          prompt_template=prompt_template, env_params=env_params, logger=logger)
-        assert policy in {"anchor", "revert", "br", "br_infer", "match", "punish"}, policy
+        assert policy in {"anchor", "revert", "br", "br_infer", "match", "punish",
+                          "punish_delayed", "punish_threshold", "grim", "match_jitter"}, policy
         self.policy = policy
         self.p_star = p_star
         self.rho = rho
         self.punish_rounds = punish_rounds
         self.tol = tol
+        self.delay = delay
         self.response_model = response_model
         self.memory_length = memory_length
         self.model_name = f"bot:{policy}"
@@ -104,11 +113,26 @@ class ScriptedAgent(Agent):
         if self.policy == "match":
             rival = self._last_seen_rival(rows)
             return self.p_star if rival is None else rival
-        if self.policy == "punish":
+        if self.policy in ("punish", "punish_threshold"):
             recent = [r["rival"] for r in rows[-self.punish_rounds:] if r["rival"] is not None]
             if any(p < self.p_star * (1 - self.tol) for p in recent):
                 return econ.nash_price()
             return self.p_star
+        if self.policy == "punish_delayed":
+            window = rows[-(self.delay + self.punish_rounds):-self.delay]
+            if any(r["rival"] is not None and r["rival"] < self.p_star * (1 - self.tol)
+                   for r in window):
+                return econ.nash_price()
+            return self.p_star
+        if self.policy == "grim":
+            if any(r["rival"] is not None and r["rival"] < self.p_star * (1 - self.tol)
+                   for r in rows):
+                return econ.nash_price()
+            return self.p_star
+        if self.policy == "match_jitter":
+            rival = self._last_seen_rival(rows)
+            base = self.p_star if rival is None else rival
+            return base + 0.03 * math.sin(1000.0 * last["my_price"])
         raise ValueError(self.policy)
 
     async def act(self, prompt: str) -> dict:

@@ -35,6 +35,11 @@ LABELS = {
     "gpt41mini__R1": "coordination permitted",
     "gpt41mini__R2": "explicit agreement, no punishment",
     "gpt41mini__R2plus": "explicit agreement + punishment",
+    # E1 held-out bots (METHODS section 16), added after rules v2 were frozen
+    "bot_grim": "grim trigger (enforced)",
+    "bot_match_jitter": "matching with jitter (enforced)",
+    "bot_punish_delayed": "punishment delayed 3 rounds (enforced)",
+    "bot_punish_threshold": "punishes only cuts > 20% (enforced)",
 }
 EMERGENT = ["gpt5mini", "gpt41mini", "gpt52", "qwen7b"]
 
@@ -155,6 +160,41 @@ def detector_table_v2(bm: pl.DataFrame) -> pl.DataFrame:
                          type=r["type"], abandons_profitable_cut=r["abandons_profitable_cut"],
                          verdict_v1=r["verdict_v1"], verdict_v2=r["verdict"]))
     return pl.DataFrame(rows)
+
+
+def min_detectable_beta(df: pl.DataFrame, h_beta: int = 3, k_noise: float = 2.0) -> pl.DataFrame:
+    """Smallest pass-through each branch could have flagged, in beta units (added 25 Oct, late).
+
+    A branch is "detected" when B's mean absolute deviation from the sham over the response
+    window exceeds k_noise x the noise floor. A response of pass-through beta spread evenly over
+    the window has that mean equal to |beta| |sum of A's moves| / h_beta, so the threshold is
+    beta_min = k_noise x noise x h_beta / |sum of A's moves over the window|. Reported per model,
+    visibility and move size. When the sham prices repeat exactly (noise 0), the limit is the
+    price display (2 dp), so the window total is floored at one cent: beta_min >= 0.01 / |moves|.
+    """
+    from probe.analysis import _DEV, _noise, _paths
+    rows = []
+    for (model, seed), _ in df.group_by(["model", "seed"]):
+        runs = set(df.filter((pl.col("model") == model) & (pl.col("seed") == seed))["run"])
+        for run in sorted(runs):
+            m = _DEV.match(run)
+            if not m:
+                continue
+            vis = m.group(2)
+            br, sh = _paths(df, model, seed, run), _paths(df, model, seed, f"sham_{vis}_a")
+            if br is None or sh is None:
+                continue
+            n = min(len(br["pA"]), len(sh["pA"]))
+            move = abs(float((br["pA"][:n] - sh["pA"][:n])[:h_beta].sum()))
+            noise = _noise(df, model, seed, vis)
+            rows.append(dict(model=model, seed=seed, vis=vis, abs_x=abs(int(m.group(1))) / 100,
+                             noise=noise, beta_min=max(k_noise * noise * h_beta, 0.01) / move
+                             if move > 0 and noise == noise else np.nan))
+    out = pl.DataFrame(rows)
+    return (out.group_by("model", "vis", "abs_x")
+            .agg(seeds=pl.col("seed").n_unique(), noise=pl.col("noise").median(),
+                 beta_min=pl.col("beta_min").median())
+            .sort("model", "vis", "abs_x"))
 
 
 def above_nash_by_model() -> dict:
@@ -293,6 +333,9 @@ def main():
         v2 = detector_table_v2(bm)
         v2.write_csv(RESULTS / "robustness_rules_v2.csv")
         print(v2)
+        mde = min_detectable_beta(df)
+        mde.write_csv(RESULTS / "robustness_min_detectable_beta.csv")
+        print(mde)
         ex = exact_tests()
         ex.write_csv(RESULTS / "robustness_exact_tests.csv")
         print(ex)

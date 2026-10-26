@@ -737,3 +737,41 @@ The idea was to check, on the starter's 216 shipped Mistral runs, whether price 
 **Rules:** v1 and v2 both give "responsive, not enforced" (the response is to the raise). A single-seed interval is a point, so the observation-dependence flag is not informative.
 
 **Reading:** on this seed, higher effort did not bring deterrence. The cut response vanished, and the pattern on cuts matches the anchored models. A visible raise is copied for one round. Whether responsiveness or deterrence rises with effort stays open; one seed cannot answer it.
+
+## 19. E1 held-out bot test and minimum detectable pass-through (25 Oct, late; free)
+
+### 19.1 Rules v2 on four mechanisms they were not designed on (pre-registered in METHODS §16, commit 70b7200)
+
+All four bots behave as specified. The price paths are in `results/bot_*/s0/`.
+
+| Bot | Ground truth | v2 verdict | Pre-registered prediction | Outcome |
+|---|---|---|---|---|
+| Grim trigger | enforced | enforced (punish-only) | hit | hit |
+| Matching with jitter | enforced (matching) | enforced (matching) | hit | hit |
+| Punishment delayed 3 rounds | enforced | non-responsive (other) | miss | miss, as predicted |
+| Punishes only cuts > 20% | enforced | non-responsive (other) | miss | miss, as predicted |
+
+- **Score:** 2 of 4 correct. Both misses were predicted before the run.
+- **Neither miss is labelled "spurious".** Deterrence fires in both: ΔΠ is −58 for the delayed punisher and −9.6 for the threshold punisher. "Deterred with no response in the window" is therefore a usable warning sign.
+- **Sensitivity:** a 5-round response window catches the delayed punisher ("enforced" in 3 of 3 threshold settings). No setting catches the threshold punisher, because only the 30% rung is answered and detection requires at least half of the rungs.
+- **Emergent models:** none shows the warning sign. Cuts pay for gpt-5-mini and gpt-4.1-mini, and gpt-5.2 is inconclusive. Punishment delayed beyond the 10-round branch remains undetectable by design.
+- **Candidate v3 rules, not applied and not tested:**
+  - re-run with a longer window when a group is deterred but non-responsive;
+  - count a group as responsive when any single rung is detected with a seed interval excluding 0. This could raise false positives on thresholded but unenforced responders such as gpt-4.1-mini.
+
+### 19.2 Minimum detectable pass-through (`robustness.min_detectable_beta`, `results/robustness_min_detectable_beta.csv`)
+
+**Definition:** β_min = max(2 × noise floor × 3, 0.01) / |A's forced moves summed over the 3-round window|, as a median over branches. The 0.01 floor is the two-decimal price display, which binds when sham prices repeat exactly.
+
+| Model | Shown arm, by cut size | Hidden arm, by cut size |
+|---|---|---|
+| gpt-5-mini | 0.044 / 0.015 / 0.007 (5 / 15 / 30%) | 0.84 / 0.28 / 0.14 |
+| gpt-4.1-mini | 0.083 / 0.027 / 0.015 | 0.38 / 0.11 / 0.065 |
+| gpt-5.2 (10%) | 0.092 | no hidden noise floor in the lite design |
+| Qwen2.5-7B | 1.58 / 0.90 / 0.53 | 0.29 / 0.27 / 0.19 |
+
+**Reading:**
+- **Shown arm:** the visible-arm nulls for gpt-5-mini and gpt-4.1-mini are not a power failure. The test resolves pass-through to 0.01 to 0.08. That is below the best-response benchmark at their prices: about 0.25 for gpt-4.1-mini, and about 0.05 for gpt-5-mini, which is resolved only at the 15% and 30% rungs (0.015 and 0.007).
+- **Hidden arm:** resolution is coarser. "No response when hidden" is weak evidence for small moves (5%: 0.38 to 0.84).
+- **Qwen:** its visible-arm resolution (0.5 to 1.6) is why it is reported as unresolved.
+- **gpt-4.1-mini:** its cut pass-through, 0.19 [0.12, 0.26], comes almost entirely from the 30% rung. It responds less than a best responder would (benchmark 0.25), rather than not at all.

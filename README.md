@@ -12,7 +12,7 @@ When LLM pricing agents keep prices high, are they **enforcing** a cartel (devia
 14,161 model calls, $50.02, every call logged in [`logs/usage.jsonl`](logs/usage.jsonl). Numbers, seeds and intervals are in [`RESULTS.md`](RESULTS.md); figures with captions are in [`figures/`](figures/CAPTIONS.md).
 
 1. **A cut-only test cannot tell matching from punishment; adding a forced raise can.** On five scripted bots the audit recovers every response type.
-2. **In two of the three models we could read (gpt-5-mini, gpt-4.1-mini), high prices meet our pre-registered rule for spurious collusion.** Prices sit above monopoly, rivals rarely respond, and cuts pay.
+2. **In two of the three models we could read (gpt-5-mini, gpt-4.1-mini), high prices meet our pre-registered rule for spurious collusion.** Prices sit above monopoly, rivals respond less than a best responder would, and cuts pay.
 3. **gpt-5-mini keeps a single forced cut for the rest of the 10-round branch (18 of 18), and a prompt number that demand never uses shifts where its price settles.**
 4. **gpt-5.2 (low effort) responds to its rival's cuts, more when it can see the price, but does not deter them.** A one-seed pilot at medium effort shows no deterrence either (RESULTS §18).
 5. **Told to collude and punish, gpt-4.1-mini punishes visible cuts (3 of 3 seeds) and the audit detects it.** An activation probe trained on instructed collusion (Qwen2.5-7B, exploratory) learns the instruction, not the collusion.

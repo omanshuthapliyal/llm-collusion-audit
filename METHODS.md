@@ -434,3 +434,7 @@ A pair at one size says nothing about other sizes. A thresholded response, such 
 - **25 Oct, late: medium-effort pilot.** Added `gpt52med` (OpenRouter `openai/gpt-5.2`, host pinned to OpenAI, `reasoning.effort = medium`). OT approved option (a), one seed on the remaining OpenRouter credit. It was run with the lite design, seed 0, at $3.81 plus a $0.19 calibration smoke.
   - The metrics and rules are unchanged; the result is reported as a pilot (RESULTS §18).
   - Total spend is now $50.02 (14,161 calls), $0.02 above the original $50 budget, within the OpenRouter credit OT authorised.
+- **25 Oct, late: E1 and minimum detectable β (free).**
+  - **E1:** four held-out bots, pre-registered in §16 before any run. The rules were frozen; only ground-truth labels were added to `LABELS` (RESULTS §19.1).
+  - **New function** `robustness.min_detectable_beta`, a descriptive power statement that does not touch the rules (RESULTS §19.2).
+  - **Wording:** "rivals rarely respond" was replaced by "rivals respond less than a best responder would", because gpt-4.1-mini's cut pass-through excludes zero.

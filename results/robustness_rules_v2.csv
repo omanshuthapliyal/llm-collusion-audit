@@ -8,6 +8,10 @@ gpt41mini__Rminus,told to compete,n/a,0/2,non-responsive (other),non-responsive 
 gpt41mini__R1,coordination permitted,n/a,2/2,non-responsive (other),"coordinated, unenforced"
 gpt41mini__R2,"explicit agreement, no punishment",n/a,3/3,spurious,"coordinated, unenforced"
 gpt41mini__R2plus,explicit agreement + punishment,undetermined (beta_BR < 0.05),0/0,"responsive, not enforced","responsive, not enforced"
+bot_grim,grim trigger (enforced),punish-only,0/0,enforced,enforced
+bot_match_jitter,matching with jitter (enforced),matching,0/0,enforced,enforced
+bot_punish_delayed,punishment delayed 3 rounds (enforced),n/a,0/0,non-responsive (other),non-responsive (other)
+bot_punish_threshold,punishes only cuts > 20% (enforced),n/a,0/2,non-responsive (other),non-responsive (other)
 gpt5mini,unknown (emergent),n/a,0/9,spurious,spurious
 gpt41mini,unknown (emergent),n/a,4/12,spurious,spurious
 gpt52,unknown (emergent),mixed,0/1,"responsive, not enforced","responsive, not enforced"

@@ -1,0 +1,189 @@
+[21:24:10] [INFO] ✅ Metadata saved
+[21:24:10] [INFO] ✅ Metadata saved
+[21:24:10] [INFO] --- Round 1 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 2 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 3 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 4 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 5 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 6 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 7 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 8 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 9 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 10 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 11 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 12 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 13 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 14 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 15 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 16 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 17 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 18 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 19 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 20 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 21 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:10] [INFO] --- Round 22 ---
+[21:24:10] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:10] [INFO] Starting rate-limited execution for 2 agents
+[21:24:10] [INFO] Created 2 tasks, collecting results...
+[21:24:10] [INFO] Successfully collected 2 results
+[21:24:10] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] --- Round 23 ---
+[21:24:11] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:11] [INFO] Starting rate-limited execution for 2 agents
+[21:24:11] [INFO] Created 2 tasks, collecting results...
+[21:24:11] [INFO] Successfully collected 2 results
+[21:24:11] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] --- Round 24 ---
+[21:24:11] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:11] [INFO] Starting rate-limited execution for 2 agents
+[21:24:11] [INFO] Created 2 tasks, collecting results...
+[21:24:11] [INFO] Successfully collected 2 results
+[21:24:11] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] --- Round 25 ---
+[21:24:11] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:11] [INFO] Starting rate-limited execution for 2 agents
+[21:24:11] [INFO] Created 2 tasks, collecting results...
+[21:24:11] [INFO] Successfully collected 2 results
+[21:24:11] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] --- Round 26 ---
+[21:24:11] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:11] [INFO] Starting rate-limited execution for 2 agents
+[21:24:11] [INFO] Created 2 tasks, collecting results...
+[21:24:11] [INFO] Successfully collected 2 results
+[21:24:11] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] --- Round 27 ---
+[21:24:11] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:11] [INFO] Starting rate-limited execution for 2 agents
+[21:24:11] [INFO] Created 2 tasks, collecting results...
+[21:24:11] [INFO] Successfully collected 2 results
+[21:24:11] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] --- Round 28 ---
+[21:24:11] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:11] [INFO] Starting rate-limited execution for 2 agents
+[21:24:11] [INFO] Created 2 tasks, collecting results...
+[21:24:11] [INFO] Successfully collected 2 results
+[21:24:11] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] --- Round 29 ---
+[21:24:11] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:11] [INFO] Starting rate-limited execution for 2 agents
+[21:24:11] [INFO] Created 2 tasks, collecting results...
+[21:24:11] [INFO] Successfully collected 2 results
+[21:24:11] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] --- Round 30 ---
+[21:24:11] [INFO] Executing 2 agents with 0.0s rate limit
+[21:24:11] [INFO] Starting rate-limited execution for 2 agents
+[21:24:11] [INFO] Created 2 tasks, collecting results...
+[21:24:11] [INFO] Successfully collected 2 results
+[21:24:11] [INFO] Agent execution completed in 0.00 seconds
+[21:24:11] [INFO] ✅ Metadata saved
+[21:24:11] [INFO] 📊 Mean price, rounds 21-30 (0 = Nash, 1 = monopoly):
+[21:24:11] [INFO]    Firm A   1.800  [Nash 1.473 | monopoly 1.925]  index=0.724  above Nash: yes
+[21:24:11] [INFO]    Firm B   1.800  [Nash 1.473 | monopoly 1.925]  index=0.724  above Nash: yes
+[21:24:11] [INFO]    Positive control (all firms above Nash): PASS
+[21:24:11] [INFO] ✅ Experiment completed.
+

@@ -11,14 +11,30 @@ bot_br_infer,0,notes_wiped - own sham,0.0,0.0
 bot_br_infer,0,warmup_hidden - warmup_shown,0.0,-0.0013499999999997403
 bot_br_infer,0,wtp3.5 - own sham,0.0,0.0
 bot_br_infer,0,wtp6.0 - own sham,0.0,0.0
+bot_grim,0,notes_wiped - own sham,0.0,0.0
+bot_grim,0,warmup_hidden - warmup_shown,0.0,0.0
+bot_grim,0,wtp3.5 - own sham,0.0,0.0
+bot_grim,0,wtp6.0 - own sham,0.0,0.0
 bot_match,0,notes_wiped - own sham,0.0,0.0
 bot_match,0,warmup_hidden - warmup_shown,0.0,0.0
 bot_match,0,wtp3.5 - own sham,0.0,0.0
 bot_match,0,wtp6.0 - own sham,0.0,0.0
+bot_match_jitter,0,notes_wiped - own sham,0.0,0.0
+bot_match_jitter,0,warmup_hidden - warmup_shown,0.0,0.0
+bot_match_jitter,0,wtp3.5 - own sham,0.0,0.0
+bot_match_jitter,0,wtp6.0 - own sham,0.0,0.0
 bot_punish,0,notes_wiped - own sham,0.0,0.0
 bot_punish,0,warmup_hidden - warmup_shown,0.0,0.0
 bot_punish,0,wtp3.5 - own sham,0.0,0.0
 bot_punish,0,wtp6.0 - own sham,0.0,0.0
+bot_punish_delayed,0,notes_wiped - own sham,0.0,0.0
+bot_punish_delayed,0,warmup_hidden - warmup_shown,0.0,0.0
+bot_punish_delayed,0,wtp3.5 - own sham,0.0,0.0
+bot_punish_delayed,0,wtp6.0 - own sham,0.0,0.0
+bot_punish_threshold,0,notes_wiped - own sham,0.0,0.0
+bot_punish_threshold,0,warmup_hidden - warmup_shown,0.0,0.0
+bot_punish_threshold,0,wtp3.5 - own sham,0.0,0.0
+bot_punish_threshold,0,wtp6.0 - own sham,0.0,0.0
 gpt41mini,0,notes_wiped - own sham,-0.0035000000000000807,-0.004999999999999849
 gpt41mini,1,notes_wiped - own sham,0.03299999999999988,0.005999999999999917
 gpt41mini,2,notes_wiped - own sham,-0.023999999999999844,0.0

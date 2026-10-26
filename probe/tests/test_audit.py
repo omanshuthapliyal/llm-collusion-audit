@@ -177,3 +177,20 @@ def test_entrant_learns_best_response_to_anchored_incumbents():
 def test_entrant_lowers_prices_when_incumbents_respond():
     anchored, responsive = _late_means("bot_anchor", "entry_mw"), _late_means("bot_br", "entry_mw")
     assert responsive["Firm B"] < anchored["Firm B"] - 0.2
+
+
+def test_heldout_bots_follow_their_specification():
+    """E1 bots (METHODS section 16): punishment timing and thresholds as specified."""
+    from probe.bots import ScriptedAgent
+    pn = econ.nash_price()
+    env = {"a": 2.0, "alpha": 1.0, "c": 1.0}
+    hist = lambda rivals: [{"round": i, "my_price": 1.8, "quantity": 30.0, "profit": 20.0,
+                            "rival": r} for i, r in enumerate(rivals)]
+    delayed = ScriptedAgent("Firm B", "punish_delayed", p_star=1.8, env_params=env)
+    assert delayed.decide(hist([1.8, 1.5])) == 1.8  # cut just seen: wait
+    assert delayed.decide(hist([1.8, 1.5, 1.8, 1.8, 1.8])) == pytest.approx(pn)
+    thresh = ScriptedAgent("Firm B", "punish_threshold", p_star=1.8, tol=0.20, env_params=env)
+    assert thresh.decide(hist([1.8, 1.53])) == 1.8  # 15% cut: ignored
+    assert thresh.decide(hist([1.8, 1.26])) == pytest.approx(pn)  # 30% cut: punished
+    grim = ScriptedAgent("Firm B", "grim", p_star=1.8, env_params=env)
+    assert grim.decide(hist([1.5] + [1.8] * 20)) == pytest.approx(pn)

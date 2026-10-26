@@ -52,3 +52,7 @@
 2026-10-25T23:50:05Z note: gpt52 designed --long actual $3.9697 exceeded approved $3.90 (estimate $3.55)
 2026-10-26T03:57:28+00:00 sweep gpt52med seeds=[0] design=lite W=3 H=2 SMOKE runs=2 planned_calls=10 actual_cost=$0.1912 failures=0
 2026-10-26T03:59:42+00:00 sweep gpt52med seeds=[0] design=lite W=30 H=10 runs=8 planned_calls=200 actual_cost=$3.8112 failures=0
+2026-10-26T04:23:47+00:00 sweep bot_punish_delayed seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-26T04:23:58+00:00 sweep bot_punish_threshold seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-26T04:24:09+00:00 sweep bot_grim seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0
+2026-10-26T04:24:19+00:00 sweep bot_match_jitter seeds=[0] design=full W=30 H=10 runs=21 planned_calls=0 actual_cost=$0.0000 failures=0

@@ -1,0 +1,24 @@
+{
+  "name": "warmup_hidden",
+  "out": "/Users/omanshuthapliyal/Documents/working/apart/Oct23/results/bot_punish_threshold/s0/warmup_hidden",
+  "seed": 0,
+  "rounds": 30,
+  "model": "bot_punish_threshold",
+  "agent_kind": "bot",
+  "bots": {
+    "Firm A": {
+      "policy": "revert",
+      "p_star": 1.8,
+      "rho": 0.5
+    },
+    "Firm B": {
+      "policy": "punish_threshold",
+      "p_star": 1.8,
+      "tol": 0.2
+    }
+  },
+  "hide": {
+    "Firm A": 1,
+    "Firm B": 1
+  }
+}

@@ -25,6 +25,13 @@ BOT_PAIRS = {
                  "Firm B": {"policy": b, "p_star": BOT_P_STAR}}
     for b in ["anchor", "br", "br_infer", "match", "punish"]
 }
+# E1 held-out mechanisms (METHODS section 16)
+BOT_PAIRS["bot_punish_threshold"] = {
+    "Firm A": {"policy": "revert", "p_star": BOT_P_STAR, "rho": BOT_RHO},
+    "Firm B": {"policy": "punish_threshold", "p_star": BOT_P_STAR, "tol": 0.20}}
+for b in ["punish_delayed", "grim", "match_jitter"]:
+    BOT_PAIRS[f"bot_{b}"] = {"Firm A": {"policy": "revert", "p_star": BOT_P_STAR, "rho": BOT_RHO},
+                             "Firm B": {"policy": b, "p_star": BOT_P_STAR}}
 
 
 ROOT_DIR = RESULTS  # run_screen --smoke points this at results/_smoke
